@@ -92,6 +92,8 @@ def account():
 
 @app.route("/_runSelenium", methods=['GET', 'POST'])
 def selenium():
+    e_ID = "cpecue@siue.edu"
+    e_password = "frnch40"
     chrome_options = webdriver.ChromeOptions()
     chrome_options.binary_location = os.getenv("GOOGLE_CHROME_BIN")
     chrome_options.add_argument('--headless')
@@ -99,9 +101,43 @@ def selenium():
     chrome_options.add_argument('--disable-gpu')
     chrome_options.add_argument('--no-sandbox')
     driver = webdriver.Chrome(executable_path=os.getenv('CHROMEDRIVER_PATH'), chrome_options=chrome_options)
-    driver.get('https://google.com/')
-    print("seems to work")
-    # driver.close()
+    driver.get('https://forms.office.com/Pages/ResponsePage.aspx?id=IX3zmVwL6kORA-FvAvWuzwdoWEcc_LNCksX8Xu0GatNURThSMDBZQ01QS082SUpESE5QTlZQTEkwVi4u')
+    time.sleep(5)
+    email = driver.find_element_by_xpath('//*[@id="i0116"]')
+    email.send_keys(e_ID)
+    next = driver.find_element_by_xpath('//*[@id="idSIButton9"]')
+    time.sleep(1)
+    next.click()
+    time.sleep(2)
+    password = driver.find_element_by_xpath(
+        '/html/body/div/form[1]/div/div/div[2]/div/div/div[1]/div[2]/div[2]/div/div[2]/div/div[2]/div/div[2]/input')
+    password.send_keys(e_password)
+    time.sleep(1)
+    next = driver.find_element_by_xpath(
+        '/html/body/div/form[1]/div/div/div[2]/div/div/div[1]/div[2]/div[2]/div/div[2]/div/div[3]/div[2]/div/div/div/div/input')
+    next.click()
+    time.sleep(2)
+    yes = driver.find_element_by_xpath(
+        '/html/body/div/form/div/div/div[1]/div[2]/div/div[2]/div/div[3]/div[2]/div/div/div[2]/input')
+    yes.click()
+
+    major = driver.find_element_by_xpath(
+        '/html/body/div/div/div/div/div/div/div[1]/div[2]/div[2]/div/div/div[2]/div/div/input')
+    major.send_keys('GERMAN')
+
+    minor = driver.find_element_by_xpath(
+        '//*[@id="form-container"]/div/div/div/div/div[1]/div[2]/div[2]/div[2]/div/div[2]/div/div/input')
+    minor.send_keys('ART')
+
+    student = driver.find_element_by_xpath(
+        '/html/body/div/div/div/div/div/div/div[1]/div[2]/div[2]/div[3]/div/div[2]/div/div/input')
+    student.send_keys('Caleb Pecue')
+    time.sleep(2)
+    button = driver.find_element_by_xpath('/html/body/div/div/div/div/div/div/div[1]/div[2]/div[3]/div[1]/button/div')
+    time.sleep(2)
+    button.click()
+    time.sleep(2)
+    driver.close()
     return render_template('_runSelenium.html', title='Selenium')
 
 
