@@ -1,0 +1,56 @@
+.container {
+    width: 100%
+    margin: 0px auto;
+    background: #333;
+    border-radius: 6px;
+    overflow: hidden;
+    padding: 10px;
+}
+
+
+.container input {
+    background: transparent;
+    border: 0;
+    font-size: 30px;
+    color: #fff;
+    width: 100%;
+}
+
+.suggestions {
+    text-align:left;
+    margin-bottom: 20px;
+}
+
+.suggestions > div {
+    padding: 15px;
+    font-size: 15px;
+    color: white;
+    cursor: pointer;
+}
+
+.suggestions > div:hover {
+    background-color: #818181;
+}
+
+
+
+.emphy {
+  width: 50%;
+  margin: 40px auto;
+  text-align: center;
+  color: #fff;
+}
+
+
+.block {
+    display: block;
+}
+input {
+    width: 50%;
+    display: inline-block;
+}
+span {
+    display: inline-block;
+    cursor: pointer;
+    text-decoration: underline;
+}

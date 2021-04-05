@@ -1,0 +1,295 @@
+{% extends "layout.html" %}
+{% block content %}
+<link href="static/search.css" rel="stylesheet" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+  <link rel="stylesheet" href="static/styles.css">
+
+<body style="background-color: #292b2c;"></body>
+                <main style="background-color: #292b2c;">
+
+                    <div class="container-fluid">
+                        <ol class="breadcrumb mt-4">
+                            <li class="breadcrumb-item active">Declaration</li>
+                        </ol>
+<div class="card text-white bg-dark text-center mb-4">
+                        <div class="card-header">Advisor Information</div>
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-lg-6">
+                                    <input type="text" class="form-control form-control-lg courses" id="advisorEmail" placeholder="Advisor Email">
+                                </div>
+                                <div class="col-lg-6">
+                                    <input type="password" class="form-control form-control-lg courses" id="advisorPw" placeholder="Advisor Password">
+                                </div>
+                            </div>
+                        </div>
+</div>
+
+
+
+
+<div class="card text-white bg-dark text-center mb-4">
+                        <div class="card-header">Student Information</div>
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-lg-6">
+                                    <input type="text" class="form-control form-control-lg courses" id="studentFN" placeholder="First Name">
+                                </div>
+                                <div class="col-lg-6">
+                                    <input type="text" class="form-control form-control-lg courses" id="studentLN" placeholder="Last Name">
+                                </div>
+                                <div class="col-lg-6">
+                                    <input type="text" class="form-control form-control-lg courses" id="studentID" placeholder="800#">
+                                </div>
+                                <div class="col-lg-6">
+                                    <input type="email" class="form-control form-control-lg courses" id="studentEmail" placeholder="Email">
+                                </div>
+                                <div class="col-lg-6">
+                                    <input type="text" class="form-control form-control-lg courses bfh-phone" id="studentPhone" placeholder="Phone Number" data-format="+1 (ddd) ddd-dddd">
+                                </div>
+                                <div class="col-lg-6">
+                                        <select class="form-select form-select-lg" aria-label="student status" id="status">
+                                          <option selected value="0">Undeclared</option>
+                                          <option value="1">Declared</option>
+                                        </select>
+                                </div>
+
+                            </div>
+                        </div>
+</div>
+
+
+<!--Second Degree Area for Testing-->
+<div class="card text-white bg-dark text-center mb-4">
+        <div class="card-header">Degree Information</div>
+        <div class="card-body" id="degreeArea">
+            <div class="row row-test" id="rowArea">
+                                    <div class="col-lg-6">
+                                        <div class="input-group mb-3">
+                                        <input type="text" class="form-control form-control-lg courses search-input" id="studentMajor" aria-label="Recipient's username" area-describedby="basic-addon2" placeholder="Major">
+                                          <div class="input-group-append">
+                                            <button class="input-group-text btn btn-dark info-button majorModalBtn" data-toggle="modal" data-target="#majorModal" id="basic-addon2">ⓘ</button>
+                                          </div>
+                                        </div>
+                                        <div class="suggestions"></div>
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <div class="input-group mb-3">
+                                        <input type="text" class="form-control form-control-lg courses search-input" id="studentMinor" aria-label="Recipient's username" area-describedby="basic-addon2" placeholder="Minor">
+                                          <div class="input-group-append">
+                                            <button class="input-group-text btn btn-dark info-button" data-toggle="modal" data-target="#minorModal" id="basic-addon3">ⓘ</button>
+                                          </div>
+                                        </div>
+                                        <div class="suggestions"></div>
+
+                                    </div>
+
+                                <div id="newMajorHere" class="col-lg-6"></div>
+                                <div id="newMinorHere" class="col-lg-6"></div>
+
+            </div>
+
+            <button id="addSecondMajor" class="btn btn-secondary add" onclick="" style="width:100%;">+</button>
+            <div id="deleteSecondMajor"></div>
+        </div>
+</div>
+
+                                            <div class="optionBox">
+    <div class="block mb-3 container-fluid">
+
+</div>
+
+<!--End Second Degree Area for Testing-->
+
+
+
+
+<!-- Modal -->
+<div class="modal fade majorModalClass" id="majorModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title Major1Title" id="Major1Title">Declaration Information</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body major1Information" id="Major1Information">
+
+
+
+      </div>
+<!--      <div class="modal-footer">-->
+<!--        <button type="button" class="btn btn-dark" data-dismiss="modal">Close</button>-->
+<!--      </div>-->
+    </div>
+  </div>
+</div>
+<!--                        Minor Modal-->
+<div class="modal fade" id="minorModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="minorModalTitle">Declaration Information</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+          Minor Information
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-dark" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+                    </div>
+                </main>
+<div class="container-fluid" style="background-color: #292b2c;">
+<footer>
+                            <div class="row">
+                            <div class="col-lg-6">
+                                <div class="btn btn-lg btn-dark mb-3" style="width:100%">Undeclare</div>
+                            </div>
+                            <div class="col-lg-6">
+                                <div class="btn btn-lg btn-dark mb-3 declareBtn" style="width:100%">Declare</div>
+                            </div>
+                        </div>
+</footer>
+    </div>
+        <script src="static/search_box.js"></script>
+        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
+        <script src="static/scripts.js"></script>
+        <script>
+
+        $(document).on('click','.add',function(){
+            $(this).remove();
+            $('.block:last').before('<div class="card text-center text-white bg-dark mb-4"><div class="card-header">Second Major Information</div><div class="card-body" id="degreeArea"><div class="row" id="rowArea"><div class="col-lg-6"><div class="input-group mb-3"><input type="text" class="form-control form-control-lg courses search-input" id="studentMajor" aria-label="Recipients username" area-describedby="basic-addon2" placeholder="Second Major"><div class="input-group-append"><button class="input-group-text btn btn-dark info-button" data-toggle="modal" data-target="#majorModal" id="basic-addon2">ⓘ</button></div></div><div class="suggestions"></div></div><div class="col-lg-6"><div class="input-group mb-3"><input type="text" class="form-control form-control-lg courses search-input" id="studentMinor" aria-label="Recipients username" area-describedby="basic-addon2" placeholder="Second Minor"><div class="input-group-append"><button class="input-group-text btn btn-dark info-button" data-toggle="modal" data-target="#minorModal" id="basic-addon3">ⓘ</button></div></div><div class="suggestions"></div></div></div><button id="addSecondMajor" class="btn btn-danger remove" onclick="" style="width:100%;">x</button></div></div>');
+            });
+            $('.optionBox').on('click','.remove',function() {
+            $(this).parent().parent().remove();
+            $('.row-test').after('<button id="addSecondMajor2" class="btn btn-secondary add" onclick="" style="width:100%;">+</button>');
+        });
+
+</script>
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script>window.jQuery || document.write('<script src="{{url_for('static', filename='jquery.js') }}">\x3C/script>')</script>
+<script>
+
+$(".declareBtn").click(function() {
+    var advisorEmail = document.getElementById('advisorEmail').value;
+    var advisorPw = document.getElementById('advisorPw').value;
+    var studentFN = document.getElementById('studentFN').value;
+    $.ajax({
+        url: '/_runSelenium',
+        type: 'POST',
+        data: {advisorEmail: advisorEmail, advisorPw: advisorPw, studentFN: studentFN},
+        success: function(response) {
+
+        },
+        error: function(error) {
+
+        }
+    });
+});
+
+const countries = {{ majors_list|safe }};
+
+var selectedSuggestionIndex = -1;
+const searchInput = document.querySelector('.search-input');
+const suggestionsPanel = document.querySelector('.suggestions');
+const majorInput = document.querySelector('.majorModal');
+
+function resetSelectedSuggestion() {
+  for (var i = 0; i < suggestionsPanel.children.length; i++) {
+    suggestionsPanel.children[i].classList.remove('selected');
+  }
+}
+searchInput.addEventListener('keyup', function(e) {
+  if (e.key === 'ArrowDown') {
+    resetSelectedSuggestion();
+    selectedSuggestionIndex = (selectedSuggestionIndex < suggestionsPanel.children.length - 1) ? selectedSuggestionIndex + 1 : suggestionsPanel.children.length - 1;
+    suggestionsPanel.children[selectedSuggestionIndex].classList.add('selected');
+    return;
+  }
+  if (e.key === 'ArrowUp') {
+    resetSelectedSuggestion();
+    selectedSuggestionIndex = (selectedSuggestionIndex > 0) ? selectedSuggestionIndex -1 : 0;
+    suggestionsPanel.children[selectedSuggestionIndex].classList.add('selected');
+    return;
+  }
+  if (e.key === 'Enter') {
+    searchInput.value = suggestionsPanel.children[selectedSuggestionIndex].innerHTML;
+    suggestionsPanel.classList.remove('show');
+    selectedSuggestionIndex = -1;
+    return;
+  }
+  suggestionsPanel.classList.add('show');
+  const input = searchInput.value;
+  suggestionsPanel.innerHTML = '';
+  const suggestions = countries.filter(function(country) {
+    return country.name.toLowerCase().startsWith(input.toLowerCase());
+  });
+  console.log(suggestions)
+  suggestions.forEach(function(suggested) {
+    const div = document.createElement('div');
+    div.innerHTML = suggested.name;
+    div.setAttribute('class', 'suggestion');
+    suggestionsPanel.appendChild(div);
+  });
+  if (input === '') {
+    suggestionsPanel.innerHTML = '';
+  }
+});
+
+
+document.addEventListener('click', function(e) {
+  if (e.target.className === 'suggestion') {
+    searchInput.value = e.target.innerHTML;
+    suggestionsPanel.classList.remove('show');
+    return searchInput.value
+  }
+});
+
+document.addEventListener('click', function(e) {
+  if (e.target.className === 'suggestion') {
+    searchInput.value = e.target.innerHTML;
+    suggestionsPanel.classList.remove('show');
+        suggestionsPanel.innerHTML = '';
+  }
+});
+
+$(function(){
+  $('.majorModalBtn').click(function(e){
+    e.preventDefault();
+    const major = document.getElementById('studentMajor');
+    document.getElementById('Major1Title').innerHTML = 'Declaration Information for ' + major.value;
+    index = countries.findIndex(x => x.name === major.value);
+    console.log(major.value);
+    console.log(index);
+    test = countries[index]['Requirements'];
+    contact = countries[index]['MajorPrimaryContact'];
+    code = countries[index]['majorCode'];
+    document.getElementById('Major1Information').innerHTML = test + '<hr />' + '<div class="badge badge-primary mr-3" style="padding:10px;">' + contact + '</div>' + '<div class="badge badge-danger mr-3" style="padding:10px;">' + code + '</div>' ;
+
+  });
+})
+
+
+
+
+
+
+
+</script>
+
+{% endblock content %}
+
+

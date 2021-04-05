@@ -1,0 +1,438 @@
+{% extends "layout.html" %}
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <meta name="description" content="" />
+        <meta name="author" content="" />
+  <title>OAA Quick Notes</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+  <link rel="stylesheet" href="static/styles.css">
+        <style>
+    .form-control:focus {
+        border-color: #ff0000;
+        box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.075) inset, 0px 0px 8px rgba(255, 100, 255, 0.5);
+    }
+
+</style>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/js/all.min.js" crossorigin="anonymous"></script>
+    </head>
+                <main>
+            <div class="container-fluid mt-4">
+                <ol class="breadcrumb mb-4">
+                <li class="breadcrumb-item active">Quick Notes</li>
+                </ol>
+             <div class="mb-3">
+                    <input type="text" class="form-control form-control-lg" id="semester" value="Fall 2021">
+                </div>
+                <div class="row">
+                    <div class="col-md-6 mb-3">
+                        <input type="text" class="form-control form-control-lg" id="studentMajor" placeholder="Major(s)">
+                    </div>
+                    <div class="col-md-6 mb-3">
+                        <input type="text" class="form-control form-control-lg" id="studentMinor" placeholder="Minor(s)">
+                    </div>
+                    <div class="col-md-6 mb-3">
+                        <select class="form-select form-select-lg studentStatus" aria-label="student status" id="status" onchange="studentStatus()">
+                            <option value="0">New Freshman</option>
+                            <option selected value="1">Continuing</option>
+                            <option value="2">New Transfer</option>
+                            <option value="3">Re-Entry</option>
+                        </select>
+                    </div>
+                    <div class="col-md-6 mb-3">
+                        <select class="form-select form-select-lg" aria-label="academic status" id="academicStanding">
+                            <option selected>Good Standing</option>
+                            <option value="1">Warning</option>
+                            <option value="2">Probation</option>
+                            <option value="3">Suspension</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="mb-3" id="addSpringboard"></div>
+                <div class="accordion mb-3" id="accordionExample">
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="headingTwo" >
+                            <button class="accordion-button collapsed" style="background-color:white; font-weight: 600;" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                            Referrals Made:
+                            </button>
+                        </h2>
+                        <div id="collapseTwo" class="accordion-collapse collapse" style="background-color:white;"  aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
+                            <div class="accordion-body">
+                                <div class="mb-3">
+                                    <div class="badge badge-dark bg-lg mb-3" style="width:100%; padding:10px;">Office Referrals:</div>
+                                    <div class="input-group mb-3" >
+<!--                          <div class="input-group-prepend">-->
+<!--                            <div class="input-group-text">-->
+<!--                              <input type="checkbox" aria-label="Checkbox for following text input" >-->
+<!--                            </div>-->
+<!--                          </div>-->
+<!--                          <input type="text" class="form-control" aria-label="Text input with checkbox">-->
+<!--                        </div>-->
+
+                                    <div class="container">
+                                        <div class="row">
+                                            <div class="col-lg-2 col-md-3 col-sm-12">
+                                                <input class="form-check-input" type="checkbox" name="officesRec" id="Career Development Center">
+                                                <label class="form-check-label">CDC</label>
+                                            </div>
+                                            <div class="col-lg-2 col-md-3 col-sm-12">
+                                                <input class="form-check-input" type="checkbox" name="officesRec" id="Major Department">
+                                                <label class="form-check-label">Major Department</label>
+                                            </div>
+                                            <div class="col-lg-2 col-md-3 col-sm-12">
+                                                <input class="form-check-input" type="checkbox" name="officesRec" id="Financial Aid">
+                                                <label class="form-check-label">Financial Aid</label>
+                                            </div>
+                                            <div class="col-lg-2 col-md-3 col-sm-12">
+                                                <input class="form-check-input" type="checkbox" name="officesRec" id="Bursars">
+                                                <label class="form-check-label">Bursars</label>
+                                            </div>
+                                            <div class="col-lg-2 col-md-3 col-sm-12">
+                                                <input class="form-check-input" type="checkbox" name="officesRec" id="Health Services">
+                                                <label class="form-check-label">Health Services</label>
+                                            </div>
+                                            <div class="col-lg-2 col-md-3 col-sm-12">
+                                                <input class="form-check-input" type="checkbox" name="officesRec" id="Testing Services">
+                                                <label class="form-check-label">Testing Services</label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="mb-3">
+                                    <div class="badge badge-dark bg-lg mb-3" style="width:100%; padding:10px;"> Testing Needed:</div>
+                                    <div class="container">
+                                        <div class="row">
+                                            <div class="col-lg-2 col-md-3 col-sm-12">
+                                                <input class="form-check-input" type="checkbox" id="Reading" name="testingRecs">
+                                                <label class="form-check-label">Reading</label>
+                                            </div>
+                                            <div class="col-lg-2 col-md-3 col-sm-12">
+                                                <input class="form-check-input" type="checkbox" id="Writing" name="testingRecs">
+                                                <label class="form-check-label">Writing</label>
+                                            </div>
+                                            <div class="col-lg-2 col-md-3 col-sm-12">
+                                                <input class="form-check-input" type="checkbox" id="Math" name="testingRecs">
+                                                <label class="form-check-label">Math</label>
+                                            </div>
+                                            <div class="col-lg-2 col-md-3 col-sm-12">
+                                                <input class="form-check-input" type="checkbox" id="Chemistry" name="testingRecs">
+                                                <label class="form-check-label">Chemistry Readiness</label>
+                                            </div>
+                                            <div class="col-lg-2 col-md-3 col-sm-12">
+                                                <input class="form-check-input" type="checkbox" id="Physics" name="testingRecs">
+                                                <label class="form-check-label">Physics</label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="headingOne">
+                            <button class="accordion-button collapsed" style="background-color: white; font-weight: 600;" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                            Courses Recommended:
+                            </button>
+                        </h2>
+                        <div id="collapseOne" class="accordion-collapse collapse" style="background-color: white;" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+                            <div class="accordion-body">
+                                <div class="mb-3">
+                                    <div class="container">
+                                        <div class="row">
+                                            <div class="col-lg-2 col-md-3 col-sm-12">
+                                                <input type="text" class="form-control courses" name="classRecs" id="class1" placeholder="">
+                                            </div>
+                                            <div class="col-lg-2 col-md-3 col-sm-12">
+                                                <input type="text" class="form-control courses" name="classRecs" id="class2" placeholder="">
+                                            </div>
+                                            <div class="col-lg-2 col-md-3 col-sm-12">
+                                                <input type="text" class="form-control courses" name="classRecs" id="class3" placeholder="">
+                                            </div>
+                                            <div class="col-lg-2 col-md-3 col-sm-12">
+                                                <input type="text" class="form-control courses" name="classRecs" id="class4" placeholder="">
+                                            </div>
+                                            <div class="col-lg-2 col-md-3 col-sm-12">
+                                                <input type="text" class="form-control courses" name="classRecs" id="class5" placeholder="">
+                                            </div>
+                                            <div class="col-lg-2 col-md-3 col-sm-12">
+                                                <input type="text" class="form-control courses" name="classRecs" id="class6" placeholder="">
+                                            </div>
+                                            <div class="col-lg-2 col-md-3 col-sm-12">
+                                                <input type="text" class="form-control courses" name="classRecs" id="class7" placeholder="">
+                                            </div>
+                                            <div class="col-lg-2 col-md-3 col-sm-12">
+                                                <input type="text" class="form-control courses" name="classRecs" id="class8" placeholder="">
+                                            </div>
+                                            <div class="col-lg-2 col-md-3 col-sm-12">
+                                                <input type="text" class="form-control courses" name="classRecs" id="class9" placeholder="">
+                                            </div>
+                                            <div class="col-lg-2 col-md-3 col-sm-12">
+                                                <input type="text" class="form-control courses" name="classRecs" id="class10" placeholder="">
+                                            </div>
+                                            <div class="col-lg-2 col-md-3 col-sm-12">
+                                                <input type="text" class="form-control courses" name="classRecs" id="class11" placeholder="">
+                                            </div>
+                                            <div class="col-lg-2 col-md-3 col-sm-12">
+                                                <input type="text" class="form-control courses" name="classRecs" id="class12" placeholder="">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="headingFour">
+                            <button class="accordion-button collapsed" style="background-color: white; font-weight: 600;" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFour" aria-expanded="true" aria-controls="collapseFour">
+                            Additional Information:
+                            </button>
+                        </h2>
+                        <div id="collapseFour" class="accordion-collapse collapse" style="background-color: white;" aria-labelledby="headingFour" data-bs-parent="#accordionExample">
+                            <div class="accordion-body">
+                                <div class="mb-3">
+                                    <textarea class="form-control" id="additionalInformation" rows="4"></textarea>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+   </main>
+<footer>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-6">
+                <div class="d-grid gap-2 mb-3">
+                    <button class="btn btn-lg btn-dark" id="btnCopy" type="button" onclick="copynote()">Copy Note</button>
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="d-grid gap-2 mb-3">
+                    <button class="btn btn-lg btn-dark clearNote" id="btnClear" type="button" onclick="clearNote()">Clear Note</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
+<script src="static/scripts.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js" integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0" crossorigin="anonymous"></script>
+<script>
+
+
+        function clearNote() {
+            location.reload();
+        }
+
+        function copynote() {
+        let semester = document.getElementById('semester').value;
+        let major = document.getElementById('studentMajor').value.toUpperCase();
+        let minor = document.getElementById('studentMinor').value.toUpperCase();
+
+        let status = document.getElementById('status');
+        let status_text = status.options[status.selectedIndex].text;
+
+        let standing = document.getElementById('academicStanding');
+        let standing_text = standing.options[standing.selectedIndex].text;
+
+        let CDC = document.getElementById('CDC');
+
+        var textarea = document.createElement('textarea');
+        textarea.value = 'Semester: ' + semester;
+
+
+        if (major) {
+        textarea.value += '\n\nMajor: ' + major;
+        }
+
+        if (minor) {
+        textarea.value += ' | Minor: ' + minor;
+        }
+
+        textarea.value += '\n\n' + status_text + ' | ' + standing_text + '\n';
+
+<!--Referrals-->
+<!--Office Referrals-->
+        const office_recs = document.querySelectorAll('input[name="officesRec"]:checked');
+        let offices = [];
+        office_recs.forEach((checkbox) => {
+            offices.push(checkbox.id);
+        });
+        if (offices.length >= 1) {
+            textarea.value += '\n\nOffice Referrals: ';
+            var officeRecommendations = offices.join(', ');
+            textarea.value += officeRecommendations;
+        }
+<!--Testing Needed-->
+        const test_recs = document.querySelectorAll('input[name="testingRecs"]:checked');
+        let tests = [];
+        test_recs.forEach((checkbox) => {
+            tests.push(checkbox.id);
+        });
+        if (tests.length >= 1) {
+            textarea.value += '\n\nTests Needed: ';
+            var testRecommendations = tests.join(', ');
+            textarea.value += testRecommendations;
+        }
+
+<!--Course Recs-->
+        textarea.value += '\n\n\nCourses Recommended: ';
+        const class_recs = document.querySelectorAll('input[name="classRecs"]');
+        let classes = [];
+        class_recs.forEach((classRecs) => {
+            classes.push(classRecs.value.toUpperCase())
+        });
+        classes = classes.filter(item => item);
+        var classRecommendations = classes.join(', ');
+        textarea.value += classRecommendations;
+<!--Additional Information-->
+        let additional_info = document.getElementById('additionalInformation').value;
+        textarea.value += '\n\n' + additional_info;
+
+        document.getElementById('btnCopy').style.backgroundColor = '#74E39A';
+        document.getElementById('btnCopy').innerHTML = 'Note Copied';
+        document.getElementById('btnCopy').style.borderColor = '#74E39A';
+        setTimeout("ChangeColor2()", 500)
+<!--Copy Text-->
+        document.body.appendChild(textarea);
+        textarea.select();
+        document.execCommand("copy");
+        document.body.removeChild(textarea);
+        }
+
+function ChangeColor2(){
+    document.getElementById('btnCopy').style.backgroundColor = '';
+    document.getElementById('btnCopy').style.borderColor = '';
+    document.getElementById('btnCopy').innerHTML = 'Copy Note';
+}
+
+function studentStatus(){
+        let status = document.getElementById('status');
+        let status_text = status.options[status.selectedIndex].text;
+        console.log(status_text);
+        if (status_text == "New Freshman") {
+            document.getElementById('addSpringboard').innerHTML = `
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="headingThree">
+                          <button class="accordion-button collapsed" style="background-color: white; font-weight: 600;" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                          Springboard Dual Credit / AP Credit Reported:
+                          </button>
+                        </h2>
+                        <div id="collapseThree" class="accordion-collapse collapse" style="background-color: white;" aria-labelledby="headingThree" data-bs-parent="#accordionExample" >
+                            <div class="accordion-body" style="background-color: white;">
+                                <div class="mb-3">
+                                    <div class="container">
+                                        <div class="row">
+                                            <div class="col-lg-2 col-md-3 col-sm-12">
+                                                <input type="text" class="form-control courses" id="SBclass1" placeholder="HIST 201 from SWIC">
+                                            </div>
+                                            <div class="col-lg-2 col-md-3 col-sm-12">
+                                                <input type="text" class="form-control courses" id="SBclass2" placeholder="">
+                                            </div>
+                                            <div class="col-lg-2 col-md-3 col-sm-12">
+                                                <input type="text" class="form-control courses" id="SBclass3" placeholder="">
+                                            </div>
+                                            <div class="col-lg-2 col-md-3 col-sm-12">
+                                                <input type="text" class="form-control courses" id="SBclass4" placeholder="">
+                                            </div>
+                                            <div class="col-lg-2 col-md-3 col-sm-12">
+                                                <input type="text" class="form-control courses" id="SBclass5" placeholder="">
+                                            </div>
+                                            <div class="col-lg-2 col-md-3 col-sm-12">
+                                                <input type="text" class="form-control courses" id="SBclass6" placeholder="">
+                                            </div>
+                                            <div class="col-lg-2 col-md-3 col-sm-12">
+                                                <input type="text" class="form-control courses" id="SBclass7" placeholder="">
+                                            </div>
+                                            <div class="col-lg-2 col-md-3 col-sm-12">
+                                                <input type="text" class="form-control courses" id="SBclass8" placeholder="">
+                                            </div>
+                                            <div class="col-lg-2 col-md-3 col-sm-12">
+                                                <input type="text" class="form-control courses" id="SBclass9" placeholder="">
+                                            </div>
+                                            <div class="col-lg-2 col-md-3 col-sm-12">
+                                                <input type="text" class="form-control courses" id="SBclass10" placeholder="">
+                                            </div>
+                                            <div class="col-lg-2 col-md-3 col-sm-12">
+                                                <input type="text" class="form-control courses" id="SBclass11" placeholder="">
+                                            </div>
+                                            <div class="col-lg-2 col-md-3 col-sm-12">
+                                                <input type="text" class="form-control courses" id="SBclass12" placeholder="">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>`;
+        } else if (status_text == "Continuing") {
+            document.getElementById('addSpringboard').innerHTML = "<div></div>";
+        } else if (status_text == "Re-entry") {
+            document.getElementById('addSpringboard').innerHTML = "<div></div>";
+        } else if (status_text == "New Transfer") {
+            document.getElementById('addSpringboard').innerHTML = `
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="headingThree">
+                          <button class="accordion-button collapsed" style="background-color: white; font-weight: 600;" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                          Transfer Credits (Not Evaluated):
+                          </button>
+                        </h2>
+                        <div id="collapseThree" class="accordion-collapse collapse" style="background-color: white;" aria-labelledby="headingThree" data-bs-parent="#accordionExample" >
+                            <div class="accordion-body" style="background-color: white;">
+                                <div class="mb-3">
+                                    <div class="container">
+                                        <div class="row">
+                                            <div class="col-lg-2 col-md-3 col-sm-12">
+                                                <input type="text" class="form-control courses" id="SBclass1" placeholder="HIST 201 from SWIC">
+                                            </div>
+                                            <div class="col-lg-2 col-md-3 col-sm-12">
+                                                <input type="text" class="form-control courses" id="SBclass2" placeholder="">
+                                            </div>
+                                            <div class="col-lg-2 col-md-3 col-sm-12">
+                                                <input type="text" class="form-control courses" id="SBclass3" placeholder="">
+                                            </div>
+                                            <div class="col-lg-2 col-md-3 col-sm-12">
+                                                <input type="text" class="form-control courses" id="SBclass4" placeholder="">
+                                            </div>
+                                            <div class="col-lg-2 col-md-3 col-sm-12">
+                                                <input type="text" class="form-control courses" id="SBclass5" placeholder="">
+                                            </div>
+                                            <div class="col-lg-2 col-md-3 col-sm-12">
+                                                <input type="text" class="form-control courses" id="SBclass6" placeholder="">
+                                            </div>
+                                            <div class="col-lg-2 col-md-3 col-sm-12">
+                                                <input type="text" class="form-control courses" id="SBclass7" placeholder="">
+                                            </div>
+                                            <div class="col-lg-2 col-md-3 col-sm-12">
+                                                <input type="text" class="form-control courses" id="SBclass8" placeholder="">
+                                            </div>
+                                            <div class="col-lg-2 col-md-3 col-sm-12">
+                                                <input type="text" class="form-control courses" id="SBclass9" placeholder="">
+                                            </div>
+                                            <div class="col-lg-2 col-md-3 col-sm-12">
+                                                <input type="text" class="form-control courses" id="SBclass10" placeholder="">
+                                            </div>
+                                            <div class="col-lg-2 col-md-3 col-sm-12">
+                                                <input type="text" class="form-control courses" id="SBclass11" placeholder="">
+                                            </div>
+                                            <div class="col-lg-2 col-md-3 col-sm-12">
+                                                <input type="text" class="form-control courses" id="SBclass12" placeholder="">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>`;
+        }
+
+}
+</script>
+{% endblock content %}

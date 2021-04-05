@@ -1,0 +1,287 @@
+{% extends "layout.html" %}
+{% block content %}
+    <head>
+        <meta charset="utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <meta name="description" content="" />
+        <meta name="author" content="" />
+  <title>OAA Quick Notes</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+  <link rel="stylesheet" href="static/styles.css">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/js/all.min.js" crossorigin="anonymous"></script>
+    </head>
+                <main>
+                    <div class="container-fluid">
+                        <ol class="breadcrumb mt-4">
+                            <li class="breadcrumb-item active">GPA Calculator</li>
+                        </ol>
+                        <div class="row">
+                                <div class="col-md-2">
+                                    <div class="jumbotron" style="padding:5px 10px; padding-bottom: 15px;">
+                                        <h3 class="badge badge-dark ml-1">Cumulative GPA Hours</h3>
+                                        <input type="text" class="form-control" placeholder="" aria-label="Username" aria-describedby="basic-addon1" id="cumGPA">
+                                    </div>
+                                </div>
+                                <div class="col-md-2">
+                                    <div class="jumbotron" style="padding:5px 10px; padding-bottom: 15px;">
+                                        <h3 class="badge badge-dark ml-1">Cumulative Quality Points</h3>
+                                        <input type="text" class="form-control" placeholder="" aria-label="Username" aria-describedby="basic-addon1" id="cumQP">
+                                    </div>
+                                </div>
+                                <div class="col-md-8">
+                            <div class="jumbotron" style="padding:1px;">
+                                <h3 class="badge badge-dark ml-1">Current GPA</h3>
+                                <center><h1 id="currentGPA">0.000</h1></center>
+                                </div>
+                            </div>
+                        </div>
+<!--                        <div class="class-container">-->
+                            <div class="input-group mb-3">
+                                <div class="container-fluid">
+                                    <div class="row">
+                                        <div class="col-lg-8 mb-1">
+                                            <div class="input-group">
+                                            <input type="text" class="form-control" placeholder="Class" aria-label="">
+                                            </div>
+                                        </div><div class="col-lg-1 mb-1">
+                                            <input type="text" class="form-control courseCredits" id="courseCredits" placeholder="Credits" aria-label="">
+                                        </div><div class="col-lg-1 mb-1">
+                                        <select class="form-select gradeCredits" id="gradeCredits" aria-label=".form-select-lg example">
+                                          <option selected>Grade</option>
+                                          <option value="1">A</option>
+                                          <option value="2">B</option>
+                                          <option value="3">C</option>
+                                          <option value="4">D</option>
+                                          <option value="5">F</option>
+                                        </select>
+                                        </div><div class="col-lg-1 mb-1">
+                                        <select class="form-select repeatYesNo" id="repeatYesNo" aria-label=".form-select-lg example">
+                                          <option selected>Repeat</option>
+                                          <option value="1">Yes</option>
+                                        </select>
+                                        </div><div class="col-lg-1 mb-1">
+                                        <select class="form-select repeatGrades" id="repeatGrades" aria-label=".form-select-lg example">
+                                          <option selected>Grade</option>
+                                          <option value="1">A</option>
+                                          <option value="2">B</option>
+                                          <option value="3">C</option>
+                                          <option value="4">D</option>
+                                          <option value="5">F</option>
+                                        </select>
+                                        </div>
+                                    </div>
+
+                                </div>
+
+                            </div>
+                            <div id="extraClassesHere">
+                                <div id="newClassHere" class="block"></div>
+                                </div>
+                        <div class="row testing">
+                            <div class="col-md-12 mb-2">
+                            <div class="input-group mb-3">
+                            <button class="btn btn-dark addClass" type="button" id="addClassBtn" style="width:100%" onclick="">+</button>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+<!--                    </div>-->
+                </main>
+                <footer>
+                    <div class="container-fluid">
+                        <div class="row">
+                            <div class="col-md-2">
+                            <div class="jumbotron" style="padding:3px;">
+                                                            <h4 class="badge badge-dark ml-1">New Quality Points</h4>
+                            <center><h1 id="newQPLabel">0</h1></center>
+                            </div>
+                            </div>
+                            <div class="col-md-2">
+                            <div class="jumbotron" style="padding:3px;">
+                                                            <h4 class="badge badge-dark ml-1">New GPA Hours</h4>
+                            <center><h1 id="newHoursLabel">0</h1></center>
+                            </div>
+                            </div>
+                            <div class="col-md-8">
+                        <div class="jumbotron" style="padding:3px;">
+                            <h4 class="badge badge-primary ml-1">New GPA</h4>
+                            <center><h1 id="newGPA">0.000</h1></center>
+                        </div>
+                                </div>
+                            </div>
+                        <hr style="color:white;"/>
+                        <div class="row">
+                        <div class="col-md-6 mb-3">
+                        <div class="btn btn-dark btn-lg col-mid-6 calcBtn" id="calcBtn" style="width: 100%">Calculate</div>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                        <div class="btn btn-dark btn-lg col-mid-6 clear" style="width: 100%">Clear</div>
+                        </div>
+                        </div>
+                        </div>
+                </footer>
+
+        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
+        <script scr="static/gpa.js"></script>
+        <script src="static/scripts.js"></script>
+
+        <script>
+        var courseCount = 1;
+        var gradeCount = 1;
+        var repeatGrade = 1;
+        $(document).on('click','.addClass',function(){
+            $('.block:last').before('<div class="input-group mb-3"><div class="container-fluid"><div class="row"><div class="col-lg-8 mb-1"><div class="input-group"><input type="text" class="form-control" placeholder="Class" aria-label=""><button type="button" onclick="" class="btn btn-danger delete">x</button></div></div><div class="col-lg-1 mb-1"><input type="text" id="newClassCredits'+courseCount+'" class="form-control newClassCredits courseCredits" placeholder="Credits" aria-label=""></div><div class="col-lg-1 mb-1"><select class="form-select gradeCredits" aria-label=".form-select-lg example" id="gradeCredits"><option selected>Grade</option><option value="1">A</option><option value="2">B</option><option value="3">C</option><option value="4">D</option><option value="5">F</option></select></div><div class="col-lg-1 mb-1"><select class="form-select repeatYesNo" id="repeatYesNo" aria-label=".form-select-lg example"><option selected>Repeat</option><option value="1">Yes</option><option value="2">No</option></select></div><div class="col-lg-1 mb-1"><select class="form-select repeatGrades" id="repeatGrades" aria-label=".form-select-lg example"><option selected>Grade</option><option value="1">A</option><option value="2">B</option><option value="3">C</option><option value="4">D</option><option value="5">F</option></select></div></div></div></div>');
+            courseCount++;
+            gradeCount++;
+            repeatGrade++;
+        });
+
+        $(document).on('click', '.delete',function(){
+        $(this).parent().parent().parent().parent().parent().remove();
+        });
+
+        $(document).on('click', '.clear',function(){
+            $('#extraClassesHere').remove();
+            $('.testing').before('<div id="extraClassesHere"><div id="newClassHere" class="block"></div></div>');
+            document.getElementById('newGPA').innerHTML = "0.000";
+            document.getElementById('currentGPA').innerHTML = "0.000";
+            document.getElementById("courseCredits").value = "";
+            document.getElementById("cumGPA").value = "";
+            document.getElementById("cumQP").value = "";
+            document.getElementById("gradeCredits").value = 1;
+            $('select').prop('selectedIndex', 0);
+        });
+
+        $("#cumQP").bind("input", function() {
+        var cumGPA = parseInt($("#cumGPA").val()) || 0;
+        var cumQP = parseInt($("#cumQP").val()) || 0;
+        var gpa = (cumQP / cumGPA).toFixed(3);
+        document.getElementById('currentGPA').innerHTML = gpa;
+        document.getElementById('newGPA').innerHTML = gpa;
+        });
+
+
+$(document).on('click','.calcBtn',function() {
+        var cumGPA = parseInt($("#cumGPA").val()) || 0;
+        var cumQP = parseInt($("#cumQP").val()) || 0;
+        var newGPA = document.getElementById('newGPA');
+        var newHours = [];
+        var newQP = [];
+        grades = [];
+        repeatHours = [];
+        var repeatQP = [];
+        var oldGrades = [];
+        oldGrades.push(0);
+        repeatHours.push(0);
+        var id = document.getElementsByClassName("courseCredits");
+        for (var i = 0; i < id.length; i++) {
+            idValue = parseInt(id[i].value);
+            var repeatYesNo = $('select[id="repeatYesNo"]');
+            var repeatGradeArray = $('select[id="repeatGrades"]');
+            var gradeArray = $('select[id="gradeCredits"]');
+            if ($(repeatYesNo[i]).val() == 1) {
+                console.log('Course is repeated.')
+                    if ($(repeatGradeArray[i]).val() == 1) {
+                        oldGrades.push(idValue * 4);
+                        repeatHours.push(idValue);
+                        console.log('Old QP: ' + oldGrades);
+                    } else if ($(repeatGradeArray[i]).val() == 2) {
+                        oldGrades.push(idValue * 3);
+                        repeatHours.push(idValue);
+                        console.log('Old QP: ' + oldGrades);
+                    } else if ($(repeatGradeArray[i]).val() == 3) {
+                        oldGrades.push(idValue * 2);
+                        repeatHours.push(idValue);
+                        console.log('Old QP: ' + oldGrades);
+                    } else if ($(repeatGradeArray[i]).val() == 4) {
+                        oldGrades.push(idValue * 1);
+                        repeatHours.push(idValue);
+                        console.log('Old QP: ' + oldGrades);
+                    } else if ($(repeatGradeArray[i]).val() == 5) {
+                        oldGrades.push(idValue * 0);
+                        repeatHours.push(idValue);
+                        console.log('Old QP: ' + oldGrades);
+                    };
+            }
+            console.log('Course is not repeated.')
+            if ($(gradeArray[i]).val() == 1) {
+                newHours.push(idValue);
+                grades.push(4);
+                qpValue = idValue * 4;
+                newQP.push(qpValue);
+            } else if ($(gradeArray[i]).val() == 2) {
+                newHours.push(idValue);
+                grades.push(3);
+                qpValue = idValue * 3;
+                newQP.push(qpValue);
+            } else if ($(gradeArray[i]).val() == 3) {
+                newHours.push(idValue);
+                grades.push(2);
+                qpValue = idValue * 2;
+                newQP.push(qpValue);
+            } else if ($(gradeArray[i]).val() == 4) {
+                newHours.push(idValue);
+                grades.push(1);
+                qpValue = idValue * 1;
+                newQP.push(qpValue);
+            } else if ($(gradeArray[i]).val() == 5) {
+                newHours.push(idValue);
+                grades.push(0);
+                qpValue = idValue * 0;
+                newQP.push(qpValue);
+            };
+        };
+        console.log('Old QP Final: ' + oldGrades);
+        const repeatQPAll = oldGrades;
+        const reducer3 = (accumulator, currentValue) => accumulator + currentValue;
+        var newRepeatQPTotal = repeatQPAll.reduce(reducer3);
+        console.log('This is the old QP sum: ' + newRepeatQPTotal);
+
+        console.log('Old Repeat Hours: ' + repeatHours);
+        const repeatHoursAll = repeatHours;
+        const reducer4 = (accumulator, currentValue) => accumulator + currentValue;
+        var newRepeatHoursTotal = repeatHoursAll.reduce(reducer4);
+        console.log('This is the old Hours sum: ' + newRepeatHoursTotal);
+
+        console.log(newQP);
+        const newHoursAll = newHours;
+        console.log('This is the new hours: ' + newHoursAll);
+        const reducer = (accumulator, currentValue) => accumulator + currentValue;
+        console.log('This is the reducer ' + reducer);
+        var newHoursTotal = newHoursAll.reduce(reducer) + cumGPA;
+        console.log('This is the new hours total: ' + newHoursTotal);
+
+        const newQPAll = newQP
+        console.log(newQPAll);
+        const reducer2 = (accumulator, currentValue) => accumulator + currentValue;
+        console.log(reducer2);
+        var newQPTotal = newQPAll.reduce(reducer2) + cumQP;
+        console.log('This is the new qp total: ' + newQPTotal);
+
+        console.log('newRepeatTotal: ' + newRepeatQPTotal);
+        console.log('newRepeatHoursTotal: ' + newRepeatHoursTotal);
+        finalQP = newQPTotal - newRepeatQPTotal;
+        finalHours = newHoursTotal - newRepeatHoursTotal;
+
+        newGPAValue = ( finalQP / finalHours).toFixed(3);
+        document.getElementById('newGPA').innerHTML = newGPAValue;
+        document.getElementById('newQPLabel').innerHTML = finalQP;
+        document.getElementById('newHoursLabel').innerHTML = finalHours;
+        console.log(newGPAValue);
+    });
+
+
+
+
+
+
+
+
+
+</script>
+
+{% endblock content %}
