@@ -92,9 +92,9 @@ def account():
 
 @app.route("/_runSelenium", methods=['GET', 'POST'])
 def selenium():
-    e_ID = "cpecue@siue.edu"
-    e_password = "frnch40"
-    advisorEmail= request.form['advisorEmail']
+    e_ID = request.form['advisorEmail']
+    e_password = request.form['advisorPw']
+    major = request.form['studentFN']
     chrome_options = webdriver.ChromeOptions()
     chrome_options.binary_location = os.getenv("GOOGLE_CHROME_BIN")
     chrome_options.add_argument('--headless')
@@ -124,22 +124,21 @@ def selenium():
 
     major = driver.find_element_by_xpath(
         '/html/body/div/div/div/div/div/div/div[1]/div[2]/div[2]/div/div/div[2]/div/div/input')
-    major.send_keys(advisorEmail)
-
+    major.send_keys(major)
     minor = driver.find_element_by_xpath(
         '//*[@id="form-container"]/div/div/div/div/div[1]/div[2]/div[2]/div[2]/div/div[2]/div/div/input')
-    minor.send_keys('ART')
+    minor.send_keys(major)
 
     student = driver.find_element_by_xpath(
         '/html/body/div/div/div/div/div/div/div[1]/div[2]/div[2]/div[3]/div/div[2]/div/div/input')
-    student.send_keys('Caleb Pecue')
+    student.send_keys(major)
     time.sleep(2)
     button = driver.find_element_by_xpath('/html/body/div/div/div/div/div/div/div[1]/div[2]/div[3]/div[1]/button/div')
     time.sleep(2)
     button.click()
     time.sleep(2)
     driver.close()
-    return render_template('_runSelenium.html', title='Selenium')
+    return render_template('declare.html', cctitle="Declaration")
 
 
 @app.route('/declare')
