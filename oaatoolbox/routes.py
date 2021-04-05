@@ -92,9 +92,6 @@ def account():
 
 @app.route("/_runSelenium", methods=['GET', 'POST'])
 def selenium():
-    e_ID = request.form['advisorEmail']
-    e_password = request.form['advisorPw']
-    studentFN = request.form['studentFN']
     GOOGLE_CHROME_PATH = '/app/.apt/usr/bin/google_chrome'
     CHROMEDRIVER_PATH = '/app/.chromedriver/bin/chromedriver'
     chrome_options = webdriver.ChromeOptions()
@@ -104,39 +101,6 @@ def selenium():
     chrome_options.binary_location = GOOGLE_CHROME_PATH
     driver = webdriver.Chrome(executable_path=os.environ.get(CHROMEDRIVER_PATH), chrome_options=chrome_options)
     driver.get('https://google.com/')
-    # time.sleep(5)
-    # email = driver.find_element_by_xpath('//*[@id="i0116"]')
-    # email.send_keys(e_ID)
-    # next = driver.find_element_by_xpath('//*[@id="idSIButton9"]')
-    # time.sleep(1)
-    # next.click()
-    # time.sleep(2)
-    # password = driver.find_element_by_xpath(
-    #     '/html/body/div/form[1]/div/div/div[2]/div/div/div[1]/div[2]/div[2]/div/div[2]/div/div[2]/div/div[2]/input')
-    # password.send_keys(e_password)
-    # time.sleep(3)
-    # next = driver.find_element_by_xpath(
-    #     '/html/body/div/form[1]/div/div/div[2]/div/div/div[1]/div[2]/div[2]/div/div[2]/div/div[3]/div[2]/div/div/div/div/input')
-    # next.click()
-    # time.sleep(3)
-    # yes = driver.find_element_by_xpath(
-    #     '/html/body/div/form/div/div/div[1]/div[2]/div/div[2]/div/div[3]/div[2]/div/div/div[2]/input')
-    # yes.click()
-    #
-    # major = driver.find_element_by_xpath(
-    #     '/html/body/div/div/div/div/div/div/div[1]/div[2]/div[2]/div/div/div[2]/div/div/input')
-    # major.send_keys(studentFN)
-    #
-    # minor = driver.find_element_by_xpath(
-    #     '//*[@id="form-container"]/div/div/div/div/div[1]/div[2]/div[2]/div[2]/div/div[2]/div/div/input')
-    # minor.send_keys('CHEM')
-    #
-    # student = driver.find_element_by_xpath(
-    #     '/html/body/div/div/div/div/div/div/div[1]/div[2]/div[2]/div[3]/div/div[2]/div/div/input')
-    # student.send_keys('Caleb Pecue')
-    # time.sleep(2)
-    # button = driver.find_element_by_xpath('/html/body/div/div/div/div/div/div/div[1]/div[2]/div[3]/div[1]/button/div')
-    # time.sleep(2)
     driver.close()
 
 
