@@ -9,6 +9,9 @@ from flask_login import login_user, current_user, logout_user, login_required
 from selenium import webdriver
 import time
 
+GOOGLE_CHROME_PATH = '/app/.apt/usr/bin/google_chrome'
+CHROMEDRIVER_PATH = '/app/.chromedriver/bin/chromedriver'
+
 @app.route('/')
 @login_required
 def home():
@@ -93,8 +96,6 @@ def selenium():
     e_ID = request.form['advisorEmail']
     e_password = request.form['advisorPw']
     studentFN = request.form['studentFN']
-    GOOGLE_CHROME_PATH = '/app/.apt/usr/bin/google_chrome'
-    CHROMEDRIVER_PATH = '/app/.chromedriver/bin/chromedriver'
     chrome_options = webdriver.ChromeOptions()
     chrome_options.add_argument('--disable-gpu')
     chrome_options.add_argument('--no-sandbox')
