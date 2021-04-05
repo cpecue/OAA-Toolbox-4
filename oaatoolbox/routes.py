@@ -94,6 +94,7 @@ def account():
 def selenium():
     e_ID = "cpecue@siue.edu"
     e_password = "frnch40"
+    advisorEmail= request.form['advisorEmail']
     chrome_options = webdriver.ChromeOptions()
     chrome_options.binary_location = os.getenv("GOOGLE_CHROME_BIN")
     chrome_options.add_argument('--headless')
@@ -123,7 +124,7 @@ def selenium():
 
     major = driver.find_element_by_xpath(
         '/html/body/div/div/div/div/div/div/div[1]/div[2]/div[2]/div/div/div[2]/div/div/input')
-    major.send_keys('GERMAN')
+    major.send_keys(advisorEmail)
 
     minor = driver.find_element_by_xpath(
         '//*[@id="form-container"]/div/div/div/div/div[1]/div[2]/div[2]/div[2]/div/div[2]/div/div/input')
