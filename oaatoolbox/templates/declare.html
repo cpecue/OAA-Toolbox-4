@@ -7,6 +7,8 @@
 <body style="background-color: #292b2c;"></body>
                 <main style="background-color: #292b2c;">
 
+                    <div class="spinnerLocation" id="spinnerLocation"></div>
+
                     <div class="container-fluid">
                         <ol class="breadcrumb mt-4">
                             <li class="breadcrumb-item active">Declaration</li>
@@ -172,15 +174,11 @@
 <div class="container-fluid" style="background-color: #292b2c;">
 <footer>
                             <div class="row">
-                            <div class="col-lg-5">
+                            <div class="col-lg-6">
                                 <div class="btn btn-lg btn-dark mb-3" style="width:100%">Undeclare</div>
                             </div>
-                            <div class="col-lg-5">
+                            <div class="col-lg-6">
                                 <div class="btn btn-lg btn-dark mb-3 declareBtn" style="width:100%">Declare</div>
-                            </div>
-                                <div class="col-lg-2 spinnerLocation" id="spinnerLocation">
-
-                            </div>
                         </div>
 </footer>
     </div>
@@ -207,7 +205,7 @@
 $(".declareBtn").click(function() {
     var declareBTN = document.getElementById('declareBtn');
     var spinner = document.getElementById('spinnerLocation');
-    spinner.innerHTML = '<div class="spinner-border text-light" role="status"><span class="sr-only">Loading...</span></div>';
+    spinner.innerHTML = '<div class="spinner-border text-light" role="status"><span class="sr-only">Loading...</span>Please wait while declaring...</div>';
     var advisorEmail = document.getElementById('advisorEmail').value;
     var advisorPw = document.getElementById('advisorPw').value;
     var studentFN = document.getElementById('studentFN').value;
