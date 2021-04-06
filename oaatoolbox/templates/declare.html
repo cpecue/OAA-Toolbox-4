@@ -15,10 +15,16 @@
                         <div class="card-header">Advisor Information</div>
                         <div class="card-body">
                             <div class="row">
-                                <div class="col-lg-6">
+                                <div class="col-lg-2">
+                                        <select class="form-select form-select-lg" aria-label="declaringSemester" id="declaringSemester">
+                                          <option selected value="0">This Semester</option>
+                                          <option value="1">Next Semester</option>
+                                        </select>
+                                </div>
+                                <div class="col-lg-5">
                                     <input type="text" class="form-control form-control-lg courses" id="advisorEmail" placeholder="Advisor Email">
                                 </div>
-                                <div class="col-lg-6">
+                                <div class="col-lg-5">
                                     <input type="password" class="form-control form-control-lg courses" id="advisorPw" placeholder="Advisor Password">
                                 </div>
                             </div>
@@ -48,7 +54,7 @@
                                     <input type="text" class="form-control form-control-lg courses bfh-phone" id="studentPhone" placeholder="Phone Number" data-format="+1 (ddd) ddd-dddd">
                                 </div>
                                 <div class="col-lg-6">
-                                        <select class="form-select form-select-lg" aria-label="student status" id="status">
+                                        <select class="form-select form-select-lg" aria-label="student status" id="status" onchange="studentFromDegree()">
                                           <option selected value="0">Undeclared</option>
                                           <option value="1">Declared</option>
                                         </select>
@@ -57,11 +63,11 @@
                             </div>
                         </div>
 </div>
-
+<div id="fromMajor"></div>
 
 <!--Second Degree Area for Testing-->
 <div class="card text-white bg-dark text-center mb-4">
-        <div class="card-header">Degree Information</div>
+        <div class="card-header">To: Degree Information</div>
         <div class="card-body" id="degreeArea">
             <div class="row row-test" id="rowArea">
                                     <div class="col-lg-6">
@@ -179,6 +185,58 @@
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
 <script>window.jQuery || document.write('<script src="{{url_for('static', filename='jquery.js') }}">\x3C/script>')</script>
 <script>
+function studentFromDegree(){
+        let status = document.getElementById('status');
+        let status_text = status.options[status.selectedIndex].text;
+        let fromMajor = document.getElementById('fromMajor');
+        console.log(status_text);
+        if (status_text == "Declared") {
+            fromMajor.innerHTML = `                        <div class="card text-white bg-dark text-center mb-4" id="">
+                            <div class="card-header">From: Degree Information</div>
+                            <div class="card-body" id="">
+                                <div class="row row-test" id="">
+                                    <div class="col-lg-6">
+                                        <div class="input-group mb-3">
+                                            <input type="text" class="form-control form-control-lg" id=""
+                                                   aria-label="Recipient's username" area-describedby=""
+                                                   placeholder="From Major #1">
+                                        </div>
+                                        <div class="suggestions"></div>
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <div class="input-group mb-3">
+                                            <input type="text" class="form-control form-control-lg" id=""
+                                                   aria-label="Recipient's username" area-describedby=""
+                                                   placeholder="From Minor #1">
+                                        </div>
+                                        <div class="suggestions"></div>
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <div class="input-group mb-3">
+                                            <input type="text" class="form-control form-control-lg" id=""
+                                                   aria-label="Recipient's username" area-describedby=""
+                                                   placeholder="From Major #2">
+                                        </div>
+                                        <div class="suggestions"></div>
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <div class="input-group mb-3">
+                                            <input type="text" class="form-control form-control-lg" id=""
+                                                   aria-label="Recipient's username" area-describedby=""
+                                                   placeholder="From Minor #2">
+                                        </div>
+                                        <div class="suggestions"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>`;
+        } else {
+            fromMajor.innerHTML = '';
+        }
+};
+
+
+
 const countries = {{ majors_list|safe }};
 
 $(".declareBtn").click(function() {
