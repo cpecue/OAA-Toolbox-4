@@ -6,11 +6,8 @@
 
 <body style="background-color: #292b2c;"></body>
                 <main style="background-color: #292b2c;">
-
-
-
                     <div class="container-fluid">
-                        <div class="spinnerLocation" id="spinnerLocation"></div>
+                        <div class="spinnerLocation mt-4" id="spinnerLocation"></div>
                         <ol class="breadcrumb mt-4">
                             <li class="breadcrumb-item active">Declaration</li>
                         </ol>
@@ -206,7 +203,7 @@
 $(".declareBtn").click(function() {
     var declareBTN = document.getElementById('declareBtn');
     var spinner = document.getElementById('spinnerLocation');
-    spinner.innerHTML = '<div class="progress"><div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: 75%"></div></div>';
+    spinner.innerHTML = '<div class="progress" style="height: 20px;"><div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100" style="width: 75%"></div></div>';
     var advisorEmail = document.getElementById('advisorEmail').value;
     var advisorPw = document.getElementById('advisorPw').value;
     var studentFN = document.getElementById('studentFN').value;
