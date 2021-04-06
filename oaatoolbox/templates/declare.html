@@ -202,9 +202,7 @@
 <script>
 
 $(".declareBtn").click(function() {
-    $('#declaringModalClass').modal({
-        show: 'True'
-    });
+    $("declaringModal").modal()
     var advisorEmail = document.getElementById('advisorEmail').value;
     var advisorPw = document.getElementById('advisorPw').value;
     var studentFN = document.getElementById('studentFN').value;
