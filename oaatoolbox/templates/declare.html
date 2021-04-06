@@ -206,7 +206,7 @@
 $(".declareBtn").click(function() {
     var declareBTN = document.getElementById('declareBtn');
     var spinner = document.getElementById('spinnerLocation');
-    spinner.innerHTML = '<div class="spinner-border text-light mt-3" role="status"><span class="sr-only">Loading...</span</div><p>>Please wait while declaring...</p>';
+    spinner.innerHTML = '<div class="progress"><div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: 75%"></div></div>';
     var advisorEmail = document.getElementById('advisorEmail').value;
     var advisorPw = document.getElementById('advisorPw').value;
     var studentFN = document.getElementById('studentFN').value;
