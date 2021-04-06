@@ -219,6 +219,7 @@ $(".declareBtn").click(function() {
         },
         error: function(error) {
             alert('An error has occurred, please close and try to submit again.');
+            location.reload();
         }
     });
 });
