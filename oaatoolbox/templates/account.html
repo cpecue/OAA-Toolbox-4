@@ -73,90 +73,96 @@
 
                 </div>
                                 {% if current_user.role == "1": %}
-                                <hr class="" style="background-color:white;"/>
-                        <div class="row">
-                                <div class="col-md-3 mb-1">
-                                    <div class="btn btn-dark" style="width: 100%">Declaration History</div>
-                                </div>
-                                                            <div class="col-md-3 mb-1">
-                                                                <a href="register">
-                                    <div class="btn btn-dark" style="width: 100%">Register Advisor</div></a>
-                                </div>
-                                                            <div class="col-md-3 mb-1">
-                                    <div class="btn btn-dark" style="width: 100%" onclick="openOutlook()">Career Ladder Docs</div>
-                                </div>
-                                                            <div class="col-md-3 mb-1">
-                                    <div class="btn btn-dark" style="width: 100%">Contacts Management</div>
-                                </div>
+                <hr class="" style="background-color:white;"/>
+                <div class="row">
+                    <div class="col-md-3 mb-1">
+                        <div class="btn btn-dark" style="width: 100%">Declaration History</div>
+                    </div>
+                    <div class="col-md-3 mb-1">
+                        <a href="register">
+                            <div class="btn btn-dark" style="width: 100%">Register Advisor</div>
+                        </a>
                         </div>
+                    <div class="col-md-3 mb-1">
+                    <div class="btn btn-dark" style="width: 100%" onclick="">Career Ladder Docs</div>
+                    </div>
+                    <div class="col-md-3 mb-1">
+
+                    <div class="btn btn-dark" style="width: 100%">Contacts Management</div>
+                    </div>
+                    <div class="col-md-3 mb-1">
+                                                <a href="major-management">
+                    <div class="btn btn-dark" style="width: 100%">Major Management</div>
+                    </a></div>
+                </div>
                                 {% endif %}
         </div>
 
         <div class="container-fluid">
 <hr style="background-color:white;" />
-                    <table class="table table-sm table-dark">
-  <thead>
-
-    <tr>
-      <th scope="col">Date</th>
-      <th scope="col">First Name</th>
-      <th scope="col">Last Name</th>
-      <th scope="col">Major</th>
-      <th scope="col">Form</th>
-        <th scope="col" style="text-align:right; padding-right:10px;"><i class="fas fa-download"></i></th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th scope="row">03/07/21</th>
-      <td>John</td>
-      <td>Doe</td>
-      <td>BIOM</td>
-      <td>doe_john_biom.pdf </td>
-        <td style="text-align:right; padding-right:10px;"><i class="fas fa-download"></i></td>
-    </tr>
-    <tr>
-      <th scope="row">03/07/21</th>
-      <td>Jane</td>
-      <td>Doe</td>
-      <td>CHEM</td>
-        <td>doe_jane_chem.pdf</td>
-        <td style="text-align:right; padding-right:10px;"><i class="fas fa-download"></i></td>
-    </tr>
-    <tr>
-      <th scope="row">03/06/21</th>
-      <td>Bob</td>
-      <td>Smith</td>
-        <td>MC</td>
-        <td>smith_bob_mc.pdf</td>
-        <td style="text-align:right; padding-right:10px;"><i class="fas fa-download"></i></td>
-    </tr>
-<tr>
-      <th scope="row">03/07/21</th>
-      <td>John</td>
-      <td>Doe</td>
-      <td>BIOM</td>
-      <td>doe_john_biom.pdf</td>
-    <td style="text-align:right; padding-right:10px;"><i class="fas fa-download"></i></td>
-    </tr>
-    <tr>
-      <th scope="row">03/07/21</th>
-      <td>Jane</td>
-      <td>Doe</td>
-      <td>CHEM</td>
-        <td>doe_jane_chem.pdf</td>
-        <td style="text-align:right; padding-right:10px;"><i class="fas fa-download"></i></td>
-    </tr>
-    <tr>
-      <th scope="row">03/06/21</th>
-      <td>Bob</td>
-      <td>Smith</td>
-        <td>MC</td>
-        <td>smith_bob_mc.pdf</td>
-        <td style="text-align:right; padding-right:10px;"><i class="fas fa-download"></i></td>
-    </tr>
-  </tbody>
-</table>
+<!--                   <table class="table table-sm table-dark">-->
+<!--  <thead>-->
+<!-- -->
+<!--    <tr>-->
+<!--      <th scope="col">Date</th>-->
+<!--      <th scope="col">First Name</th>-->
+<!--      <th scope="col">Last Name</th>-->
+<!--      <th scope="col">Major</th>-->
+<!--      <th scope="col">Form</th>-->
+<!--        <th scope="col" style="text-align:right; padding-right:10px;"><i class="fas fa-download"></i></th>-->
+<!--    </tr>-->
+<!--  </thead>-->
+<!--  <tbody>-->
+<!--    <tr>-->
+<!--      <th scope="row">03/07/21</th>-->
+<!--      <td>John</td>-->
+<!--      <td>Doe</td>-->
+<!--      <td>BIOM</td>-->
+<!--      <td>doe_john_biom.pdf </td>-->
+<!--        <td style="text-align:right; padding-right:10px;"><i class="fas fa-download"></i></td>-->
+<!--    </tr>-->
+<!--    <tr>-->
+<!--      <th scope="row">03/07/21</th>-->
+<!--      <td>Jane</td>-->
+<!--      <td>Doe</td>-->
+<!--      <td>CHEM</td>-->
+<!--        <td>doe_jane_chem.pdf</td>-->
+<!--        <td style="text-align:right; padding-right:10px;"><i class="fas fa-download"></i></td>-->
+<!--    </tr>-->
+<!--    <tr>-->
+<!--      <th scope="row">03/06/21</th>-->
+<!--      <td>Bob</td>-->
+<!--      <td>Smith</td>-->
+<!--        <td>MC</td>-->
+<!--        <td>smith_bob_mc.pdf</td>-->
+<!--        <td style="text-align:right; padding-right:10px;"><i class="fas fa-download"></i></td>-->
+<!--    </tr>-->
+<!--<tr>-->
+<!--      <th scope="row">03/07/21</th>-->
+<!--      <td>John</td>-->
+<!--      <td>Doe</td>-->
+<!--      <td>BIOM</td>-->
+<!--      <td>doe_john_biom.pdf</td>-->
+<!--    <td style="text-align:right; padding-right:10px;"><i class="fas fa-download"></i></td>-->
+<!--    </tr>-->
+<!--    <tr>-->
+<!--      <th scope="row">03/07/21</th>-->
+<!--      <td>Jane</td>-->
+<!--      <td>Doe</td>-->
+<!--      <td>CHEM</td>-->
+<!--        <td>doe_jane_chem.pdf</td>-->
+<!--        <td style="text-align:right; padding-right:10px;"><i class="fas fa-download"></i></td>-->
+<!--    </tr>-->
+<!--    <tr>-->
+<!--      <th scope="row">03/06/21</th>-->
+<!--      <td>Bob</td>-->
+<!--      <td>Smith</td>-->
+<!--        <td>MC</td>-->
+<!--        <td>smith_bob_mc.pdf</td>-->
+<!--        <td style="text-align:right; padding-right:10px;"><i class="fas fa-download"></i></td>-->
+<!--    </tr>-->
+<!--  </tbody>-->
+<!--</table>-->
                     </div>
 
 
@@ -177,5 +183,7 @@
 <!--            }-->
         </script>
 <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.23/js/jquery.dataTables.js"></script>
+<script>
 
+</script>
 {% endblock content%}

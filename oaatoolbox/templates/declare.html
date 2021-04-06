@@ -119,31 +119,11 @@
 
 
       </div>
-<!--      <div class="modal-footer">-->
-<!--        <button type="button" class="btn btn-dark" data-dismiss="modal">Close</button>-->
-<!--      </div>-->
     </div>
   </div>
 </div>
 <!--                        Minor Modal-->
-<div class="modal fade" id="minorModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="minorModalTitle">Declaration Information</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-          Minor Information
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-dark" data-dismiss="modal">Close</button>
-      </div>
-    </div>
-  </div>
-</div>
+
 
 <!--                                                Declaring Modal -->
 <div class="modal fade declaringModalClass" id="declaringModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
@@ -217,13 +197,14 @@ $(".declareBtn").click(function() {
     console.log(studentMajor);
     console.log(index);
     test = countries[index]['Requirements'];
-    contact = countries[index]['MajorPrimaryContact'];
-    code = countries[index]['majorCode'];
+    majorCode = countries[index]['majorCode'];
+    degreeCode = countries[index]['degreeCode'];
+    collegeCode = countries[index]['collegeCode'];
 
     $.ajax({
         url: '/_runSelenium',
         type: 'POST',
-        data: {advisorEmail: advisorEmail, advisorPw: advisorPw, studentFN: studentFN, studentMajor: studentMajor, code: code},
+        data: {advisorEmail: advisorEmail, advisorPw: advisorPw, studentFN: studentFN, studentMajor: studentMajor, majorCode: majorCode, degreeCode: degreeCode, collegeCode: collegeCode},
         success: function(response) {
             alert('Student was successfully declared! Hoo-ray!');
             location.reload();
@@ -310,9 +291,8 @@ $(function(){
     console.log(major.value);
     console.log(index);
     test = countries[index]['Requirements'];
-    contact = countries[index]['MajorPrimaryContact'];
     code = countries[index]['majorCode'];
-    document.getElementById('Major1Information').innerHTML = test + '<hr />' + '<div class="badge badge-primary mr-3" style="padding:10px;">' + contact + '</div>' + '<div class="badge badge-danger mr-3" style="padding:10px;">' + code + '</div>' ;
+    document.getElementById('Major1Information').innerHTML = test + '<hr />' + '<div class="badge badge-danger mr-3" style="padding:10px;">' + code + '</div>' ;
 
   });
 })

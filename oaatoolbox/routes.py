@@ -51,6 +51,10 @@ def login():
             flash('Login Unsuccessful', 'danger')
     return render_template('login.html', cctitle="Login", form=form)
 
+@app.route('/major-management')
+def majorManagement():
+    return render_template('major-management.html', title='Major Management')
+
 
 @app.route('/logout')
 def logout():
@@ -97,7 +101,10 @@ def selenium():
     e_password = request.form['advisorPw']
     studentFN = request.form['studentFN']
     studentMajor = request.form['studentMajor']
-    code = request.form['code']
+    majorCode = request.form['majorCode']
+    degreeCode = request.form['degreeCode']
+    collegeCode = request.form['collegeCode']
+
     chrome_options = webdriver.ChromeOptions()
     chrome_options.binary_location = os.getenv("GOOGLE_CHROME_BIN")
     chrome_options.add_argument('--headless')
@@ -126,10 +133,10 @@ def selenium():
     yes = driver.find_element_by_xpath(
         '/html/body/div/form/div/div/div[1]/div[2]/div/div[2]/div/div[3]/div[2]/div/div/div[2]/input')
     yes.click()
-    print(f'successfully logged in as {code}')
+    print(f'successfully logged in as {majorCode}; degree code {degreeCode}; college code {collegeCode}')
     major = driver.find_element_by_xpath(
         '/html/body/div/div/div/div/div/div/div[1]/div[2]/div[2]/div/div/div[2]/div/div/input')
-    major.send_keys(code)
+    major.send_keys(majorCode)
     print(f'sending major as {studentMajor}')
     minor = driver.find_element_by_xpath(
         '//*[@id="form-container"]/div/div/div/div/div[1]/div[2]/div[2]/div[2]/div/div[2]/div/div/input')
@@ -154,9 +161,7 @@ def declare():
     majors = Majors.query.all()
     majors_list = []
     for major in majors:
-        majors_list.append({"name": major.majors, "Requirements": major.majorRequirements, "MajorPrimaryContact": major.majorPrimaryContact, "majorCode": major.majorCode})
-
-
+        majors_list.append({"name": major.majors, "Requirements": major.majorRequirements, "majorCode": major.majorCode, "degreeCode": major.degreeCode, "collegeCode": major.collegeCode})
     return render_template('declare.html', cctitle="Declaration", majors_list=majors_list)
 
 

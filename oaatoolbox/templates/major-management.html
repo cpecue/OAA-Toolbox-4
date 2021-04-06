@@ -1,0 +1,36 @@
+{% extends "layout.html" %}
+{% block content %}
+                <main>
+                    <div class="container-fluid">
+                        <ol class="breadcrumb mt-4">
+                            <li class="breadcrumb-item active">Major Management</li>
+                        </ol>
+                    </div>
+                    <div class="container-fluid">
+                        <div class="row row-test" id="rowArea">
+                            <div class="col-lg-8">
+                                <div class="input-group mb-3">
+                                <input type="text" class="form-control form-control-lg courses search-input" id="studentMajor" aria-label="Recipient's username" area-describedby="basic-addon2" placeholder="Major">
+                                  <div class="input-group-append">
+                                    <button class="input-group-text btn btn-dark info-button majorModalBtn" data-toggle="modal" data-target="#majorModal" id="basic-addon2">ⓘ</button>
+                                  </div>
+                                </div>
+                                <div class="suggestions"></div>
+                            </div>
+                            <div class="col-lg-4">
+                                <button id="searchMajor" class="btn btn-lg btn-dark btn-block searchMajor" onclick="" >Search</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="container-fluid">
+                        <div class="card text-white bg-dark text-center mb-4">
+                            <div class="card-header">Major Information</div>
+                                <div class="card-body" id="majorArea">
+                                    <div class="row row-test" id="">
+
+                                    </div>
+                                </div>
+                        <div>
+                    </div>
+                </main>
+{% endblock content %}

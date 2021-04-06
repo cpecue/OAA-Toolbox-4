@@ -44,9 +44,11 @@ class Majors(db.Model):
     idmajors = db.Column(db.Integer, primary_key=True)
     majors = db.Column(db.String(100), nullable=False)
     majorRequirements = db.Column(db.String(60), nullable=False)
-    majorPrimaryContact = db.Column(db.String(100), nullable=False)
-    majorSecondaryContact = db.Column(db.String(100))
+    # majorPrimaryContact = db.Column(db.String(100), nullable=False)
+    # majorSecondaryContact = db.Column(db.String(100))
     majorCode = db.Column(db.String(10), nullable=False)
+    degreeCode = db.Column(db.String(10), nullable=False)
+    collegeCode = db.Column(db.String(10), nullable=False)
 
     def __repr__(self):
-        return f"Major('{self.majors}', '{self.majorRequirements}', '{self.majorPrimaryContact}', '{self.majorSecondaryContact}', '{self.majorCode}')"
+        return f"Major('{self.majors}', '{self.majorRequirements}', '{self.majorCode}', '{self.degreeCode}', '{self.collegeCode}')"
