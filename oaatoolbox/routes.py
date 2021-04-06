@@ -97,6 +97,7 @@ def selenium():
     e_password = request.form['advisorPw']
     studentFN = request.form['studentFN']
     studentMajor = request.form['studentMajor']
+    code = request.form['code']
     chrome_options = webdriver.ChromeOptions()
     chrome_options.binary_location = os.getenv("GOOGLE_CHROME_BIN")
     chrome_options.add_argument('--headless')
@@ -125,14 +126,14 @@ def selenium():
     yes = driver.find_element_by_xpath(
         '/html/body/div/form/div/div/div[1]/div[2]/div/div[2]/div/div[3]/div[2]/div/div/div[2]/input')
     yes.click()
-    print(f'successfully logged in as {studentMajor}')
+    print(f'successfully logged in as {code}')
     major = driver.find_element_by_xpath(
         '/html/body/div/div/div/div/div/div/div[1]/div[2]/div[2]/div/div/div[2]/div/div/input')
-    major.send_keys(studentFN)
+    major.send_keys(code)
     print(f'sending major as {studentMajor}')
     minor = driver.find_element_by_xpath(
         '//*[@id="form-container"]/div/div/div/div/div[1]/div[2]/div[2]/div[2]/div/div[2]/div/div/input')
-    minor.send_keys(studentFN)
+    minor.send_keys(studentMajor.va)
     print(f'sending minor as {minor}')
     student = driver.find_element_by_xpath(
         '/html/body/div/div/div/div/div/div/div[1]/div[2]/div[2]/div[3]/div/div[2]/div/div/input')

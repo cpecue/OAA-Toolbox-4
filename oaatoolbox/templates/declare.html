@@ -211,10 +211,17 @@ $(".declareBtn").click(function() {
     var advisorPw = document.getElementById('advisorPw').value;
     var studentFN = document.getElementById('studentFN').value;
     var studentMajor = document.getElementById('studentMajor').value;
+
+    const countries = {{ majors_list|safe }};
+    index = countries.findIndex(x => x.name === studentMajor.value);
+    test = countries[index]['Requirements'];
+    code = countries[index]['majorCode'];
+
+
     $.ajax({
         url: '/_runSelenium',
         type: 'POST',
-        data: {advisorEmail: advisorEmail, advisorPw: advisorPw, studentFN: studentFN, studentMajor: studentMajor},
+        data: {advisorEmail: advisorEmail, advisorPw: advisorPw, studentFN: studentFN, studentMajor: studentMajor, code: code},
         success: function(response) {
             alert('Student was successfully declared! Hoo-ray!');
             location.reload();
