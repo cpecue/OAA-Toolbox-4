@@ -205,7 +205,7 @@ $(".declareBtn").click(function() {
     var declareBTN = document.getElementById('declareBtn');
     var spinner = document.getElementById('declareBTNLocation');
     spinner.innerHTML = `<button class="btn btn-lg btn-dark mb-3 btn-block" type="button" disabled>
-  <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+  <span class="spinner-border spinner-border-sm" style="display: block; position: fixed; z-index: 1031; top: calc( 50% - ( ...px / 2) ); right: calc( 50% - ( ...px / 2) );" role="status" aria-hidden="true"></span>
   Declaring, wait...
 </button>`;
     var advisorEmail = document.getElementById('advisorEmail').value;
