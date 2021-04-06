@@ -128,7 +128,7 @@ def selenium():
     print(f'successfully logged in as {studentMajor}')
     major = driver.find_element_by_xpath(
         '/html/body/div/div/div/div/div/div/div[1]/div[2]/div[2]/div/div/div[2]/div/div/input')
-    major.send_keys(code)
+    major.send_keys(studentMajor)
     print(f'sending major as {studentMajor}')
     minor = driver.find_element_by_xpath(
         '//*[@id="form-container"]/div/div/div/div/div[1]/div[2]/div[2]/div[2]/div/div[2]/div/div/input')
