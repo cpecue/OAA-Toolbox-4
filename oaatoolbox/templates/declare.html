@@ -215,7 +215,7 @@ $(".declareBtn").click(function() {
         type: 'POST',
         data: {advisorEmail: advisorEmail, advisorPw: advisorPw, studentFN: studentFN},
         success: function(response) {
-            alert('works');
+            location.reload();
         },
         error: function(error) {
 
