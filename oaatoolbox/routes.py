@@ -92,12 +92,6 @@ def account():
 
 @app.route("/_runSelenium", methods=['GET', 'POST'])
 def selenium():
-    thePercent = 0;
-    def thePercent(thePercent):
-        thePercent += 10
-        print(f'The precent is {thePercent}')
-        return thePercent
-
     e_ID = request.form['advisorEmail']
     e_password = request.form['advisorPw']
     studentFN = request.form['studentFN']
@@ -120,14 +114,12 @@ def selenium():
     password = driver.find_element_by_xpath(
         '/html/body/div/form[1]/div/div/div[2]/div/div/div[1]/div[2]/div[2]/div/div[2]/div/div[2]/div/div[2]/input')
     password.send_keys(e_password)
-    thePercent(10)
     time.sleep(1)
     # skip that next message
     next = driver.find_element_by_xpath(
         '/html/body/div/form[1]/div/div/div[2]/div/div/div[1]/div[2]/div[2]/div/div[2]/div/div[3]/div[2]/div/div/div/div/input')
     next.click()
     time.sleep(2)
-    thePercent(20)
     yes = driver.find_element_by_xpath(
         '/html/body/div/form/div/div/div[1]/div[2]/div/div[2]/div/div[3]/div[2]/div/div/div[2]/input')
     yes.click()
