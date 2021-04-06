@@ -132,7 +132,7 @@ def selenium():
     print(f'sending major as {studentMajor}')
     minor = driver.find_element_by_xpath(
         '//*[@id="form-container"]/div/div/div/div/div[1]/div[2]/div[2]/div[2]/div/div[2]/div/div/input')
-    minor.send_keys(studentMajor.va)
+    minor.send_keys(studentMajor)
     print(f'sending minor as {minor}')
     student = driver.find_element_by_xpath(
         '/html/body/div/div/div/div/div/div/div[1]/div[2]/div[2]/div[3]/div/div[2]/div/div/input')
