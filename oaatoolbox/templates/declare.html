@@ -214,7 +214,6 @@ $(".declareBtn").click(function() {
 
     const countries = {{ majors_list|safe }};
     index = countries.findIndex(x => x.name === studentMajor.value);
-    test = countries[index]['Requirements'];
     code = countries[index]['majorCode'];
 
 
