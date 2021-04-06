@@ -104,6 +104,7 @@ def selenium():
     driver = webdriver.Chrome(executable_path=os.getenv('CHROMEDRIVER_PATH'), chrome_options=chrome_options)
     driver.get('https://forms.office.com/Pages/ResponsePage.aspx?id=IX3zmVwL6kORA-FvAvWuzwdoWEcc_LNCksX8Xu0GatNURThSMDBZQ01QS082SUpESE5QTlZQTEkwVi4u')
     time.sleep(5)
+    # log in
     email = driver.find_element_by_xpath('//*[@id="i0116"]')
     email.send_keys(e_ID)
     next = driver.find_element_by_xpath('//*[@id="idSIButton9"]')
@@ -114,6 +115,7 @@ def selenium():
         '/html/body/div/form[1]/div/div/div[2]/div/div/div[1]/div[2]/div[2]/div/div[2]/div/div[2]/div/div[2]/input')
     password.send_keys(e_password)
     time.sleep(1)
+    # skip that next message
     next = driver.find_element_by_xpath(
         '/html/body/div/form[1]/div/div/div[2]/div/div/div[1]/div[2]/div[2]/div/div[2]/div/div[3]/div[2]/div/div/div/div/input')
     next.click()
@@ -121,14 +123,15 @@ def selenium():
     yes = driver.find_element_by_xpath(
         '/html/body/div/form/div/div/div[1]/div[2]/div/div[2]/div/div[3]/div[2]/div/div/div[2]/input')
     yes.click()
-
+    print(f'successfully logged in as {e_ID}')
     major = driver.find_element_by_xpath(
         '/html/body/div/div/div/div/div/div/div[1]/div[2]/div[2]/div/div/div[2]/div/div/input')
     major.send_keys(studentFN)
+    print(f'sending major as {major}')
     minor = driver.find_element_by_xpath(
         '//*[@id="form-container"]/div/div/div/div/div[1]/div[2]/div[2]/div[2]/div/div[2]/div/div/input')
     minor.send_keys(studentFN)
-
+    print(f'sending minor as {minor}')
     student = driver.find_element_by_xpath(
         '/html/body/div/div/div/div/div/div/div[1]/div[2]/div[2]/div[3]/div/div[2]/div/div/input')
     student.send_keys(studentFN)
