@@ -199,6 +199,7 @@
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
 <script>window.jQuery || document.write('<script src="{{url_for('static', filename='jquery.js') }}">\x3C/script>')</script>
 <script>
+const countries = {{ majors_list|safe }};
 
 $(".declareBtn").click(function() {
     var declareBTN = document.getElementById('declareBtn');
@@ -211,12 +212,17 @@ $(".declareBtn").click(function() {
     var advisorPw = document.getElementById('advisorPw').value;
     var studentFN = document.getElementById('studentFN').value;
     var studentMajor = document.getElementById('studentMajor').value;
-
+    index = countries.findIndex(x => x.name === studentMajor);
+    console.log(studentMajor);
+    console.log(index);
+    test = countries[index]['Requirements'];
+    contact = countries[index]['MajorPrimaryContact'];
+    code = countries[index]['majorCode'];
 
     $.ajax({
         url: '/_runSelenium',
         type: 'POST',
-        data: {advisorEmail: advisorEmail, advisorPw: advisorPw, studentFN: studentFN, studentMajor: studentMajor},
+        data: {advisorEmail: advisorEmail, advisorPw: advisorPw, studentFN: studentFN, studentMajor: studentMajor, code: code},
         success: function(response) {
             alert('Student was successfully declared! Hoo-ray!');
             location.reload();
@@ -228,7 +234,7 @@ $(".declareBtn").click(function() {
     });
 });
 
-const countries = {{ majors_list|safe }};
+
 
 var selectedSuggestionIndex = -1;
 const searchInput = document.querySelector('.search-input');
