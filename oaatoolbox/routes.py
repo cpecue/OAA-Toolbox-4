@@ -139,7 +139,7 @@ def selenium():
     button = driver.find_element_by_xpath('/html/body/div/div/div/div/div/div/div[1]/div[2]/div[3]/div[1]/button/div')
     time.sleep(2)
     # disabled so it doesn't keep sending requests
-    # button.click()
+    button.click()
     time.sleep(2)
     driver.close()
     return render_template('declare.html', cctitle="Declaration")
