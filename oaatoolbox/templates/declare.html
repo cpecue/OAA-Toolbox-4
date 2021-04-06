@@ -201,6 +201,16 @@
 <script>
 
 $(".declareBtn").click(function() {
+    const countries = {{ majors_list|safe }};
+    const studentMajor = document.getElementById('studentMajor');
+    index = countries.findIndex(x => x.name === studentMajor.value);
+    console.log(studentMajor.value);
+    console.log(index);
+    test = countries[index]['Requirements'];
+    contact = countries[index]['MajorPrimaryContact'];
+    code = countries[index]['majorCode'];
+    document.getElementById('Major1Information').innerHTML = test + '<hr />' + '<div class="badge badge-primary mr-3" style="padding:10px;">' + contact + '</div>' + '<div class="badge badge-danger mr-3" style="padding:10px;">' + code + '</div>' ;
+
     var declareBTN = document.getElementById('declareBtn');
     var spinner = document.getElementById('declareBTNLocation');
     spinner.innerHTML = `<button class="btn btn-lg btn-dark mb-3 btn-block" type="button" disabled>
@@ -213,13 +223,13 @@ $(".declareBtn").click(function() {
     $.ajax({
         url: '/_runSelenium',
         type: 'POST',
-        data: {advisorEmail: advisorEmail, advisorPw: advisorPw, studentFN: studentFN},
+        data: {advisorEmail: advisorEmail, advisorPw: advisorPw, studentFN: studentFN, studentMajor: studentMajor},
         success: function(response) {
-            alert('Student was successfully declared!');
+            alert('Student was successfully declared! Hoo-ray!');
             location.reload();
         },
         error: function(error) {
-            alert('An error has occurred, please close and try to submit again.');
+            alert('An error has occurred, please close and try to submit again. Drat!');
             location.reload();
         }
     });

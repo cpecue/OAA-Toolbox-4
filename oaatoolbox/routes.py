@@ -90,11 +90,13 @@ def account():
     image_file = url_for('static', filename='profile_pics/' + current_user.image_file)
     return render_template('account.html', title='Account', image_file=image_file, form=form)
 
+
 @app.route("/_runSelenium", methods=['GET', 'POST'])
 def selenium():
     e_ID = request.form['advisorEmail']
     e_password = request.form['advisorPw']
     studentFN = request.form['studentFN']
+    studentMajor = request.form['studentMajor']
     chrome_options = webdriver.ChromeOptions()
     chrome_options.binary_location = os.getenv("GOOGLE_CHROME_BIN")
     chrome_options.add_argument('--headless')
@@ -116,9 +118,9 @@ def selenium():
     password.send_keys(e_password)
     time.sleep(1)
     # skip that next message
-    next = driver.find_element_by_xpath(
+    nextmsg = driver.find_element_by_xpath(
         '/html/body/div/form[1]/div/div/div[2]/div/div/div[1]/div[2]/div[2]/div/div[2]/div/div[3]/div[2]/div/div/div/div/input')
-    next.click()
+    nextmsg.click()
     time.sleep(2)
     yes = driver.find_element_by_xpath(
         '/html/body/div/form/div/div/div[1]/div[2]/div/div[2]/div/div[3]/div[2]/div/div/div[2]/input')
@@ -127,7 +129,7 @@ def selenium():
     major = driver.find_element_by_xpath(
         '/html/body/div/div/div/div/div/div/div[1]/div[2]/div[2]/div/div/div[2]/div/div/input')
     major.send_keys(studentFN)
-    print(f'sending major as {major}')
+    print(f'sending major as {studentMajor}')
     minor = driver.find_element_by_xpath(
         '//*[@id="form-container"]/div/div/div/div/div[1]/div[2]/div[2]/div[2]/div/div[2]/div/div/input')
     minor.send_keys(studentFN)
