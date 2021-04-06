@@ -185,7 +185,7 @@
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
 <script>window.jQuery || document.write('<script src="{{url_for('static', filename='jquery.js') }}">\x3C/script>')</script>
 <script>
-function studentFromDegree(){
+function studentstatus(){
         let status = document.getElementById('status');
         let status_text = status.options[status.selectedIndex].text;
         let fromMajor = document.getElementById('fromMajor');
@@ -235,8 +235,7 @@ function studentFromDegree(){
         }
 };
 
-
-
+function studentStatus(){
 const countries = {{ majors_list|safe }};
 
 $(".declareBtn").click(function() {
