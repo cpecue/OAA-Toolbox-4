@@ -4,7 +4,7 @@ import os
 from PIL import Image
 from oaatoolbox import app, db, bcrypt
 from oaatoolbox.forms import RegistrationForm, LoginForm, UpdateAccountForm
-from oaatoolbox.models import User, Declarations, Majors
+from oaatoolbox.models import User, Declarations, Majors, Minors
 from flask_login import login_user, current_user, logout_user, login_required
 from selenium import webdriver
 import time
@@ -160,9 +160,13 @@ def selenium():
 def declare():
     majors = Majors.query.all()
     majors_list = []
+    minors = Minors.query.all()
+    minors_list = []
     for major in majors:
         majors_list.append({"name": major.majors, "Requirements": major.majorRequirements, "majorCode": major.majorCode, "degreeCode": major.degreeCode, "collegeCode": major.collegeCode})
-    return render_template('declare.html', cctitle="Declaration", majors_list=majors_list)
+    for minor in minors:
+        minors_list.append({"name": minor.minors, "minorCode": minor.minorCode, "minorCollegeCode": minor.minorCollegeCode})
+    return render_template('declare.html', cctitle="Declaration", majors_list=majors_list, minors_list=minors_list)
 
 
 @app.route('/finaid')

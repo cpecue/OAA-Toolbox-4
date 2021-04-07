@@ -44,11 +44,22 @@ class Majors(db.Model):
     idmajors = db.Column(db.Integer, primary_key=True)
     majors = db.Column(db.String(100), nullable=False)
     majorRequirements = db.Column(db.String(60), nullable=False)
-    # majorPrimaryContact = db.Column(db.String(100), nullable=False)
-    # majorSecondaryContact = db.Column(db.String(100))
     majorCode = db.Column(db.String(10), nullable=False)
     degreeCode = db.Column(db.String(10), nullable=False)
     collegeCode = db.Column(db.String(10), nullable=False)
+    strippedName = db.Column(db.String(100), nullable=False)
+    majorConcentration = db.Column(db.String(100))
 
     def __repr__(self):
-        return f"Major('{self.majors}', '{self.majorRequirements}', '{self.majorCode}', '{self.degreeCode}', '{self.collegeCode}')"
+        return f"Major('{self.majors}', '{self.majorRequirements}', '{self.majorCode}', '{self.degreeCode}', '{self.collegeCode}', '{self.strippedName}', '{self.majorConcentration}')"
+
+
+class Minors(db.Model):
+    idminors = db.Column(db.Integer, primary_key=True)
+    minors = db.Column(db.String(100), nullable=False)
+    minorCode = db.Column(db.String(10), nullable=False)
+    minorCollegeCode = db.Column(db.String(10), nullable=False)
+    minorStrippedName = db.Column(db.String(100), nullable=False)
+
+    def __repr__(self):
+        return f"Minor('{self.idminors}', '{self.minors}', '{self.minorCode}', '{self.minorCollegeCode}', '{self.minorStrippedName}')"

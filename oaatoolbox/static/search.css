@@ -21,6 +21,11 @@
     margin-bottom: 20px;
 }
 
+.minorSuggestions {
+    text-align:left;
+    margin-bottom: 20px;
+}
+
 .suggestions > div {
     padding: 15px;
     font-size: 15px;
@@ -28,7 +33,18 @@
     cursor: pointer;
 }
 
+.minorSuggestions > div {
+    padding: 15px;
+    font-size: 15px;
+    color: white;
+    cursor: pointer;
+}
+
 .suggestions > div:hover {
+    background-color: #818181;
+}
+
+.minorSuggestions > div:hover {
     background-color: #818181;
 }
 

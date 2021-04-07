@@ -72,7 +72,7 @@
             <div class="row row-test" id="rowArea">
                                     <div class="col-lg-6">
                                         <div class="input-group mb-3">
-                                        <input type="text" class="form-control form-control-lg courses search-input" id="studentMajor" aria-label="Recipient's username" area-describedby="basic-addon2" placeholder="Major">
+                                        <input type="text" class="form-control form-control-lg courses search-input-major" id="studentMajor" aria-label="Recipient's username" area-describedby="basic-addon2" placeholder="Major">
                                           <div class="input-group-append">
                                             <button class="input-group-text btn btn-dark info-button majorModalBtn" data-toggle="modal" data-target="#majorModal" id="basic-addon2">ⓘ</button>
                                           </div>
@@ -81,12 +81,12 @@
                                     </div>
                                     <div class="col-lg-6">
                                         <div class="input-group mb-3">
-                                        <input type="text" class="form-control form-control-lg courses search-input" id="studentMinor" aria-label="Recipient's username" area-describedby="basic-addon2" placeholder="Minor">
+                                        <input type="text" class="form-control form-control-lg courses search-input-minor" id="studentMinor" aria-label="Recipient's username" area-describedby="basic-addon2" placeholder="Minor">
                                           <div class="input-group-append">
                                             <button class="input-group-text btn btn-dark info-button" data-toggle="modal" data-target="#minorModal" id="basic-addon3">ⓘ</button>
                                           </div>
                                         </div>
-                                        <div class="suggestions"></div>
+                                        <l><div class="minorSuggestions"></div></l>
 
                                     </div>
 
@@ -238,7 +238,7 @@ function studentFromDegree(){
 </script>
 <script>
 const countries = {{ majors_list|safe }};
-
+const minors = {{ minors_list|safe }};
 $(".declareBtn").click(function() {
 
     var declareBTN = document.getElementById('declareBtn');
@@ -277,7 +277,11 @@ $(".declareBtn").click(function() {
 
 
 var selectedSuggestionIndex = -1;
-const searchInput = document.querySelector('.search-input');
+const searchInputMinors = document.querySelector('.search-input-minor');
+const suggestionsPanelMinors = document.querySelector('.minorSuggestions');
+const minorInput = document.querySelector('.minorModal');
+
+const searchInput = document.querySelector('.search-input-major');
 const suggestionsPanel = document.querySelector('.suggestions');
 const majorInput = document.querySelector('.majorModal');
 
@@ -286,6 +290,13 @@ function resetSelectedSuggestion() {
     suggestionsPanel.children[i].classList.remove('selected');
   }
 }
+
+function resetSelectedMinorsSuggestion() {
+  for (var i = 0; i < suggestionsPanelMinors.children.length; i++) {
+    suggestionsPanelMinors.children[i].classList.remove('selected');
+  }
+}
+
 searchInput.addEventListener('keyup', function(e) {
   if (e.key === 'ArrowDown') {
     resetSelectedSuggestion();
@@ -323,22 +334,64 @@ searchInput.addEventListener('keyup', function(e) {
   }
 });
 
+searchInputMinors.addEventListener('keyup', function(e) {
+  if (e.key === 'ArrowDown') {
+    resetSelectedMinorsSuggestion();
+    selectedSuggestionIndex = (selectedSuggestionIndex < suggestionsPanelMinors.children.length - 1) ? selectedSuggestionIndex + 1 : suggestionsPanelMinors.children.length - 1;
+    suggestionsPanelMinors.children[selectedSuggestionIndex].classList.add('selected');
+    return;
+  }
+  if (e.key === 'ArrowUp') {
+    resetSelectedMinorsSuggestion();
+    selectedSuggestionIndex = (selectedSuggestionIndex > 0) ? selectedSuggestionIndex -1 : 0;
+    suggestionsPanelMinors.children[selectedSuggestionIndex].classList.add('selected');
+    return;
+  }
+  if (e.key === 'Enter') {
+    searchInputMinors.value = suggestionsPanelMinors.children[selectedSuggestionIndex].innerHTML;
+    suggestionsPanelMinors.classList.remove('show');
+    selectedSuggestionIndex = -1;
+    return;
+  }
+  suggestionsPanelMinors.classList.add('show');
+  const input = searchInputMinors.value;
+  suggestionsPanelMinors.innerHTML = '';
+  const suggestionsMinors = minors.filter(function(minor) {
+    return minor.name.toLowerCase().includes(input.toLowerCase());
+  });
+  console.log()
+  suggestionsMinors.forEach(function(suggested) {
+    const div = document.createElement('div');
+    div.innerHTML = suggested.name;
+    div.setAttribute('class', 'minorSuggestions');
+    suggestionsPanelMinors.appendChild(div);
+  });
+  if (input === '') {
+    suggestionsPanelMinors.innerHTML = '';
+  }
+});
+
+
 
 document.addEventListener('click', function(e) {
   if (e.target.className === 'suggestion') {
     searchInput.value = e.target.innerHTML;
-    suggestionsPanel.classList.remove('show');
+<!--    suggestionsPanel.classList.remove('show');-->
+    suggestionsPanel.innerHTML = '';
     return searchInput.value
   }
 });
 
 document.addEventListener('click', function(e) {
-  if (e.target.className === 'suggestion') {
-    searchInput.value = e.target.innerHTML;
-    suggestionsPanel.classList.remove('show');
-        suggestionsPanel.innerHTML = '';
+  if (e.target.className === 'minorSuggestions') {
+    searchInputMinors.value = e.target.innerHTML;
+    suggestionsPanelMinors.innerHTML = '';
+<!--    suggestionsPanelMinors.classList.remove('show');-->
+    return searchInputMinors.value
   }
 });
+
+
 
 $(function(){
   $('.majorModalBtn').click(function(e){
