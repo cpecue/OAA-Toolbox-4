@@ -146,14 +146,14 @@
 <div class="spinner-border m-5" role="status">
   <span class="visually-hidden">Loading...</span>
 </div>
+</div>
+</div>
 
 
-      </div>
 
 
 
 
-                    </div>
                 </main>
 <div class="container-fluid" style="background-color: #292b2c;">
 <footer>
@@ -185,7 +185,7 @@
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
 <script>window.jQuery || document.write('<script src="{{url_for('static', filename='jquery.js') }}">\x3C/script>')</script>
 <script>
-function studentstatus(){
+function studentFromDegree(){
         let status = document.getElementById('status');
         let status_text = status.options[status.selectedIndex].text;
         let fromMajor = document.getElementById('fromMajor');
@@ -244,7 +244,7 @@ $(".declareBtn").click(function() {
     var declareBTN = document.getElementById('declareBtn');
     var spinner = document.getElementById('declareBTNLocation');
     spinner.innerHTML = `<button class="btn btn-lg btn-dark mb-3 btn-block" type="button" disabled>
-  <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+  <span class="spinner-grow text-white" role="status" aria-hidden="true"></span>
   Declaring, wait...
 </button>`;
     var advisorEmail = document.getElementById('advisorEmail').value;
