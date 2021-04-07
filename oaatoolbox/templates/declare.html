@@ -309,7 +309,7 @@ searchInput.addEventListener('keyup', function(e) {
   const input = searchInput.value;
   suggestionsPanel.innerHTML = '';
   const suggestions = countries.filter(function(country) {
-    return country.name.toLowerCase().startsWith(input.toLowerCase());
+    return country.name.toLowerCase().includes(input.toLowerCase());
   });
   console.log(suggestions)
   suggestions.forEach(function(suggested) {
