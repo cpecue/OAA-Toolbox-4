@@ -10,7 +10,7 @@ from oaatoolbox.models import User, Declarations, Majors, Minors
 from flask_login import login_user, current_user, logout_user, login_required
 from selenium import webdriver
 from selenium.webdriver.support import expected_conditions as EC
-from selenium.webdriver.common.by as By
+from selenium.webdriver.common.by import By
 import time
 
 
