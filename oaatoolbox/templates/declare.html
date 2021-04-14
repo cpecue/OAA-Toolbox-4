@@ -248,7 +248,7 @@ $(".declareBtn").click(function() {
     var advisorPw = document.getElementById('advisorPw').value;
     var studentFN = document.getElementById('studentFN').value;
     var studentLN = document.getElementById('studentLN').value;
-<!--    var studentID = document.getElementById('studentID').value;-->
+    var studentID = document.getElementById('studentID').value;
 <!--    var studentEmail = document.getElementById('studentEmail').value;-->
 <!--    var studentPhone = document.getElementById('studentPhone').value;-->
 <!--    var studentMajor = document.getElementById('studentMajor').value;-->
@@ -262,7 +262,7 @@ $(".declareBtn").click(function() {
     $.ajax({
         url: '/_runSelenium',
         type: 'POST',
-        data: {advisorEmail: advisorEmail, advisorPw: advisorPw, effective_term_text: effective_term_text, studentFN: studentFN, studentLN: studentLN},
+        data: {advisorEmail: advisorEmail, advisorPw: advisorPw, effective_term_text: effective_term_text, studentFN: studentFN, studentLN: studentLN, studentID: studentID},
         success: function(response) {
             alert('Student was successfully declared! Hoo-ray!');
             location.reload();

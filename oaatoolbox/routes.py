@@ -108,7 +108,7 @@ def selenium():
     effective_term_text = request.form['effective_term_text']
     studentFN = request.form['studentFN']
     studentLN = request.form['studentLN']
-    # studentID = request.form['studentID']
+    studentID = request.form['studentID']
     # studentEmail = request.form['studentEmail']
     # studentPhone = request.form['studentPhone']
     # studentMajor = request.form['studentMajor']
@@ -169,10 +169,10 @@ def selenium():
     student_name.send_keys(studentFN + ' ' + studentLN)
     print(f'Sending student\'s full name as {studentFN} {studentLN}. ')
 
-    # # Student's ID
-    # student_id = driver.find_element_by_xpath('//*[@id="form-container"]/div/div/div/div/div[1]/div[2]/div[2]/div[2]/div[4]/div/div[2]/div/div/input')
-    # student_id.send_keys(studentID)
-    # print(f'Sending student\'s id as {studentID}.')
+    # Student's ID
+    student_id = driver.find_element_by_xpath('//*[@id="form-container"]/div/div/div/div/div[1]/div[2]/div[2]/div[2]/div[4]/div/div[2]/div/div/input')
+    student_id.send_keys(studentID)
+    print(f'Sending student\'s id as {studentID}.')
     #
     # # Student's Email
     # student_email_input = driver.find_element_by_xpath('//*[@id="form-container"]/div/div/div/div/div[1]/div[2]/div[2]/div[2]/div[5]/div/div[2]/div/div/input')
