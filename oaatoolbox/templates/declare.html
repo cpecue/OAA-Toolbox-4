@@ -16,7 +16,7 @@
                         <div class="card-body">
                             <div class="row">
                                 <div class="col-lg-2 mb-3">
-                                        <select class="form-select form-select-lg" aria-label="declaringSemester" id="declaringSemester">
+                                        <select class="form-select form-select-lg" aria-label="declaringSemester" id="effective_term">
                                           <option selected value="0">This Semester</option>
                                           <option value="1">Next Semester</option>
                                         </select>
@@ -243,8 +243,12 @@ $(".declareBtn").click(function() {
   Declaring, wait...
 </button>`;
     var advisorEmail = document.getElementById('advisorEmail').value;
+    var effective_term = document.getElementById('effective_term).value;
     var advisorPw = document.getElementById('advisorPw').value;
     var studentFN = document.getElementById('studentFN').value;
+    var studentLN = document.getElementById('studentLN').value;
+    var studentEmail = document.getElementById('studentEmail').value;
+    var studentPhone = document.getElementById('studentPhone').value;
     var studentMajor = document.getElementById('studentMajor').value;
     index = countries.findIndex(x => x.name === studentMajor);
     console.log(studentMajor);
@@ -257,7 +261,7 @@ $(".declareBtn").click(function() {
     $.ajax({
         url: '/_runSelenium',
         type: 'POST',
-        data: {advisorEmail: advisorEmail, advisorPw: advisorPw, studentFN: studentFN, studentMajor: studentMajor, majorCode: majorCode, degreeCode: degreeCode, collegeCode: collegeCode},
+        data: {advisorEmail: advisorEmail, advisorPw: advisorPw, studentFN: studentFN, studentMajor: studentMajor, majorCode: majorCode, degreeCode: degreeCode, collegeCode: collegeCode, studentLN: studentLN, studentEmail: studentEmail, studentPhone: studentPhone},
         success: function(response) {
             alert('Student was successfully declared! Hoo-ray!');
             location.reload();
