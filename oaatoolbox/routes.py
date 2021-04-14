@@ -134,6 +134,7 @@ def selenium():
     yes = driver.find_element_by_xpath('/html/body/div/form/div/div/div[1]/div[2]/div/div[2]/div/div[3]/div[2]/div/div/div[2]/input')
     yes.click()
     print(f'successfully logged in as {majorCode}; degree code {degreeCode}; college code {collegeCode}')
+    time.sleep(2)
     major = driver.find_element_by_xpath('/html/body/div/div/div/div/div/div/div[1]/div[2]/div[2]/div/div/div[2]/div/div/input')
     major.send_keys(majorCode)
     print(f'sending major as {studentMajor}')
