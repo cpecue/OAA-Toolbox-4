@@ -119,8 +119,8 @@ def selenium():
 
     try:
         # wait 10 seconds before looking for element
-        element = WebDriverWait(driver, 10).until(
-            EC.presence_of_element_located((By.Xpath, '//*[@id="i0116"]'))
+        element = WebDriverWait(driver, 5).until(
+            EC.presence_of_element_located((By.XPATH, '//*[@id="i0116"]'))
         )
         print('item is valid')
     finally:
