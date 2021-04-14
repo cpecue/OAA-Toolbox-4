@@ -198,6 +198,7 @@ def selenium():
     # # Second Page FROM Status
     # driver.close()
     # print(f'Information would have sent.')
+    driver.close()
     return render_template('declare.html', cctitle="Declaration")
 
 
