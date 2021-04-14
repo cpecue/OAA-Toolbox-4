@@ -163,13 +163,12 @@ def selenium():
     else:
         next_term.click()  # if effective term is next term
     print(f'Effective term is set to {effective_term_text}.')
-    print(f'StudentFN is {studentFN}')
 
-    # # Student's Name
-    # student_full_name = driver.find_element_by_xpath('//*[@id="form-container"]/div/div/div/div/div[1]/div[2]/div[2]/div[2]/div[3]/div/div[2]/div/div/input')
-    # student_full_name.send_keys(studentFN + ' ' + studentLN)
-    # print(f'Sending student\'s first name as {studentFN + studentLN}.')
-    #
+    # Student's Name
+    student_name = driver.find_element_by_xpath('//*[@id="form-container"]/div/div/div/div/div[1]/div[2]/div[2]/div[2]/div[3]/div/div[2]/div/div/input')
+    student_name.send_keys(studentFN)
+    print(f'Sending student\'s first name as {studentFN}.')
+
     # # Student's ID
     # student_id = driver.find_element_by_xpath('//*[@id="form-container"]/div/div/div/div/div[1]/div[2]/div[2]/div[2]/div[4]/div/div[2]/div/div/input')
     # student_id.send_keys(studentID)
