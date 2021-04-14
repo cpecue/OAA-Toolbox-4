@@ -125,6 +125,7 @@ def selenium():
         print('item is valid')
     finally:
         #else quit
+        print('Didn\'t do it')
         driver.quit()
 
     #
