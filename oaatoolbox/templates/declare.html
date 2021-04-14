@@ -254,8 +254,6 @@ $(".declareBtn").click(function() {
     var studentMajor = document.getElementById('studentMajor').value;
     var studentMinor = document.getElementById('studentMinor').value;
     index = countries.findIndex(x => x.name === studentMajor);
-    console.log(studentMajor);
-    console.log(index);
     test = countries[index]['Requirements'];
     majorCode = countries[index]['majorCode'];
     degreeCode = countries[index]['degreeCode'];
@@ -264,7 +262,7 @@ $(".declareBtn").click(function() {
     $.ajax({
         url: '/_runSelenium',
         type: 'POST',
-        data: {advisorEmail: advisorEmail, advisorPw: advisorPw, effective_term_text: effective_term_text, studentFN: studentFN},
+        data: {advisorEmail: advisorEmail, advisorPw: advisorPw, effective_term_text: effective_term_text},
         success: function(response) {
             alert('Student was successfully declared! Hoo-ray!');
             location.reload();
