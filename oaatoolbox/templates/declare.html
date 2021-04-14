@@ -262,11 +262,11 @@ $(".declareBtn").click(function() {
     $.ajax({
         url: '/_runSelenium',
         type: 'POST',
-        data: {advisorEmail: advisorEmail, advisorPw: advisorPw, effective_term_text: effective_term_text},
+        data: JSON.stringify({advisorEmail: advisorEmail, advisorPw: advisorPw, effective_term_text: effective_term_text},
         success: function(response) {
             alert('Student was successfully declared! Hoo-ray!');
             location.reload();
-        },
+        }),
         error: function(error) {
             alert('An error has occurred, please check your approvals tab in Teams to see if it sent or not. Drat!');
         }
