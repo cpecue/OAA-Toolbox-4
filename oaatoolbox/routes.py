@@ -1,4 +1,6 @@
 from flask import render_template, url_for, flash, redirect, request
+from selenium.webdriver.support.wait import WebDriverWait
+
 import secrets
 import os
 from PIL import Image
@@ -7,7 +9,8 @@ from oaatoolbox.forms import RegistrationForm, LoginForm, UpdateAccountForm
 from oaatoolbox.models import User, Declarations, Majors, Minors
 from flask_login import login_user, current_user, logout_user, login_required
 from selenium import webdriver
-from webdriver_manager.chrome import ChromeDriverManager
+from selenium.webdriver.support import expected_conditions as EC
+from selenium.webdriver.common.by as By
 import time
 
 
@@ -112,47 +115,50 @@ def selenium():
     chrome_options.add_argument('--disable-gpu')
     chrome_options.add_argument('--no-sandbox')
     driver = webdriver.Chrome(executable_path=os.getenv('CHROMEDRIVER_PATH'), chrome_options=chrome_options)
-    driver.implicitly_wait(10)
     driver.get('https://forms.office.com/Pages/ResponsePage.aspx?id=IX3zmVwL6kORA-FvAvWuzwdoWEcc_LNCksX8Xu0GatNURThSMDBZQ01QS082SUpESE5QTlZQTEkwVi4u')
-    driver.implicitly_wait(10)
-    # log in
-    email = driver.find_element_by_xpath('//*[@id="i0116"]')
-    email.send_keys(e_ID)
-    next = driver.find_element_by_xpath('//*[@id="idSIButton9"]')
-    driver.implicitly_wait(10)
-    next.click()
-    driver.implicitly_wait(10)
-    password = driver.find_element_by_xpath(
-        '/html/body/div/form[1]/div/div/div[2]/div/div/div[1]/div[2]/div[2]/div/div[2]/div/div[2]/div/div[2]/input')
-    password.send_keys(e_password)
-    driver.implicitly_wait(10)
-    # skip that next message
-    nextmsg = driver.find_element_by_xpath(
-        '/html/body/div/form[1]/div/div/div[2]/div/div/div[1]/div[2]/div[2]/div/div[2]/div/div[3]/div[2]/div/div/div/div/input')
-    nextmsg.click()
-    driver.implicitly_wait(10)
-    yes = driver.find_element_by_xpath(
-        '/html/body/div/form/div/div/div[1]/div[2]/div/div[2]/div/div[3]/div[2]/div/div/div[2]/input')
-    yes.click()
-    print(f'successfully logged in as {majorCode}; degree code {degreeCode}; college code {collegeCode}')
-    major = driver.find_element_by_xpath(
-        '/html/body/div/div/div/div/div/div/div[1]/div[2]/div[2]/div/div/div[2]/div/div/input')
-    major.send_keys(majorCode)
-    print(f'sending major as {studentMajor}')
-    minor = driver.find_element_by_xpath(
-        '//*[@id="form-container"]/div/div/div/div/div[1]/div[2]/div[2]/div[2]/div/div[2]/div/div/input')
-    minor.send_keys(studentMajor)
-    print(f'sending minor as {minor}')
-    student = driver.find_element_by_xpath(
-        '/html/body/div/div/div/div/div/div/div[1]/div[2]/div[2]/div[3]/div/div[2]/div/div/input')
-    student.send_keys(studentFN)
-    driver.implicitly_wait(10)
-    button = driver.find_element_by_xpath('/html/body/div/div/div/div/div/div/div[1]/div[2]/div[3]/div[1]/button/div')
-    driver.implicitly_wait(10)
-    # disabled so it doesn't keep sending requests
-    # button.click()
-    # driver.implicitly_wait(10)
-    driver.close()
+
+    try:
+        # wait 10 seconds before looking for element
+        element = WebDriverWait(driver, 10).until(
+            EC.presence_of_element_located((By.Xpath, '//*[@id="i0116"]'))
+        )
+        print('item is valid')
+    finally:
+        #else quit
+        driver.quit()
+
+    #
+    # # log in
+    # email = driver.find_element_by_xpath('//*[@id="i0116"]')
+    # email.send_keys(e_ID)
+    # next = driver.find_element_by_xpath('//*[@id="idSIButton9"]')
+    #
+    # next.click()
+    #
+    # password = driver.find_element_by_xpath('/html/body/div/form[1]/div/div/div[2]/div/div/div[1]/div[2]/div[2]/div/div[2]/div/div[2]/div/div[2]/input')
+    # password.send_keys(e_password)
+    #
+    # # skip that next message
+    # nextmsg = driver.find_element_by_xpath('/html/body/div/form[1]/div/div/div[2]/div/div/div[1]/div[2]/div[2]/div/div[2]/div/div[3]/div[2]/div/div/div/div/input')
+    # nextmsg.click()
+    #
+    # yes = driver.find_element_by_xpath('/html/body/div/form/div/div/div[1]/div[2]/div/div[2]/div/div[3]/div[2]/div/div/div[2]/input')
+    # yes.click()
+    # print(f'successfully logged in as {majorCode}; degree code {degreeCode}; college code {collegeCode}')
+    # major = driver.find_element_by_xpath('/html/body/div/div/div/div/div/div/div[1]/div[2]/div[2]/div/div/div[2]/div/div/input')
+    # major.send_keys(majorCode)
+    # print(f'sending major as {studentMajor}')
+    # minor = driver.find_element_by_xpath('//*[@id="form-container"]/div/div/div/div/div[1]/div[2]/div[2]/div[2]/div/div[2]/div/div/input')
+    # minor.send_keys(studentMajor)
+    # print(f'sending minor as {minor}')
+    # student = driver.find_element_by_xpath('/html/body/div/div/div/div/div/div/div[1]/div[2]/div[2]/div[3]/div/div[2]/div/div/input')
+    # student.send_keys(studentFN)
+    #
+    # button = driver.find_element_by_xpath('/html/body/div/div/div/div/div/div/div[1]/div[2]/div[3]/div[1]/button/div')
+    #
+    # # disabled so it doesn't keep sending requests
+    # # button.click()
+    # driver.close()
     return render_template('declare.html', cctitle="Declaration")
 
 
