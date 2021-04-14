@@ -102,9 +102,10 @@ def account():
 @app.route("/_runSelenium", methods=['GET', 'POST'])
 def selenium():
     # Toolbox Information
+    print('Staring declaration process. Logging in...')
     e_ID = request.form['advisorEmail']
     e_password = request.form['advisorPw']
-    # effective_term = request.form['effective_term_text']
+    effective_term_text = request.form['effective_term_text']
     # studentFN = request.form['studentFN']
     # studentLN = request.form['studentLN']
     # studentID = request.form['studentID']
@@ -116,7 +117,6 @@ def selenium():
     # degreeCode = request.form['degreeCode']
     # collegeCode = request.form['collegeCode']
     # requester = current_user.username
-
 
     # Selenium setup
     chrome_options = webdriver.ChromeOptions()
@@ -148,22 +148,22 @@ def selenium():
     yes_btn.click()
     print(f'successfully logged in as {e_ID}.')
     time.sleep(2)
-    #
-    # #  Page 1
-    # # Primary Program
-    # primary_program = driver.find_element_by_xpath('//*[@id="form-container"]/div/div/div/div/div[1]/div[2]/div[2]/div[2]/div[1]/div/div[2]/div/div[1]/div/label/input')  # Setting primary program to true for first declaration
-    # primary_program.click()
-    # print('Primary program clicked...')
-    #
-    # # Effective Term
-    # current_term = driver.find_element_by_xpath('//*[@id="form-container"]/div/div/div/div/div[1]/div[2]/div[2]/div[2]/div[2]/div/div[2]/div/div[1]/div/label/input')
-    # next_term = driver.find_element_by_xpath('//*[@id="form-container"]/div/div/div/div/div[1]/div[2]/div[2]/div[2]/div[2]/div/div[2]/div/div[2]/div/label/input')
-    # if effective_term == "This Semester":
-    #     current_term.click()  # if effective term is current term
-    # else:
-    #     next_term.click()  # if effective term is next term
-    # print(f'Effective term is set to {effective_term}.')
-    #
+
+    #  Page 1
+    # Primary Program
+    primary_program = driver.find_element_by_xpath('//*[@id="form-container"]/div/div/div/div/div[1]/div[2]/div[2]/div[2]/div[1]/div/div[2]/div/div[1]/div/label/input')  # Setting primary program to true for first declaration
+    primary_program.click()
+    print('Primary program clicked...')
+
+    # Effective Term
+    current_term = driver.find_element_by_xpath('//*[@id="form-container"]/div/div/div/div/div[1]/div[2]/div[2]/div[2]/div[2]/div/div[2]/div/div[1]/div/label/input')
+    next_term = driver.find_element_by_xpath('//*[@id="form-container"]/div/div/div/div/div[1]/div[2]/div[2]/div[2]/div[2]/div/div[2]/div/div[2]/div/label/input')
+    if effective_term_text == "This Semester":
+        current_term.click()  # if effective term is current term
+    else:
+        next_term.click()  # if effective term is next term
+    print(f'Effective term is set to {effective_term_text}.')
+
     # # Student's Name
     # student_full_name = driver.find_element_by_xpath('//*[@id="form-container"]/div/div/div/div/div[1]/div[2]/div[2]/div[2]/div[3]/div/div[2]/div/div/input')
     # student_full_name.send_keys(studentFN + ' ' + studentLN)
