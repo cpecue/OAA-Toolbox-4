@@ -106,17 +106,17 @@ def selenium():
     e_ID = request.form['advisorEmail']
     e_password = request.form['advisorPw']
     effective_term_text = request.form['effective_term_text']
-    # studentFN = request.form['studentFN']
-    # studentLN = request.form['studentLN']
-    # studentID = request.form['studentID']
-    # studentEmail = request.form['studentEmail']
-    # studentPhone = request.form['studentPhone']
-    # studentMajor = request.form['studentMajor']
-    # studentMinor = request.form['studentMinor']
-    # majorCode = request.form['majorCode']
+    studentFN = request.form['studentFN']
+    studentLN = request.form['studentLN']
+    studentID = request.form['studentID']
+    studentEmail = request.form['studentEmail']
+    studentPhone = request.form['studentPhone']
+    studentMajor = request.form['studentMajor']
+    studentMinor = request.form['studentMinor']
+    majorCode = request.form['majorCode']
     # degreeCode = request.form['degreeCode']
     # collegeCode = request.form['collegeCode']
-    # requester = current_user.username
+    requester = current_user.username
 
     # Selenium setup
     chrome_options = webdriver.ChromeOptions()
@@ -164,37 +164,37 @@ def selenium():
         next_term.click()  # if effective term is next term
     print(f'Effective term is set to {effective_term_text}.')
 
-    # # Student's Name
-    # student_full_name = driver.find_element_by_xpath('//*[@id="form-container"]/div/div/div/div/div[1]/div[2]/div[2]/div[2]/div[3]/div/div[2]/div/div/input')
-    # student_full_name.send_keys(studentFN + ' ' + studentLN)
-    # print(f'Sending student\'s first name as {studentFN}.')
-    #
-    # # Student's ID
-    # student_id = driver.find_element_by_xpath('//*[@id="form-container"]/div/div/div/div/div[1]/div[2]/div[2]/div[2]/div[4]/div/div[2]/div/div/input')
-    # student_id.send_keys(studentID)
-    # print(f'Sending student\'s id as {studentID}.')
-    #
-    # # Student's Email
-    # student_email_input = driver.find_element_by_xpath('//*[@id="form-container"]/div/div/div/div/div[1]/div[2]/div[2]/div[2]/div[5]/div/div[2]/div/div/input')
-    # student_email_input.send_keys(studentEmail)
-    # print(f'Sending student\'s email as {studentEmail}.')
-    #
-    # # Student's Phone
-    # student_phone_input = driver.find_element_by_xpath('//*[@id="form-container"]/div/div/div/div/div[1]/div[2]/div[2]/div[2]/div[6]/div/div[2]/div/div/input')
-    # student_phone_input.send_keys(studentPhone)
-    # print(f'Sending student\'s phone as {studentPhone}.')
-    #
-    # # Requester Name
-    # requester_input = driver.find_element_by_xpath('//*[@id="form-container"]/div/div/div/div/div[1]/div[2]/div[2]/div[2]/div[7]/div/div[2]/div/div/input')
-    # requester_input.send_keys(requester)
-    # print(f'Form prepared by {requester}')
-    #
-    # # Next Button
-    # next_btn = driver.find_element_by_xpath('//*[@id="form-container"]/div/div/div/div/div[1]/div[2]/div[3]/div[1]/button/div')
-    # next_btn.click()
-    # print('Clicking to next page...')
-    # time.sleep(5)
-    #
+    # Student's Name
+    student_full_name = driver.find_element_by_xpath('//*[@id="form-container"]/div/div/div/div/div[1]/div[2]/div[2]/div[2]/div[3]/div/div[2]/div/div/input')
+    student_full_name.send_keys(studentFN + ' ' + studentLN)
+    print(f'Sending student\'s first name as {studentFN}.')
+
+    # Student's ID
+    student_id = driver.find_element_by_xpath('//*[@id="form-container"]/div/div/div/div/div[1]/div[2]/div[2]/div[2]/div[4]/div/div[2]/div/div/input')
+    student_id.send_keys(studentID)
+    print(f'Sending student\'s id as {studentID}.')
+
+    # Student's Email
+    student_email_input = driver.find_element_by_xpath('//*[@id="form-container"]/div/div/div/div/div[1]/div[2]/div[2]/div[2]/div[5]/div/div[2]/div/div/input')
+    student_email_input.send_keys(studentEmail)
+    print(f'Sending student\'s email as {studentEmail}.')
+
+    # Student's Phone
+    student_phone_input = driver.find_element_by_xpath('//*[@id="form-container"]/div/div/div/div/div[1]/div[2]/div[2]/div[2]/div[6]/div/div[2]/div/div/input')
+    student_phone_input.send_keys(studentPhone)
+    print(f'Sending student\'s phone as {studentPhone}.')
+
+    # Requester Name
+    requester_input = driver.find_element_by_xpath('//*[@id="form-container"]/div/div/div/div/div[1]/div[2]/div[2]/div[2]/div[7]/div/div[2]/div/div/input')
+    requester_input.send_keys(requester)
+    print(f'Form prepared by {requester}')
+
+    # Next Button
+    next_btn = driver.find_element_by_xpath('//*[@id="form-container"]/div/div/div/div/div[1]/div[2]/div[3]/div[1]/button/div')
+    next_btn.click()
+    print('Clicking to next page...')
+    time.sleep(5)
+
     # # Second Page FROM Status
     # driver.close()
     # print(f'Information would have sent.')
