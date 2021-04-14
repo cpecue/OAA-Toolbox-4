@@ -111,6 +111,7 @@ def selenium():
     studentEmail = request.form['studentEmail']
     studentPhone = request.form['studentPhone']
     studentMajor = request.form['studentMajor']
+    studentMinor = request.form['studentMinor']
     majorCode = request.form['majorCode']
     degreeCode = request.form['degreeCode']
     collegeCode = request.form['collegeCode']

@@ -244,13 +244,14 @@ $(".declareBtn").click(function() {
 </button>`;
     var advisorEmail = document.getElementById('advisorEmail').value;
     let effective_term = document.getElementById('effective_term');
-    let effective_term_text = effective_term.options[effective_term.selectedIndex].text
+    let effective_term_text = effective_term.options[effective_term.selectedIndex].text;
     var advisorPw = document.getElementById('advisorPw').value;
     var studentFN = document.getElementById('studentFN').value;
     var studentLN = document.getElementById('studentLN').value;
     var studentEmail = document.getElementById('studentEmail').value;
     var studentPhone = document.getElementById('studentPhone').value;
     var studentMajor = document.getElementById('studentMajor').value;
+    var studentMinor = document.getElementById('studentMinor').value;
     index = countries.findIndex(x => x.name === studentMajor);
     console.log(studentMajor);
     console.log(index);
@@ -262,7 +263,7 @@ $(".declareBtn").click(function() {
     $.ajax({
         url: '/_runSelenium',
         type: 'POST',
-        data: {advisorEmail: advisorEmail, advisorPw: advisorPw, studentFN: studentFN, studentMajor: studentMajor, majorCode: majorCode, degreeCode: degreeCode, collegeCode: collegeCode, studentLN: studentLN, studentEmail: studentEmail, studentPhone: studentPhone, effective_term_text: effective_term_text},
+        data: {advisorEmail: advisorEmail, effective_term_text: effective_term_text, advisorPw: advisorPw, studentFN: studentFN, studentLN: studentLN, studentEmail: studentEmail, studentPhone: studentPhone, studentMajor: studentMajor},
         success: function(response) {
             alert('Student was successfully declared! Hoo-ray!');
             location.reload();
