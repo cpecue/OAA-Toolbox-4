@@ -114,23 +114,23 @@ def selenium():
     driver = webdriver.Chrome(executable_path=os.getenv('CHROMEDRIVER_PATH'), chrome_options=chrome_options)
     driver.implicitly_wait(10)
     driver.get('https://forms.office.com/Pages/ResponsePage.aspx?id=IX3zmVwL6kORA-FvAvWuzwdoWEcc_LNCksX8Xu0GatNURThSMDBZQ01QS082SUpESE5QTlZQTEkwVi4u')
-    # time.sleep(5)
+    driver.implicitly_wait(10)
     # log in
     email = driver.find_element_by_xpath('//*[@id="i0116"]')
     email.send_keys(e_ID)
     next = driver.find_element_by_xpath('//*[@id="idSIButton9"]')
-    # time.sleep(1)
+    driver.implicitly_wait(10)
     next.click()
-    # time.sleep(2)
+    driver.implicitly_wait(10)
     password = driver.find_element_by_xpath(
         '/html/body/div/form[1]/div/div/div[2]/div/div/div[1]/div[2]/div[2]/div/div[2]/div/div[2]/div/div[2]/input')
     password.send_keys(e_password)
-    # time.sleep(1)
+    driver.implicitly_wait(10)
     # skip that next message
     nextmsg = driver.find_element_by_xpath(
         '/html/body/div/form[1]/div/div/div[2]/div/div/div[1]/div[2]/div[2]/div/div[2]/div/div[3]/div[2]/div/div/div/div/input')
     nextmsg.click()
-    # time.sleep(2)
+    driver.implicitly_wait(10)
     yes = driver.find_element_by_xpath(
         '/html/body/div/form/div/div/div[1]/div[2]/div/div[2]/div/div[3]/div[2]/div/div/div[2]/input')
     yes.click()
@@ -146,12 +146,12 @@ def selenium():
     student = driver.find_element_by_xpath(
         '/html/body/div/div/div/div/div/div/div[1]/div[2]/div[2]/div[3]/div/div[2]/div/div/input')
     student.send_keys(studentFN)
-    # time.sleep(2)
+    driver.implicitly_wait(10)
     button = driver.find_element_by_xpath('/html/body/div/div/div/div/div/div/div[1]/div[2]/div[3]/div[1]/button/div')
-    # time.sleep(2)
+    driver.implicitly_wait(10)
     # disabled so it doesn't keep sending requests
-    button.click()
-    # time.sleep(2)
+    # button.click()
+    # driver.implicitly_wait(10)
     driver.close()
     return render_template('declare.html', cctitle="Declaration")
 
