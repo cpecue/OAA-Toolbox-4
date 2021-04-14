@@ -246,23 +246,23 @@ $(".declareBtn").click(function() {
     let effective_term = document.getElementById('effective_term');
     let effective_term_text = effective_term.options[effective_term.selectedIndex].text;
     var advisorPw = document.getElementById('advisorPw').value;
-    var studentFN = document.getElementById('studentFN').value;
-    var studentLN = document.getElementById('studentLN').value;
-    var studentID = document.getElementById('studentID').value;
-    var studentEmail = document.getElementById('studentEmail').value;
-    var studentPhone = document.getElementById('studentPhone').value;
-    var studentMajor = document.getElementById('studentMajor').value;
-    var studentMinor = document.getElementById('studentMinor').value;
-    index = countries.findIndex(x => x.name === studentMajor);
-    test = countries[index]['Requirements'];
-    majorCode = countries[index]['majorCode'];
-    degreeCode = countries[index]['degreeCode'];
-    collegeCode = countries[index]['collegeCode'];
+<!--    var studentFN = document.getElementById('studentFN').value;-->
+<!--    var studentLN = document.getElementById('studentLN').value;-->
+<!--    var studentID = document.getElementById('studentID').value;-->
+<!--    var studentEmail = document.getElementById('studentEmail').value;-->
+<!--    var studentPhone = document.getElementById('studentPhone').value;-->
+<!--    var studentMajor = document.getElementById('studentMajor').value;-->
+<!--    var studentMinor = document.getElementById('studentMinor').value;-->
+<!--    index = countries.findIndex(x => x.name === studentMajor);-->
+<!--    test = countries[index]['Requirements'];-->
+<!--    majorCode = countries[index]['majorCode'];-->
+<!--    degreeCode = countries[index]['degreeCode'];-->
+<!--    collegeCode = countries[index]['collegeCode'];-->
 
     $.ajax({
         url: '/_runSelenium',
         type: 'POST',
-        data: JSON.stringify({advisorEmail: advisorEmail, advisorPw: advisorPw, effective_term_text: effective_term_text}),
+        data: {advisorEmail: advisorEmail, advisorPw: advisorPw, effective_term_text: effective_term_text},
         success: function(response) {
             alert('Student was successfully declared! Hoo-ray!');
             location.reload();
