@@ -105,7 +105,6 @@ def selenium():
     majorCode = request.form['majorCode']
     degreeCode = request.form['degreeCode']
     collegeCode = request.form['collegeCode']
-
     chrome_options = webdriver.ChromeOptions()
     chrome_options.binary_location = os.getenv("GOOGLE_CHROME_BIN")
     chrome_options.add_argument('--headless')
