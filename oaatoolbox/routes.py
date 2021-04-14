@@ -104,7 +104,7 @@ def selenium():
     # Toolbox Information
     e_ID = request.form['advisorEmail']
     e_password = request.form['advisorPw']
-    effective_term = request.form['effective_term']
+    effective_term = request.form['effective_term_text']
     studentFN = request.form['studentFN']
     studentLN = request.form['studentLN']
     studentID = request.form['studentID']
