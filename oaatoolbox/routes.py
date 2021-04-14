@@ -116,50 +116,38 @@ def selenium():
     chrome_options.add_argument('--no-sandbox')
     driver = webdriver.Chrome(executable_path=os.getenv('CHROMEDRIVER_PATH'), chrome_options=chrome_options)
     driver.get('https://forms.office.com/Pages/ResponsePage.aspx?id=IX3zmVwL6kORA-FvAvWuzwdoWEcc_LNCksX8Xu0GatNURThSMDBZQ01QS082SUpESE5QTlZQTEkwVi4u')
+    driver.implicitly_wait(15)
+    # log in
+    email = driver.find_element_by_xpath('//*[@id="i0116"]')
+    email.send_keys(e_ID)
+    next = driver.find_element_by_xpath('//*[@id="idSIButton9"]')
 
-    try:
-        # wait 10 seconds before looking for element
-        element = WebDriverWait(driver, 5).until(
-            EC.presence_of_element_located((By.XPATH, '//*[@id="i0116"]'))
-        )
-        print('item is valid')
-    finally:
-        #else quit
-        print('Didn\'t do it')
-        driver.quit()
+    next.click()
 
-    #
-    # # log in
-    # email = driver.find_element_by_xpath('//*[@id="i0116"]')
-    # email.send_keys(e_ID)
-    # next = driver.find_element_by_xpath('//*[@id="idSIButton9"]')
-    #
-    # next.click()
-    #
-    # password = driver.find_element_by_xpath('/html/body/div/form[1]/div/div/div[2]/div/div/div[1]/div[2]/div[2]/div/div[2]/div/div[2]/div/div[2]/input')
-    # password.send_keys(e_password)
-    #
-    # # skip that next message
-    # nextmsg = driver.find_element_by_xpath('/html/body/div/form[1]/div/div/div[2]/div/div/div[1]/div[2]/div[2]/div/div[2]/div/div[3]/div[2]/div/div/div/div/input')
-    # nextmsg.click()
-    #
-    # yes = driver.find_element_by_xpath('/html/body/div/form/div/div/div[1]/div[2]/div/div[2]/div/div[3]/div[2]/div/div/div[2]/input')
-    # yes.click()
-    # print(f'successfully logged in as {majorCode}; degree code {degreeCode}; college code {collegeCode}')
-    # major = driver.find_element_by_xpath('/html/body/div/div/div/div/div/div/div[1]/div[2]/div[2]/div/div/div[2]/div/div/input')
-    # major.send_keys(majorCode)
-    # print(f'sending major as {studentMajor}')
-    # minor = driver.find_element_by_xpath('//*[@id="form-container"]/div/div/div/div/div[1]/div[2]/div[2]/div[2]/div/div[2]/div/div/input')
-    # minor.send_keys(studentMajor)
-    # print(f'sending minor as {minor}')
-    # student = driver.find_element_by_xpath('/html/body/div/div/div/div/div/div/div[1]/div[2]/div[2]/div[3]/div/div[2]/div/div/input')
-    # student.send_keys(studentFN)
-    #
-    # button = driver.find_element_by_xpath('/html/body/div/div/div/div/div/div/div[1]/div[2]/div[3]/div[1]/button/div')
-    #
-    # # disabled so it doesn't keep sending requests
-    # # button.click()
-    # driver.close()
+    password = driver.find_element_by_xpath('/html/body/div/form[1]/div/div/div[2]/div/div/div[1]/div[2]/div[2]/div/div[2]/div/div[2]/div/div[2]/input')
+    password.send_keys(e_password)
+
+    # skip that next message
+    nextmsg = driver.find_element_by_xpath('/html/body/div/form[1]/div/div/div[2]/div/div/div[1]/div[2]/div[2]/div/div[2]/div/div[3]/div[2]/div/div/div/div/input')
+    nextmsg.click()
+
+    yes = driver.find_element_by_xpath('/html/body/div/form/div/div/div[1]/div[2]/div/div[2]/div/div[3]/div[2]/div/div/div[2]/input')
+    yes.click()
+    print(f'successfully logged in as {majorCode}; degree code {degreeCode}; college code {collegeCode}')
+    major = driver.find_element_by_xpath('/html/body/div/div/div/div/div/div/div[1]/div[2]/div[2]/div/div/div[2]/div/div/input')
+    major.send_keys(majorCode)
+    print(f'sending major as {studentMajor}')
+    minor = driver.find_element_by_xpath('//*[@id="form-container"]/div/div/div/div/div[1]/div[2]/div[2]/div[2]/div/div[2]/div/div/input')
+    minor.send_keys(studentMajor)
+    print(f'sending minor as {minor}')
+    student = driver.find_element_by_xpath('/html/body/div/div/div/div/div/div/div[1]/div[2]/div[2]/div[3]/div/div[2]/div/div/input')
+    student.send_keys(studentFN)
+
+    button = driver.find_element_by_xpath('/html/body/div/div/div/div/div/div/div[1]/div[2]/div[3]/div[1]/button/div')
+
+    # disabled so it doesn't keep sending requests
+    # button.click()
+    driver.close()
     return render_template('declare.html', cctitle="Declaration")
 
 
