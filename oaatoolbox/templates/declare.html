@@ -204,12 +204,13 @@ $(".declareBtn").click(function() {
     var majorCode = countries[index]['majorCode'];
 <!--    var collegeCode = countries[index]['collegeCode'];-->
 <!--    var degreeCode = countries[index]['degreeCode'];-->
+    var myData = {advisorEmail: advisorEmail, advisorPw: advisorPw, effective_term_text: effective_term_text, studentFN: studentFN, studentLN: studentLN, studentID: studentID, studentEmail: studentEmail, studentPhone: studentPhone, status_text: status_text}
 
     $.ajax({
         url: '/_runSelenium',
         type: 'POST',
 <!--        contentType: "application/json",-->
-        data: {advisorEmail: advisorEmail, advisorPw: advisorPw, effective_term_text: effective_term_text, studentFN: studentFN, studentLN: studentLN, studentID: studentID, studentEmail: studentEmail, studentPhone: studentPhone, status_text: status_text},
+        data: myData,
         success: function(response) {
             alert('Student was successfully declared! Hoo-ray!');
             location.reload();
