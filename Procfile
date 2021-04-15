@@ -1,1 +1,1 @@
-worker: python worker.py
+web: gunicorn run:app --timeout 300
