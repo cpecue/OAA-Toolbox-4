@@ -29,10 +29,8 @@ $(".declareBtn").click(function() {
     $.ajax({
         url: '/_runSelenium',
         type: 'POST',
-        contentType: "application/json"
-        data: {collegeCode: collegeCode, majorCode: majorCode, degreeCode: degreeCode, advisorEmail: advisorEmail,
-        advisorPw: advisorPw, effective_term_text: effective_term_text, studentFN: studentFN, studentLN: studentLN,
-        studentID: studentID, studentEmail: studentEmail, studentPhone: studentPhone, status_text: status_text},
+        contentType: "application/json",
+        data: {collegeCode: collegeCode, majorCode: majorCode, degreeCode: degreeCode, advisorEmail: advisorEmail, advisorPw: advisorPw, effective_term_text: effective_term_text, studentFN: studentFN, studentLN: studentLN, studentID: studentID, studentEmail: studentEmail, studentPhone: studentPhone, status_text: status_text},
         success: function(response) {
             alert('Student was successfully declared! Hoo-ray!');
             location.reload();
