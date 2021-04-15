@@ -130,7 +130,7 @@ def selenium():
     time.sleep(3)
     # This is the website form:
     driver.get('https://forms.office.com/Pages/ResponsePage.aspx?id=IX3zmVwL6kORA-FvAvWuz-st4tjPcIRPvfsxXephpFpUQlhMMVpHQTRaRjA5MFIxWjJZUkc1SDE4Ny4u')
-    driver.implicitly_wait(15)
+    driver.implicitly_wait(60)
     time.sleep(3)
     # Login Screen
     email_input = driver.find_element_by_xpath('//*[@id="i0116"]')  # email input
@@ -148,7 +148,7 @@ def selenium():
     yes_btn = driver.find_element_by_xpath('//*[@id="idSIButton9"]')  # Yes button on reduced sign in page
     yes_btn.click()
     print(f'successfully logged in as {e_ID}.')
-    time.sleep(2)
+    time.sleep(3)
 
     #  Page 1
     # Primary Program
