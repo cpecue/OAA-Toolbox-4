@@ -230,9 +230,7 @@ def selenium():
         time.sleep(3)
         driver.close()
 
-    q = Queue(connection=conn)
-    # Toolbox Information
-    result = q.enqueue(run_declaration(), 'http://heroku.com')
+    run_declaration()
 
     return render_template('declare.html', cctitle="Declaration")
 
