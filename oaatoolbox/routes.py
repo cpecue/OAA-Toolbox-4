@@ -97,31 +97,30 @@ def account():
 
 @app.route("/_runSelenium", methods=['GET', 'POST'])
 def selenium():
-    def run_declaration():
+    e_ID = request.form['advisorEmail']
+    e_password = request.form['advisorPw']
+    effective_term_text = request.form['effective_term_text']
+    studentFN = request.form['studentFN']
+    studentLN = request.form['studentLN']
+    studentID = request.form['studentID']
+    studentEmail = request.form['studentEmail']
+    studentPhone = request.form['studentPhone']
+    status_text = request.form['status_text']
+    collegeCode = request.form['collegeCode']
+    degreeCode = request.form['degreeCode']
+    majorCode = request.form['majorCode']
+    requester = current_user.name
+    # Selenium setup
+    chrome_options = webdriver.ChromeOptions()
+    chrome_options.binary_location = os.getenv("GOOGLE_CHROME_BIN")
+    chrome_options.add_argument('--headless')
+    chrome_options.add_argument('--disable-dev-shm-usage')
+    chrome_options.add_argument('--disable-gpu')
+    chrome_options.add_argument('--no-sandbox')
+    driver = webdriver.Chrome(executable_path=os.getenv('CHROMEDRIVER_PATH'), chrome_options=chrome_options)
+
+    def declaration_login():
         print('Staring declaration process. Logging in...')
-        e_ID = request.form['advisorEmail']
-        e_password = request.form['advisorPw']
-        effective_term_text = request.form['effective_term_text']
-        studentFN = request.form['studentFN']
-        studentLN = request.form['studentLN']
-        studentID = request.form['studentID']
-        studentEmail = request.form['studentEmail']
-        studentPhone = request.form['studentPhone']
-        status_text = request.form['status_text']
-        collegeCode = request.form['collegeCode']
-        degreeCode = request.form['degreeCode']
-        majorCode = request.form['majorCode']
-
-        requester = current_user.name
-
-        # Selenium setup
-        chrome_options = webdriver.ChromeOptions()
-        chrome_options.binary_location = os.getenv("GOOGLE_CHROME_BIN")
-        chrome_options.add_argument('--headless')
-        chrome_options.add_argument('--disable-dev-shm-usage')
-        chrome_options.add_argument('--disable-gpu')
-        chrome_options.add_argument('--no-sandbox')
-        driver = webdriver.Chrome(executable_path=os.getenv('CHROMEDRIVER_PATH'), chrome_options=chrome_options)
         time.sleep(3)
         # This is the website form:
         driver.get('https://forms.office.com/Pages/ResponsePage.aspx?id=IX3zmVwL6kORA-FvAvWuz-st4tjPcIRPvfsxXephpFpUQlhMMVpHQTRaRjA5MFIxWjJZUkc1SDE4Ny4u')
@@ -144,7 +143,9 @@ def selenium():
         yes_btn.click()
         print(f'successfully logged in as {e_ID}.')
         time.sleep(3)
+        return
 
+    def declaration_page_1():
         #  Page 1
         # Primary Program
         primary_program = driver.find_element_by_xpath('//*[@id="form-container"]/div/div/div/div/div[1]/div[2]/div[2]/div[2]/div[1]/div/div[2]/div/div[1]/div/label/input')  # Setting primary program to true for first declaration
@@ -193,7 +194,9 @@ def selenium():
         time.sleep(3)
 
         print('Second page loaded...Ending...')
+        return
 
+    def declaration_page_2():
         # Page 2 // From
 
         if status_text == "Undeclared":
@@ -226,9 +229,12 @@ def selenium():
         print(f'Sending majorCode of {majorCode}')
 
         time.sleep(3)
-        driver.close()
+        return
 
-    run_declaration()
+    declaration_login()
+    declaration_page_1()
+    declaration_page_2()
+    driver.close()
 
     return render_template('declare.html', cctitle="Declaration")
 
