@@ -184,7 +184,6 @@ function studentFromDegree(){
         let status = document.getElementById('status');
         let status_text = status.options[status.selectedIndex].text;
         let fromMajor = document.getElementById('fromMajor');
-        console.log(status_text);
         if (status_text == "Declared") {
             fromMajor.innerHTML = `                        <div class="card text-white bg-dark text-center mb-4" id="">
                             <div class="card-header">From: Degree Information</div>
@@ -265,7 +264,7 @@ $(".declareBtn").click(function() {
     $.ajax({
         url: '/_runSelenium',
         type: 'POST',
-        data: {advisorEmail: advisorEmail, advisorPw: advisorPw, effective_term_text: effective_term_text, studentFN: studentFN, studentLN: studentLN, studentID: studentID, studentEmail: studentEmail, studentPhone: studentPhone, status_text: status_text, collegeCode: collegeCode, studentMajor: studentMajor, studentMinor: studentMinor},
+        data: {advisorEmail: advisorEmail, advisorPw: advisorPw, effective_term_text: effective_term_text, studentFN: studentFN, studentLN: studentLN, studentID: studentID, studentEmail: studentEmail, studentPhone: studentPhone, status_text: status_text, collegeCode: collegeCode},
         success: function(response) {
             alert('Student was successfully declared! Hoo-ray!');
             location.reload();
@@ -324,7 +323,6 @@ searchInput.addEventListener('keyup', function(e) {
   const suggestions = countries.filter(function(country) {
     return country.name.toLowerCase().includes(input.toLowerCase());
   });
-  console.log(suggestions)
   suggestions.forEach(function(suggested) {
     const div = document.createElement('div');
     div.innerHTML = suggested.name;
@@ -361,7 +359,6 @@ searchInputMinors.addEventListener('keyup', function(e) {
   const suggestionsMinors = minors.filter(function(minor) {
     return minor.name.toLowerCase().includes(input.toLowerCase());
   });
-  console.log()
   suggestionsMinors.forEach(function(suggested) {
     const div = document.createElement('div');
     div.innerHTML = suggested.name;
@@ -401,8 +398,6 @@ $(function(){
     const major = document.getElementById('studentMajor');
     document.getElementById('Major1Title').innerHTML = 'Declaration Information for ' + major.value;
     index = countries.findIndex(x => x.name === major.value);
-    console.log(major.value);
-    console.log(index);
     test = countries[index]['Requirements'];
     code = countries[index]['majorCode'];
     document.getElementById('Major1Information').innerHTML = test + '<hr />' + '<div class="badge badge-danger mr-3" style="padding:10px;">' + code + '</div>' ;
