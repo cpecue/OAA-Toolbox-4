@@ -110,7 +110,7 @@ def selenium():
     studentLN = request.form['studentLN']
     studentID = request.form['studentID']
     studentEmail = request.form['studentEmail']
-    # studentPhone = request.form['studentPhone']
+    studentPhone = request.form['studentPhone']
     # studentMajor = request.form['studentMajor']
     # studentMinor = request.form['studentMinor']
     # majorCode = request.form['majorCode']
@@ -131,7 +131,6 @@ def selenium():
     driver.get('https://forms.office.com/Pages/ResponsePage.aspx?id=IX3zmVwL6kORA-FvAvWuz-st4tjPcIRPvfsxXephpFpUQlhMMVpHQTRaRjA5MFIxWjJZUkc1SDE4Ny4u')
     driver.implicitly_wait(15)
     time.sleep(3)
-    steps = 0
     # Login Screen
     email_input = driver.find_element_by_xpath('//*[@id="i0116"]')  # email input
     email_input.send_keys(e_ID)
@@ -180,11 +179,11 @@ def selenium():
     student_email_input.send_keys(studentEmail)
     print(f'Sending student\'s email as {studentEmail}.')
 
-    # # Student's Phone
-    # student_phone_input = driver.find_element_by_xpath('//*[@id="form-container"]/div/div/div/div/div[1]/div[2]/div[2]/div[2]/div[6]/div/div[2]/div/div/input')
-    # student_phone_input.send_keys(studentPhone)
-    # print(f'Sending student\'s phone as {studentPhone}.')
-    #
+    # Student's Phone
+    student_phone_input = driver.find_element_by_xpath('//*[@id="form-container"]/div/div/div/div/div[1]/div[2]/div[2]/div[2]/div[6]/div/div[2]/div/div/input')
+    student_phone_input.send_keys(studentPhone)
+    print(f'Sending student\'s phone as {studentPhone}.')
+
     # # Requester Name
     # requester_input = driver.find_element_by_xpath('//*[@id="form-container"]/div/div/div/div/div[1]/div[2]/div[2]/div[2]/div[7]/div/div[2]/div/div/input')
     # requester_input.send_keys(requester)

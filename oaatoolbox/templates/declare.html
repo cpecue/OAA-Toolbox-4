@@ -240,7 +240,7 @@ $(".declareBtn").click(function() {
     var spinner = document.getElementById('declareBTNLocation');
     spinner.innerHTML = `<button class="btn btn-lg btn-dark mb-3 btn-block" type="button" disabled>
   <span class="spinner-grow text-white" role="status" aria-hidden="true"></span>
-  Declaring, wait... {{ steps }}
+  Declaring, wait...
 </button>`;
     var advisorEmail = document.getElementById('advisorEmail').value;
     let effective_term = document.getElementById('effective_term');
@@ -250,7 +250,7 @@ $(".declareBtn").click(function() {
     var studentLN = document.getElementById('studentLN').value;
     var studentID = document.getElementById('studentID').value;
     var studentEmail = document.getElementById('studentEmail').value;
-<!--    var studentPhone = document.getElementById('studentPhone').value;-->
+    var studentPhone = document.getElementById('studentPhone').value;
 <!--    var studentMajor = document.getElementById('studentMajor').value;-->
 <!--    var studentMinor = document.getElementById('studentMinor').value;-->
 <!--    index = countries.findIndex(x => x.name === studentMajor);-->
@@ -262,7 +262,7 @@ $(".declareBtn").click(function() {
     $.ajax({
         url: '/_runSelenium',
         type: 'POST',
-        data: {advisorEmail: advisorEmail, advisorPw: advisorPw, effective_term_text: effective_term_text, studentFN: studentFN, studentLN: studentLN, studentID: studentID, studentEmail: studentEmail},
+        data: {advisorEmail: advisorEmail, advisorPw: advisorPw, effective_term_text: effective_term_text, studentFN: studentFN, studentLN: studentLN, studentID: studentID, studentEmail: studentEmail, studentPhone: studentPhone},
         success: function(response) {
             alert('Student was successfully declared! Hoo-ray!');
             location.reload();
