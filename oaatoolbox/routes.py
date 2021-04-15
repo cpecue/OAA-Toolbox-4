@@ -113,7 +113,7 @@ def selenium():
     studentPhone = request.form['studentPhone']
     status_text = request.form['status_text']
     collegeCode = request.form['collegeCode']
-    # degreeCode = request.form['degreeCode_text']
+    degreeCode = request.form['degreeCode']
     # majorCode = request.form['majorCode_text']
     # # majorConcentration = request.form['majorConcentration']
     requester = current_user.name
@@ -215,15 +215,15 @@ def selenium():
     else:
         pass
 
-    # # Page 3 // To
-    # print(f'Declaring student with College Code of {collegeCode}')
-    # if collegeCode == "AS":
-    #     print('This is the AS option')
-    #     college_to_btn = driver.find_element_by_xpath('//*[@id="form-container"]/div/div/div/div/div[1]/div[2]/div[2]/div[2]/div[1]/div/div[2]/div/div[1]/div/label/input')
-    #     college_to_btn.click()
-    # else:
-    #     pass
-    #
+    # Page 3 // To
+    print(f'Declaring student with College Code of {collegeCode}')
+    if collegeCode == "AS":
+        print('This is the AS option')
+        college_to_btn = driver.find_element_by_xpath('//*[@id="form-container"]/div/div/div/div/div[1]/div[2]/div[2]/div[2]/div[1]/div/div[2]/div/div[1]/div/label/input')
+        college_to_btn.click()
+    else:
+        pass
+
     # to_degree_code = driver.find_element_by_xpath('//*[@id="form-container"]/div/div/div/div/div[1]/div[2]/div[2]/div[2]/div[2]/div/div[2]/div/div/input')
     # to_degree_code.send_keys(degreeCode)
     # print(f'Sending degree code of {degreeCode}')
