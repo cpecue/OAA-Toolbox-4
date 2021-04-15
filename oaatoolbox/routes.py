@@ -109,7 +109,7 @@ def selenium():
     studentFN = request.form['studentFN']
     studentLN = request.form['studentLN']
     studentID = request.form['studentID']
-    # studentEmail = request.form['studentEmail']
+    studentEmail = request.form['studentEmail']
     # studentPhone = request.form['studentPhone']
     # studentMajor = request.form['studentMajor']
     # studentMinor = request.form['studentMinor']
@@ -173,12 +173,12 @@ def selenium():
     student_id = driver.find_element_by_xpath('//*[@id="form-container"]/div/div/div/div/div[1]/div[2]/div[2]/div[2]/div[4]/div/div[2]/div/div/input')
     student_id.send_keys(studentID)
     print(f'Sending student\'s id as {studentID}.')
-    #
-    # # Student's Email
-    # student_email_input = driver.find_element_by_xpath('//*[@id="form-container"]/div/div/div/div/div[1]/div[2]/div[2]/div[2]/div[5]/div/div[2]/div/div/input')
-    # student_email_input.send_keys(studentEmail)
-    # print(f'Sending student\'s email as {studentEmail}.')
-    #
+
+    # Student's Email
+    student_email_input = driver.find_element_by_xpath('//*[@id="form-container"]/div/div/div/div/div[1]/div[2]/div[2]/div[2]/div[5]/div/div[2]/div/div/input')
+    student_email_input.send_keys(studentEmail)
+    print(f'Sending student\'s email as {studentEmail}.')
+
     # # Student's Phone
     # student_phone_input = driver.find_element_by_xpath('//*[@id="form-container"]/div/div/div/div/div[1]/div[2]/div[2]/div[2]/div[6]/div/div[2]/div/div/input')
     # student_phone_input.send_keys(studentPhone)
