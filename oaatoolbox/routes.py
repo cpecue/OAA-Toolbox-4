@@ -212,17 +212,20 @@ def selenium():
         teacher_cert.click()
         next_btn = driver.find_element_by_xpath('/html/body/div/div/div/div/div/div/div[1]/div[2]/div[3]/div[1]/button[2]/div')
         next_btn.click()
-        time.sleep(3)
+        time.sleep(4)
     else:
         pass
 
     # Page 3 // To
     print(f'Declaring student with College Code of {collegeCode}')
     if collegeCode == "AS":
+        print('This is the AS option')
         college_to_btn = driver.find_element_by_xpath('//*[@id="form-container"]/div/div/div/div/div[1]/div[2]/div[2]/div[2]/div[1]/div/div[2]/div/div[1]/div/label/input')
         college_to_btn.click()
     else:
-        pass
+        print('This is the Else option')
+        college_to_btn = driver.find_element_by_xpath('//*[@id="form-container"]/div/div/div/div/div[1]/div[2]/div[2]/div[2]/div[1]/div/div[2]/div/div[1]/div/label/input')
+        college_to_btn.click()
 
     time.sleep(3)
     driver.close()
