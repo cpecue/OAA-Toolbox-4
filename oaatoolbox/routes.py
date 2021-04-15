@@ -115,7 +115,7 @@ def selenium():
     # studentMajor = request.form['studentMajor']
     # studentMinor = request.form['studentMinor']
     # majorCode = request.form['majorCode']
-    # degreeCode = request.form['degreeCode']
+    degreeCode = request.form['degreeCode']
     collegeCode = request.form['collegeCode']
     # strippedName = request.form['strippedName']
     requester = current_user.name
@@ -227,16 +227,16 @@ def selenium():
         pass
 
     to_degree_code = driver.find_element_by_xpath('//*[@id="form-container"]/div/div/div/div/div[1]/div[2]/div[2]/div[2]/div[2]/div/div[2]/div/div/input')
-    to_degree_code.send_keys('placeholder')
-    print(f'Sending degree code of ')
-
-    to_major_1 = driver.find_element_by_xpath('//*[@id="form-container"]/div/div/div/div/div[1]/div[2]/div[2]/div[2]/div[3]/div/div[2]/div/div/input')
-    to_major_1.send_keys('Placeholder Stripped Name')
-    print(f'Sending major of Placeholder Stripped Name')
-
-    to_major_1_code = driver.find_element_by_xpath('//*[@id="form-container"]/div/div/div/div/div[1]/div[2]/div[2]/div[2]/div[4]/div/div[2]/div/div/input')
-    to_major_1_code.send_keys('majorCode')
-    print(f'Sending major code of')
+    to_degree_code.send_keys(degreeCode)
+    print(f'Sending degree code of {degreeCode}')
+    #
+    # to_major_1 = driver.find_element_by_xpath('//*[@id="form-container"]/div/div/div/div/div[1]/div[2]/div[2]/div[2]/div[3]/div/div[2]/div/div/input')
+    # to_major_1.send_keys('Placeholder Stripped Name')
+    # print(f'Sending major of Placeholder Stripped Name')
+    #
+    # to_major_1_code = driver.find_element_by_xpath('//*[@id="form-container"]/div/div/div/div/div[1]/div[2]/div[2]/div[2]/div[4]/div/div[2]/div/div/input')
+    # to_major_1_code.send_keys('majorCode')
+    # print(f'Sending major code of')
 
     time.sleep(3)
     driver.close()
