@@ -8,8 +8,6 @@ from oaatoolbox.models import User, Declarations, Majors, Minors
 from flask_login import login_user, current_user, logout_user, login_required
 from selenium import webdriver
 import time
-from rq import Queue
-from worker import conn
 
 
 
