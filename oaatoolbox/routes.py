@@ -230,6 +230,7 @@ def selenium():
     to_degree_code.send_keys(degreeCode)
     print(f'Sending degree code of {degreeCode}')
     print(f'Sending degree stripped name of {strippedName}')
+
     #
     # to_major_1 = driver.find_element_by_xpath('//*[@id="form-container"]/div/div/div/div/div[1]/div[2]/div[2]/div[2]/div[3]/div/div[2]/div/div/input')
     # to_major_1.send_keys('Placeholder Stripped Name')
