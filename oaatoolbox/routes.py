@@ -113,6 +113,7 @@ def selenium():
     studentPhone = request.form['studentPhone']
     status_text = request.form['status_text']
     collegeCode = request.form['collegeCode']
+    degreeCode = request.form['degreeCode']
     requester = current_user.name
 
     # Selenium setup
