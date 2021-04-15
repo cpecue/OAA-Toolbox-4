@@ -112,11 +112,12 @@ def selenium():
     studentEmail = request.form['studentEmail']
     studentPhone = request.form['studentPhone']
     status_text = request.form['status_text']
-    # studentMajor = request.form['studentMajor']
-    # studentMinor = request.form['studentMinor']
-    # majorCode = request.form['majorCode']
-    # degreeCode = request.form['degreeCode']
+    studentMajor = request.form['studentMajor']
+    studentMinor = request.form['studentMinor']
+    majorCode = request.form['majorCode']
+    degreeCode = request.form['degreeCode']
     collegeCode = request.form['collegeCode']
+    strippedName = request.form['strippedName']
     requester = current_user.name
 
     # Selenium setup
@@ -223,9 +224,19 @@ def selenium():
         college_to_btn = driver.find_element_by_xpath('//*[@id="form-container"]/div/div/div/div/div[1]/div[2]/div[2]/div[2]/div[1]/div/div[2]/div/div[1]/div/label/input')
         college_to_btn.click()
     else:
-        print('This is the Else option')
-        college_to_btn = driver.find_element_by_xpath('//*[@id="form-container"]/div/div/div/div/div[1]/div[2]/div[2]/div[2]/div[1]/div/div[2]/div/div[1]/div/label/input')
-        college_to_btn.click()
+        pass
+
+    to_degree_code = driver.find_element_by_xpath('//*[@id="form-container"]/div/div/div/div/div[1]/div[2]/div[2]/div[2]/div[2]/div/div[2]/div/div/input')
+    to_degree_code.send_keys(degreeCode)
+    print(f'Sending degree code of {degreeCode}')
+
+    to_major_1 = driver.find_element_by_xpath('//*[@id="form-container"]/div/div/div/div/div[1]/div[2]/div[2]/div[2]/div[3]/div/div[2]/div/div/input')
+    to_major_1.send_keys(strippedName)
+    print(f'Sending major of {strippedName}')
+
+    to_major_1_code = driver.find_element_by_xpath('//*[@id="form-container"]/div/div/div/div/div[1]/div[2]/div[2]/div[2]/div[4]/div/div[2]/div/div/input')
+    to_major_1_code.send_keys(majorCode)
+    print(f'Sending major code of {majorCode})
 
     time.sleep(3)
     driver.close()

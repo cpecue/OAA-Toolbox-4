@@ -260,11 +260,12 @@ $(".declareBtn").click(function() {
     majorCode = countries[index]['majorCode'];
     degreeCode = countries[index]['degreeCode'];
     collegeCode = countries[index]['collegeCode'];
+    strippedMajor = countries[index]['strippedName'];
 
     $.ajax({
         url: '/_runSelenium',
         type: 'POST',
-        data: {advisorEmail: advisorEmail, advisorPw: advisorPw, effective_term_text: effective_term_text, studentFN: studentFN, studentLN: studentLN, studentID: studentID, studentEmail: studentEmail, studentPhone: studentPhone, status_text: status_text, collegeCode: collegeCode},
+        data: {advisorEmail: advisorEmail, advisorPw: advisorPw, effective_term_text: effective_term_text, studentFN: studentFN, studentLN: studentLN, studentID: studentID, studentEmail: studentEmail, studentPhone: studentPhone, status_text: status_text, collegeCode: collegeCode, studentMajor: studentMajor, studentMinor: studentMinor, degreeCode: degreeCode, strippedName: strippedName},
         success: function(response) {
             alert('Student was successfully declared! Hoo-ray!');
             location.reload();
