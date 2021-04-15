@@ -2,7 +2,7 @@ from flask import render_template, url_for, flash, redirect, request
 import secrets
 import os
 from PIL import Image
-from oaatoolbox import app, db, bcrypt, q
+from oaatoolbox import app, db, bcrypt
 from oaatoolbox.forms import RegistrationForm, LoginForm, UpdateAccountForm
 from oaatoolbox.models import User, Declarations, Majors, Minors
 from flask_login import login_user, current_user, logout_user, login_required
