@@ -2,12 +2,14 @@ from flask import render_template, url_for, flash, redirect, request
 import secrets
 import os
 from PIL import Image
-from oaatoolbox import app, db, bcrypt, r, q
+from oaatoolbox import app, db, bcrypt
 from oaatoolbox.forms import RegistrationForm, LoginForm, UpdateAccountForm
 from oaatoolbox.models import User, Declarations, Majors, Minors
 from flask_login import login_user, current_user, logout_user, login_required
 from selenium import webdriver
 import time
+import redis
+from rq import Queue
 
 
 
@@ -231,6 +233,8 @@ def selenium():
         time.sleep(3)
         return
 
+    r = redis.Redis()
+    q = Queue(connection=r)
     result = q.enqueue(declaration_login)
     print(f'{result}')
     # declaration_page_1()
