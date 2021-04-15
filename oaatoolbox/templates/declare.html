@@ -202,19 +202,14 @@ $(".declareBtn").click(function() {
     var index = countries.findIndex(x => x.name === studentMajor);
     var test = countries[index]['Requirements'];
     var majorCode = countries[index]['majorCode'];
-    var collegeCode = countries[index]['collegeCode'];
-    var degreeCode = countries[index]['degreeCode'];
-    var majorCode_text = majorCode;
-    var collegeCode_text = collegeCode;
-    var degreeCode_text = degreeCode;
-    var majorConcentration = countries[index]['majorConcentration'];
+<!--    var collegeCode = countries[index]['collegeCode'];-->
+<!--    var degreeCode = countries[index]['degreeCode'];-->
 
     $.ajax({
         url: '/_runSelenium',
         type: 'POST',
         contentType: "application/json",
-        data: JSON.stringify({majorCode_text: majorCode_text, collegeCode_text: collegeCode_text, degreeCode_text: degreeCode_text, advisorEmail: advisorEmail, advisorPw: advisorPw, effective_term_text: effective_term_text, studentFN: studentFN, studentLN: studentLN, studentID: studentID, studentEmail: studentEmail, studentPhone: studentPhone, status_text: status_text}),
-        dataType: "json",
+        data: {advisorEmail: advisorEmail, advisorPw: advisorPw, effective_term_text: effective_term_text, studentFN: studentFN, studentLN: studentLN, studentID: studentID, studentEmail: studentEmail, studentPhone: studentPhone, status_text: status_text},
         success: function(response) {
             alert('Student was successfully declared! Hoo-ray!');
             location.reload();
