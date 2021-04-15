@@ -2,8 +2,7 @@ from flask import Flask, request
 from flask_sqlalchemy import SQLAlchemy
 from flask_bcrypt import Bcrypt
 from flask_login import LoginManager
-import redis
-from rq import Queue
+
 
 
 app = Flask(__name__)
@@ -23,5 +22,3 @@ login_manager.login_message_category = 'info'
 from oaatoolbox import routes
 
 
-r = redis.Redis()
-q = Queue(connection=r)
