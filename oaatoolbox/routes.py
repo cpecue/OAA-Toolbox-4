@@ -189,7 +189,7 @@ def selenium():
     requester_input = driver.find_element_by_xpath('//*[@id="form-container"]/div/div/div/div/div[1]/div[2]/div[2]/div[2]/div[7]/div/div[2]/div/div/input')
     requester_input.send_keys(requester)
     print(f'Form prepared by {requester}')
-    time.sleep(1)
+    time.sleep(2)
 
     # Next Button
     next_btn = driver.find_element_by_xpath('/html/body/div/div/div/div/div/div/div[1]/div[2]/div[3]/div[1]/button/div')
@@ -202,6 +202,8 @@ def selenium():
     # Page 2 // From
 
     if status_text == "Undeclared":
+        print('from Undeclared')
+        time.sleep(3)
         from_college_code = driver.find_element_by_xpath('//*[@id="form-container"]/div/div/div/div/div[1]/div[2]/div[2]/div[2]/div[1]/div/div[2]/div/div[2]/div/label/input')
         from_college_code.click()
         from_degree_code = driver.find_element_by_xpath('//*[@id="form-container"]/div/div/div/div/div[1]/div[2]/div[2]/div[2]/div[2]/div/div[2]/div/div/input')
