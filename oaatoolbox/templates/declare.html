@@ -145,10 +145,6 @@
 </div>
 
 
-
-
-
-
                 </main>
 <div class="container-fluid" style="background-color: #292b2c;">
 <footer>
@@ -159,6 +155,7 @@
                             <div class="col-lg-6 declareBtnLocation" id="declareBTNLocation">
                                 <div class="btn btn-lg btn-dark mb-3 declareBtn" style="width:100%">Declare</div>
                         </div>
+                            </div>
 </footer>
     </div>
         <script src="static/search_box.js"></script>
@@ -258,14 +255,11 @@ $(".declareBtn").click(function() {
     test = countries[index]['Requirements'];
     majorCode = countries[index]['majorCode'];
     collegeCode = countries[index]['collegeCode'];
-    degreeCode = countries[index]['degreeCode'];
-    strippedName = countries[index]['strippedName'];
-
 
     $.ajax({
         url: '/_runSelenium',
         type: 'POST',
-        data: {advisorEmail: advisorEmail, advisorPw: advisorPw, effective_term_text: effective_term_text, studentFN: studentFN, studentLN: studentLN, studentID: studentID, studentEmail: studentEmail, studentPhone: studentPhone, status_text: status_text, collegeCode: collegeCode, degreeCode: degreeCode, strippedName: strippedName},
+        data: {advisorEmail: advisorEmail, advisorPw: advisorPw, effective_term_text: effective_term_text, studentFN: studentFN, studentLN: studentLN, studentID: studentID, studentEmail: studentEmail, studentPhone: studentPhone, status_text: status_text, collegeCode: collegeCode, majorCode: majorCode},
         success: function(response) {
             alert('Student was successfully declared! Hoo-ray!');
             location.reload();
