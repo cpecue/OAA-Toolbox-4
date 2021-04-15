@@ -191,7 +191,7 @@ def selenium():
     time.sleep(1)
 
     # Next Button
-    next_btn = driver.find_element_by_xpath('//*[@id="form-container"]/div/div/div/div/div[1]/div[2]/div[3]/div[1]/button/div')
+    next_btn = driver.find_element_by_xpath('/html/body/div/div/div/div/div/div/div[1]/div[2]/div[3]/div[1]/button/div')
     next_btn.click()
     print('Clicking to next page...')
     time.sleep(3)
