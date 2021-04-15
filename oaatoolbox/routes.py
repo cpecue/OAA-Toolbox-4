@@ -116,7 +116,7 @@ def selenium():
     # majorCode = request.form['majorCode']
     # degreeCode = request.form['degreeCode']
     # collegeCode = request.form['collegeCode']
-    # requester = current_user.username
+    requester = current_user.username
 
     # Selenium setup
     chrome_options = webdriver.ChromeOptions()
@@ -184,16 +184,16 @@ def selenium():
     student_phone_input.send_keys(studentPhone)
     print(f'Sending student\'s phone as {studentPhone}.')
 
-    # # Requester Name
-    # requester_input = driver.find_element_by_xpath('//*[@id="form-container"]/div/div/div/div/div[1]/div[2]/div[2]/div[2]/div[7]/div/div[2]/div/div/input')
-    # requester_input.send_keys(requester)
-    # print(f'Form prepared by {requester}')
-    #
-    # # Next Button
-    # next_btn = driver.find_element_by_xpath('//*[@id="form-container"]/div/div/div/div/div[1]/div[2]/div[3]/div[1]/button/div')
-    # next_btn.click()
-    # print('Clicking to next page...')
-    # time.sleep(5)
+    # Requester Name
+    requester_input = driver.find_element_by_xpath('//*[@id="form-container"]/div/div/div/div/div[1]/div[2]/div[2]/div[2]/div[7]/div/div[2]/div/div/input')
+    requester_input.send_keys(requester)
+    print(f'Form prepared by {requester}')
+
+    # Next Button
+    next_btn = driver.find_element_by_xpath('//*[@id="form-container"]/div/div/div/div/div[1]/div[2]/div[3]/div[1]/button/div')
+    next_btn.click()
+    print('Clicking to next page...')
+    time.sleep(5)
 
     # # Second Page FROM Status
     # driver.close()
