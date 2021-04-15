@@ -262,7 +262,7 @@ $(".declareBtn").click(function() {
     $.ajax({
         url: '/_runSelenium',
         type: 'POST',
-        contentType: "application/json"
+        contentType: "application/json",
         data: JSON.stringify(user_data),
         dataType: 'json',
         success: function(response) {
