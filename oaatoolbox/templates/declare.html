@@ -257,9 +257,8 @@ $(".declareBtn").click(function() {
     index = countries.findIndex(x => x.name === studentMajor);
     test = countries[index]['Requirements'];
     majorCode = countries[index]['majorCode'];
-    degreeCode = countries[index]['degreeCode'];
     collegeCode = countries[index]['collegeCode'];
-<!--    strippedName = countries[index]['strippedName'];-->
+    degreeCode = countries[index]['degreeCode'];
 
     $.ajax({
         url: '/_runSelenium',
