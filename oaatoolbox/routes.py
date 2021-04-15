@@ -115,6 +115,7 @@ def selenium():
     collegeCode = request.form['collegeCode']
     degreeCode = request.form['degreeCode']
     majorCode = request.form['majorCode']
+    strippedName = request.form['strippedName']
     requester = current_user.name
 
     # Selenium setup
