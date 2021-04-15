@@ -112,7 +112,7 @@ def selenium():
     studentEmail = request.form['studentEmail']
     studentPhone = request.form['studentPhone']
     status_text = request.form['status_text']
-    # collegeCode = request.form['collegeCode_text']
+    collegeCode = request.form['collegeCode_text']
     # degreeCode = request.form['degreeCode_text']
     # majorCode = request.form['majorCode_text']
     # # majorConcentration = request.form['majorConcentration']

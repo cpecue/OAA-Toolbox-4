@@ -202,9 +202,9 @@ $(".declareBtn").click(function() {
     var index = countries.findIndex(x => x.name === studentMajor);
     var test = countries[index]['Requirements'];
     var majorCode = countries[index]['majorCode'];
-<!--    var collegeCode = countries[index]['collegeCode'];-->
+    var collegeCode = countries[index]['collegeCode'];
 <!--    var degreeCode = countries[index]['degreeCode'];-->
-    var myData = {advisorEmail: advisorEmail, advisorPw: advisorPw, effective_term_text: effective_term_text, studentFN: studentFN, studentLN: studentLN, studentID: studentID, studentEmail: studentEmail, studentPhone: studentPhone, status_text: status_text};
+    var myData = {collegeCode: collegeCode, advisorEmail: advisorEmail, advisorPw: advisorPw, effective_term_text: effective_term_text, studentFN: studentFN, studentLN: studentLN, studentID: studentID, studentEmail: studentEmail, studentPhone: studentPhone, status_text: status_text};
 
     $.ajax({
         url: '/_runSelenium',
