@@ -131,31 +131,25 @@ def selenium():
     driver.get('https://forms.office.com/Pages/ResponsePage.aspx?id=IX3zmVwL6kORA-FvAvWuz-st4tjPcIRPvfsxXephpFpUQlhMMVpHQTRaRjA5MFIxWjJZUkc1SDE4Ny4u')
     driver.implicitly_wait(15)
     time.sleep(3)
+    steps = 0
+    # Login Screen
+    email_input = driver.find_element_by_xpath('//*[@id="i0116"]')  # email input
+    email_input.send_keys(e_ID)
+    next_btn = driver.find_element_by_xpath('//*[@id="idSIButton9"]')  # next button on log in page
+    next_btn.click()
+    time.sleep(3)
+    # Password Screen
+    password_input = driver.find_element_by_xpath('//*[@id="i0118"]')  # password input
+    password_input.send_keys(e_password)
+    sign_in = driver.find_element_by_xpath('//*[@id="idSIButton9"]')  # sign-in button on password page
+    sign_in.click()
+    time.sleep(3)
+    # Reduce Sign-ins Page
+    yes_btn = driver.find_element_by_xpath('//*[@id="idSIButton9"]')  # Yes button on reduced sign in page
+    yes_btn.click()
+    print(f'successfully logged in as {e_ID}.')
+    time.sleep(2)
 
-    steps = 0;
-    while steps == 0:
-        if steps == 0:
-        # Login Screen
-        email_input = driver.find_element_by_xpath('//*[@id="i0116"]')  # email input
-        email_input.send_keys(e_ID)
-        next_btn = driver.find_element_by_xpath('//*[@id="idSIButton9"]')  # next button on log in page
-        next_btn.click()
-        time.sleep(3)
-        # Password Screen
-        password_input = driver.find_element_by_xpath('//*[@id="i0118"]')  # password input
-        password_input.send_keys(e_password)
-        sign_in = driver.find_element_by_xpath('//*[@id="idSIButton9"]')  # sign-in button on password page
-        sign_in.click()
-        time.sleep(3)
-        # Reduce Sign-ins Page
-        yes_btn = driver.find_element_by_xpath('//*[@id="idSIButton9"]')  # Yes button on reduced sign in page
-        yes_btn.click()
-        print(f'successfully logged in as {e_ID}.')
-        time.sleep(2)
-        steps = steps + 1
-        return steps
-
-    steps = 10
     #  Page 1
     # Primary Program
     primary_program = driver.find_element_by_xpath('//*[@id="form-container"]/div/div/div/div/div[1]/div[2]/div[2]/div[2]/div[1]/div/div[2]/div/div[1]/div/label/input')  # Setting primary program to true for first declaration
