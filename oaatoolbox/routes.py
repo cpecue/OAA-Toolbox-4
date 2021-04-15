@@ -236,7 +236,7 @@ def selenium():
 
     to_major_1_code = driver.find_element_by_xpath('//*[@id="form-container"]/div/div/div/div/div[1]/div[2]/div[2]/div[2]/div[4]/div/div[2]/div/div/input')
     to_major_1_code.send_keys(majorCode)
-    print(f'Sending major code of {majorCode})
+    print(f'Sending major code of {majorCode}')
 
     time.sleep(3)
     driver.close()
