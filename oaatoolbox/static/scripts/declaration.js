@@ -1,5 +1,3 @@
-const countries = {{ majors_list|safe }};
-const minors = {{ minors_list|safe }};
 $(".declareBtn").click(function() {
 
     var declareBTN = document.getElementById('declareBtn');
