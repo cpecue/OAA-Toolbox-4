@@ -213,7 +213,8 @@ $(".declareBtn").click(function() {
         url: '/_runSelenium',
         type: 'POST',
         contentType: "application/json",
-        data: {majorCode_text: majorCode_text, collegeCode_text: collegeCode_text, degreeCode_text: degreeCode_text, advisorEmail: advisorEmail, advisorPw: advisorPw, effective_term_text: effective_term_text, studentFN: studentFN, studentLN: studentLN, studentID: studentID, studentEmail: studentEmail, studentPhone: studentPhone, status_text: status_text},
+        data: JSON.stringify({majorCode_text: majorCode_text, collegeCode_text: collegeCode_text, degreeCode_text: degreeCode_text, advisorEmail: advisorEmail, advisorPw: advisorPw, effective_term_text: effective_term_text, studentFN: studentFN, studentLN: studentLN, studentID: studentID, studentEmail: studentEmail, studentPhone: studentPhone, status_text: status_text}),
+        dataType: "json",
         success: function(response) {
             alert('Student was successfully declared! Hoo-ray!');
             location.reload();
