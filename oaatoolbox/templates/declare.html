@@ -253,8 +253,8 @@ $(".declareBtn").click(function() {
     var studentPhone = document.getElementById('studentPhone').value;
     let status = document.getElementById('status');
     let status_text = status.options[status.selectedIndex].text;
-<!--    var studentMajor = document.getElementById('studentMajor').value;-->
-<!--    var studentMinor = document.getElementById('studentMinor').value;-->
+    var studentMajor = document.getElementById('studentMajor').value;
+    var studentMinor = document.getElementById('studentMinor').value;
     index = countries.findIndex(x => x.name === studentMajor);
     test = countries[index]['Requirements'];
     majorCode = countries[index]['majorCode'];
