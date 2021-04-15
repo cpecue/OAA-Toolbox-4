@@ -112,9 +112,9 @@ def selenium():
     studentEmail = request.form['studentEmail']
     studentPhone = request.form['studentPhone']
     status_text = request.form['status_text']
-    collegeCode = request.form['collegeCode']
-    degreeCode = request.form['degreeCode']
-    majorCode = request.form['majorCode']
+    collegeCode = request.form['collegeCode_text']
+    degreeCode = request.form['degreeCode_text']
+    majorCode = request.form['majorCode_text']
     # majorConcentration = request.form['majorConcentration']
     requester = current_user.name
 
@@ -228,7 +228,7 @@ def selenium():
     to_degree_code.send_keys(degreeCode)
     print(f'Sending degree code of {degreeCode}')
     print(f'Sending majorCode of {majorCode}')
-    print(f'Major Conentration is {majorConcentration}')
+    # print(f'Major Conentration is {majorConcentration}')
 
     #
     # to_major_1 = driver.find_element_by_xpath('//*[@id="form-container"]/div/div/div/div/div[1]/div[2]/div[2]/div[2]/div[3]/div/div[2]/div/div/input')
