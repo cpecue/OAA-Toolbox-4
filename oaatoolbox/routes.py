@@ -117,7 +117,7 @@ def selenium():
     majorCode = request.form['majorCode']
     degreeCode = request.form['degreeCode']
     collegeCode = request.form['collegeCode']
-    strippedName = request.form['strippedName']
+    # strippedName = request.form['strippedName']
     requester = current_user.name
 
     # Selenium setup
@@ -231,8 +231,8 @@ def selenium():
     print(f'Sending degree code of {degreeCode}')
 
     to_major_1 = driver.find_element_by_xpath('//*[@id="form-container"]/div/div/div/div/div[1]/div[2]/div[2]/div[2]/div[3]/div/div[2]/div/div/input')
-    to_major_1.send_keys(strippedName)
-    print(f'Sending major of {strippedName}')
+    to_major_1.send_keys('Placeholder Stripped Name')
+    print(f'Sending major of Placeholder Stripped Name')
 
     to_major_1_code = driver.find_element_by_xpath('//*[@id="form-container"]/div/div/div/div/div[1]/div[2]/div[2]/div[2]/div[4]/div/div[2]/div/div/input')
     to_major_1_code.send_keys(majorCode)
