@@ -111,11 +111,12 @@ def selenium():
     studentID = request.form['studentID']
     studentEmail = request.form['studentEmail']
     studentPhone = request.form['studentPhone']
+    status_text = request.form['status_text']
     # studentMajor = request.form['studentMajor']
     # studentMinor = request.form['studentMinor']
     # majorCode = request.form['majorCode']
     # degreeCode = request.form['degreeCode']
-    # collegeCode = request.form['collegeCode']
+    collegeCode = request.form['collegeCode']
     requester = current_user.name
 
     # Selenium setup
@@ -198,9 +199,30 @@ def selenium():
 
     print('Second page loaded...Ending...')
 
-    # # Second Page FROM Status
-    # driver.close()
-    # print(f'Information would have sent.')
+    # Page 2 // From
+
+    if status_text == "Undeclared":
+        from_college_code = driver.find_element_by_xpath('//*[@id="form-container"]/div/div/div/div/div[1]/div[2]/div[2]/div[2]/div[1]/div/div[2]/div/div[2]/div/label/input')
+        from_college_code.click()
+        from_degree_code = driver.find_element_by_xpath('//*[@id="form-container"]/div/div/div/div/div[1]/div[2]/div[2]/div[2]/div[2]/div/div[2]/div/div/input')
+        from_degree_code.send_keys('00')
+        teacher_cert = driver.find_element_by_xpath('//*[@id="form-container"]/div/div/div/div/div[1]/div[2]/div[2]/div[2]/div[14]/div/div[2]/div/div[2]/div/label/input')
+        teacher_cert.click()
+        next_btn = driver.find_element_by_xpath('/html/body/div/div/div/div/div/div/div[1]/div[2]/div[3]/div[1]/button[2]/div')
+        next_btn.click()
+        time.sleep(3)
+    else:
+        pass
+
+    # Page 3 // To
+    print(f'Declaring student with College Code of {collegeCode}')
+    if collegeCode == "AS":
+        college_to_btn = driver.find_element_by_xpath('//*[@id="form-container"]/div/div/div/div/div[1]/div[2]/div[2]/div[2]/div[1]/div/div[2]/div/div[1]/div/label/input')
+        college_to_btn.click()
+    else:
+        pass
+
+    time.sleep(3)
     driver.close()
     return render_template('declare.html', cctitle="Declaration")
 

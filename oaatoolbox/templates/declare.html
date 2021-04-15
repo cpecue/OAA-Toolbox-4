@@ -251,18 +251,20 @@ $(".declareBtn").click(function() {
     var studentID = document.getElementById('studentID').value;
     var studentEmail = document.getElementById('studentEmail').value;
     var studentPhone = document.getElementById('studentPhone').value;
+    let status = document.getElementById('status');
+    let status_text = status.options[status.selectedIndex].text;
 <!--    var studentMajor = document.getElementById('studentMajor').value;-->
 <!--    var studentMinor = document.getElementById('studentMinor').value;-->
-<!--    index = countries.findIndex(x => x.name === studentMajor);-->
-<!--    test = countries[index]['Requirements'];-->
-<!--    majorCode = countries[index]['majorCode'];-->
-<!--    degreeCode = countries[index]['degreeCode'];-->
-<!--    collegeCode = countries[index]['collegeCode'];-->
+    index = countries.findIndex(x => x.name === studentMajor);
+    test = countries[index]['Requirements'];
+    majorCode = countries[index]['majorCode'];
+    degreeCode = countries[index]['degreeCode'];
+    collegeCode = countries[index]['collegeCode'];
 
     $.ajax({
         url: '/_runSelenium',
         type: 'POST',
-        data: {advisorEmail: advisorEmail, advisorPw: advisorPw, effective_term_text: effective_term_text, studentFN: studentFN, studentLN: studentLN, studentID: studentID, studentEmail: studentEmail, studentPhone: studentPhone},
+        data: {advisorEmail: advisorEmail, advisorPw: advisorPw, effective_term_text: effective_term_text, studentFN: studentFN, studentLN: studentLN, studentID: studentID, studentEmail: studentEmail, studentPhone: studentPhone, status_text: status_text, collegeCode: collegeCode},
         success: function(response) {
             alert('Student was successfully declared! Hoo-ray!');
             location.reload();
