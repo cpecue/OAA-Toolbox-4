@@ -199,15 +199,15 @@ $(".declareBtn").click(function() {
     let status_text = status.options[status.selectedIndex].text;
     var studentMajor = document.getElementById('studentMajor').value;
     var studentMinor = document.getElementById('studentMinor').value;
-    index = countries.findIndex(x => x.name === studentMajor);
-    test = countries[index]['Requirements'];
-    majorCode = countries[index]['majorCode'];
-    collegeCode = countries[index]['collegeCode'];
-    degreeCode = countries[index]['degreeCode'];
-    majorCode_text = majorCode;
-    collegeCode_text = collegeCode;
-    degreeCode_text = degreeCode;
-    majorConcentration = countries[index]['majorConcentration'];
+    var index = countries.findIndex(x => x.name === studentMajor);
+    var test = countries[index]['Requirements'];
+    var majorCode = countries[index]['majorCode'];
+    var collegeCode = countries[index]['collegeCode'];
+    var degreeCode = countries[index]['degreeCode'];
+    var majorCode_text = majorCode;
+    var collegeCode_text = collegeCode;
+    var degreeCode_text = degreeCode;
+    var majorConcentration = countries[index]['majorConcentration'];
 
     $.ajax({
         url: '/_runSelenium',
