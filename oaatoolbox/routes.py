@@ -131,7 +131,7 @@ def selenium():
 
 def next_process(driver, e_ID, e_password, effective_term_text, studentFN, studentLN, studentID, studentEmail, studentPhone, requester, status_text, collegeCode, degreeCode, majorCode):
     # This is the website form:
-    driver.get('https://forms.office.com/Pages/ResponsePage.aspx?id=IX3zmVwL6kORA-FvAvWuz-st4tjPcIRPvfsxXephpFpUQlhMMVpHQTRaRjA5MFIxWjJZUkc1SDE4Ny4u')
+    driver.get('https://forms.office.com/Pages/ResponsePage.aspx?id=IX3zmVwL6kORA-FvAvWuzwdoWEcc_LNCksX8Xu0GatNUMFAwSDJONjZXUTBUN0NDRklTS1ZJRlpOSi4u')
     driver.implicitly_wait(60)
     time.sleep(3)
     # Login Screen
@@ -193,11 +193,11 @@ def next_process(driver, e_ID, e_password, effective_term_text, studentFN, stude
     print(f'Form prepared by {requester}')
     time.sleep(2)
 
-    # Next Button
-    next_btn = driver.find_element_by_xpath('/html/body/div/div/div/div/div/div/div[1]/div[2]/div[3]/div[1]/button/div')
-    next_btn.click()
-    print('Clicking to next page...')
-    time.sleep(3)
+    # # Next Button
+    # next_btn = driver.find_element_by_xpath('/html/body/div/div/div/div/div/div/div[1]/div[2]/div[3]/div[1]/button/div')
+    # next_btn.click()
+    # print('Clicking to next page...')
+    # time.sleep(3)
 
     print('Second page loaded...Ending...')
 
