@@ -5,7 +5,7 @@ from selenium.webdriver.support.wait import WebDriverWait
 import secrets
 import os
 from PIL import Image
-from oaatoolbox import app, db, bcrypt, r
+from oaatoolbox import app, db, bcrypt
 from oaatoolbox.forms import RegistrationForm, LoginForm, UpdateAccountForm
 from oaatoolbox.models import User, Declarations, Majors, Minors
 from flask_login import login_user, current_user, logout_user, login_required
@@ -15,8 +15,9 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.common.keys import Keys
 import time
 from rq import Queue
+import redis
 
-
+r = redis.Redis()
 q = Queue(connection=r)
 
 # my background threadf
