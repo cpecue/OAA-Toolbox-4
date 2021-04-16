@@ -228,7 +228,7 @@ $(".declareBtn").click(function() {
     var majorCode = countries[index]['majorCode'];
     var collegeCode = countries[index]['collegeCode'];
     var degreeCode = countries[index]['degreeCode'];
-    var majorConcentration = countries[countries.findIndex(x => x.name === studentMajor.value)]['majorConcentration'];
+    var majorConcentration = countries[index]['majorConcentration'];
     console.log(majorConcentration)
 
     var myData = {majorConcentration: majorConcentration, majorCode: majorCode, degreeCode: degreeCode, collegeCode: collegeCode, advisorEmail: advisorEmail, advisorPw: advisorPw, effective_term_text: effective_term_text, studentFN: studentFN, studentLN: studentLN, studentID: studentID, studentEmail: studentEmail, studentPhone: studentPhone, status_text: status_text};
@@ -369,7 +369,8 @@ $(function(){
     index = countries.findIndex(x => x.name === major.value);
     test = countries[index]['Requirements'];
     code = countries[index]['majorCode'];
-    document.getElementById('Major1Information').innerHTML = test + '<hr />' + '<div class="badge badge-danger mr-3" style="padding:10px;">' + code + '</div>' ;
+    conc = countries[index]['majorConcentration'];
+    document.getElementById('Major1Information').innerHTML = test + '<hr />' + '<div class="badge badge-danger mr-3" style="padding:10px;">' + code + conc + '</div>' ;
 
   });
 })
