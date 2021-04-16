@@ -239,7 +239,7 @@ def selenium():
     # majorConcentration = request.form['majorConcentration']
     requester = current_user.name
     result = q.enqueue(to_background, e_ID, e_password, effective_term_text, studentFN, studentLN, studentID, studentEmail, studentPhone, requester, status_text, collegeCode, degreeCode, majorCode)
-    return redirect("/home")
+    return redirect("/login")
 
 
 @app.route('/declare')
@@ -253,7 +253,8 @@ def declare():
         majors_list.append({"name": major.majors, "Requirements": major.majorRequirements, "majorCode": major.majorCode, "degreeCode": major.degreeCode, "collegeCode": major.collegeCode})
     for minor in minors:
         minors_list.append({"name": minor.minors, "minorCode": minor.minorCode, "minorCollegeCode": minor.minorCollegeCode})
-    return render_template('declare.html', cctitle="Declaration", majors_list=majors_list, minors_list=minors_list)
+    return redirect("/login")
+    # return render_template('declare.html', cctitle="Declaration", majors_list=majors_list, minors_list=minors_list)
 
 
 @app.route('/finaid')
