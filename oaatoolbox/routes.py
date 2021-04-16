@@ -66,7 +66,7 @@ def to_background(e_ID, e_password, effective_term_text, studentFN, studentLN, s
     yes_btn = driver.find_element_by_xpath('//*[@id="idSIButton9"]')  # Yes button on reduced sign in page
     yes_btn.click()
     print(f'successfully logged in as {e_ID}.')
-    time.sleep(2)
+    time.sleep(4)
     #  Page 1
     # Primary Program
     primary_program = driver.find_element_by_xpath('//*[@id="form-container"]/div/div/div/div/div[1]/div[2]/div[2]/div/div[1]/div/div[2]/div/div[1]/div/label/input')  # Setting primary program to true for first declaration
