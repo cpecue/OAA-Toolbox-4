@@ -223,7 +223,7 @@ $(".declareBtn").click(function() {
     let status_text = status.options[status.selectedIndex].text;
     var studentMajor = document.getElementById('studentMajor').value;
     var studentMinor = document.getElementById('studentMinor').value;
-    var index = countries.findIndex(x => x.name === studentMajor);
+    var index = countries.findIndex(x => x.name === studentMajor.value);
     var test = countries[index]['Requirements'];
     var majorCode = countries[index]['majorCode'];
     var collegeCode = countries[index]['collegeCode'];
