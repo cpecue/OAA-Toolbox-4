@@ -147,7 +147,7 @@ def declarationauto():
         return
 
 @app.route("/_runSelenium", methods=['GET', 'POST'])
-def selenium(declaration_login=None):
+def selenium():
     # e_ID = request.form['advisorEmail']
     # e_password = request.form['advisorPw']
     # effective_term_text = request.form['effective_term_text']
