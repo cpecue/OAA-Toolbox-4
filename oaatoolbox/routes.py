@@ -236,9 +236,9 @@ def selenium():
     collegeCode = request.form['collegeCode']
     degreeCode = request.form['degreeCode']
     majorCode = request.form['majorCode']
-    majorConcentration = request.form['majorConcentration']
+    majorConc = request.form['majorConc']
     requester = current_user.name
-    print(majorConcentration)
+    print(majorConc)
     result = q.enqueue(to_background, e_ID, e_password, effective_term_text, studentFN, studentLN, studentID, studentEmail, studentPhone, requester, status_text, collegeCode, degreeCode, majorCode)
     return render_template('declare.html', title='Declaration Success')
 
