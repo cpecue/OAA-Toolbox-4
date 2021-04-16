@@ -126,7 +126,7 @@ def selenium():
     chrome_options.add_argument('--no-sandbox')
     driver = webdriver.Chrome(executable_path=os.getenv('CHROMEDRIVER_PATH'), chrome_options=chrome_options)
     time.sleep(3)
-    next_process()
+    next_process(driver, e_ID, e_password, effective_term_text, studentFN, studentLN, studentID, studentEmail, studentPhone, requester, status_text, collegeCode, degreeCode, majorCode)
 
 
 def next_process(driver, e_ID, e_password, effective_term_text, studentFN, studentLN, studentID, studentEmail, studentPhone, requester, status_text, collegeCode, degreeCode, majorCode):
