@@ -131,8 +131,7 @@ def to_background(e_ID, e_password, effective_term_text, studentFN, studentLN, s
     print(f'Sending majorCode of {majorCode}')
 
     driver.close()
-    print('Returning to function')
-    return
+    return 'Returning to function'
 
 
 
