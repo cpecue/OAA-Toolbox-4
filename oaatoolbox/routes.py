@@ -16,9 +16,10 @@ from selenium.webdriver.common.keys import Keys
 import time
 from rq import Queue
 import redis
+from worker import conn
 
-r = redis.Redis()
-q = Queue(connection=r)
+
+q = Queue(connection=conn)
 
 # my background threadf
 class MyWorker():
