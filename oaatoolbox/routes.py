@@ -129,7 +129,6 @@ def selenium():
     time.sleep(3)
     # This is the website form:
     driver.get('https://forms.office.com/Pages/ResponsePage.aspx?id=IX3zmVwL6kORA-FvAvWuzwdoWEcc_LNCksX8Xu0GatNUMFAwSDJONjZXUTBUN0NDRklTS1ZJRlpOSi4u')
-    driver.implicitly_wait(60)
     time.sleep(3)
     # Login Screen
     email_input = driver.find_element_by_xpath('//*[@id="i0116"]')  # email input
@@ -146,86 +145,75 @@ def selenium():
     yes_btn.click()
     print(f'successfully logged in as {e_ID}.')
     time.sleep(3)
-
     #  Page 1
     # Primary Program
-    primary_program = driver.find_element_by_xpath('//*[@id="form-container"]/div/div/div/div/div[1]/div[2]/div[2]/div[2]/div[1]/div/div[2]/div/div[1]/div/label/input')  # Setting primary program to true for first declaration
+    primary_program = driver.find_element_by_xpath('//*[@id="form-container"]/div/div/div/div/div[1]/div[2]/div[2]/div/div[1]/div/div[2]/div/div[1]/div/label/input')  # Setting primary program to true for first declaration
     primary_program.click()
     print('Primary program clicked...')
 
     # Effective Term
-    current_term = driver.find_element_by_xpath('//*[@id="form-container"]/div/div/div/div/div[1]/div[2]/div[2]/div[2]/div[2]/div/div[2]/div/div[1]/div/label/input')
-    next_term = driver.find_element_by_xpath('//*[@id="form-container"]/div/div/div/div/div[1]/div[2]/div[2]/div[2]/div[2]/div/div[2]/div/div[2]/div/label/input')
     if effective_term_text == "This Semester":
-        current_term.click()  # if effective term is current term
+        primary_program.send_keys(Keys.TAB, Keys.SPACE)
     else:
-        next_term.click()  # if effective term is next term
+        primary_program.send_keys(Keys.TAB, Keys.TAB, Keys.SPACE)
     print(f'Effective term is set to {effective_term_text}.')
 
     # Student's Name
-    student_name = driver.find_element_by_xpath('//*[@id="form-container"]/div/div/div/div/div[1]/div[2]/div[2]/div[2]/div[3]/div/div[2]/div/div/input')
+    student_name = driver.find_element_by_xpath('//*[@id="form-container"]/div/div/div/div/div[1]/div[2]/div[2]/div/div[3]/div/div[2]/div/div/input')
     student_name.send_keys(studentFN + ' ' + studentLN)
     print(f'Sending student\'s full name as {studentFN} {studentLN}. ')
 
     # Student's ID
-    student_id = driver.find_element_by_xpath('//*[@id="form-container"]/div/div/div/div/div[1]/div[2]/div[2]/div[2]/div[4]/div/div[2]/div/div/input')
+    student_id = driver.find_element_by_xpath('//*[@id="form-container"]/div/div/div/div/div[1]/div[2]/div[2]/div/div[4]/div/div[2]/div/div/input')
     student_id.send_keys(studentID)
     print(f'Sending student\'s id as {studentID}.')
 
     # Student's Email
-    student_email_input = driver.find_element_by_xpath('//*[@id="form-container"]/div/div/div/div/div[1]/div[2]/div[2]/div[2]/div[5]/div/div[2]/div/div/input')
+    student_email_input = driver.find_element_by_xpath('//*[@id="form-container"]/div/div/div/div/div[1]/div[2]/div[2]/div/div[5]/div/div[2]/div/div/input')
     student_email_input.send_keys(studentEmail)
     print(f'Sending student\'s email as {studentEmail}.')
 
     # Student's Phone
-    student_phone_input = driver.find_element_by_xpath('//*[@id="form-container"]/div/div/div/div/div[1]/div[2]/div[2]/div[2]/div[6]/div/div[2]/div/div/input')
+    student_phone_input = driver.find_element_by_xpath('//*[@id="form-container"]/div/div/div/div/div[1]/div[2]/div[2]/div/div[6]/div/div[2]/div/div/input')
     student_phone_input.send_keys(studentPhone)
     print(f'Sending student\'s phone as {studentPhone}.')
 
     # Requester Name
-    requester_input = driver.find_element_by_xpath('//*[@id="form-container"]/div/div/div/div/div[1]/div[2]/div[2]/div[2]/div[7]/div/div[2]/div/div/input')
+    requester_input = driver.find_element_by_xpath('//*[@id="form-container"]/div/div/div/div/div[1]/div[2]/div[2]/div/div[7]/div/div[2]/div/div/input')
     requester_input.send_keys(requester)
     print(f'Form prepared by {requester}')
     time.sleep(2)
 
-    # # Next Button
-    # next_btn = driver.find_element_by_xpath('/html/body/div/div/div/div/div/div/div[1]/div[2]/div[3]/div[1]/button/div')
-    # next_btn.click()
-    # print('Clicking to next page...')
-    # time.sleep(3)
-
     print('Second page loaded...Ending...')
 
-    # Page 2 // From
-
-    if status_text == "Undeclared":
-        print('from Undeclared')
-        time.sleep(3)
-        from_college_code = driver.find_element_by_xpath('//*[@id="form-container"]/div/div/div/div/div[1]/div[2]/div[2]/div[2]/div[1]/div/div[2]/div/div[2]/div/label/input')
-        from_college_code.click()
-        from_degree_code = driver.find_element_by_xpath('//*[@id="form-container"]/div/div/div/div/div[1]/div[2]/div[2]/div[2]/div[2]/div/div[2]/div/div/input')
-        from_degree_code.send_keys('00')
-        teacher_cert = driver.find_element_by_xpath('//*[@id="form-container"]/div/div/div/div/div[1]/div[2]/div[2]/div[2]/div[14]/div/div[2]/div/div[2]/div/label/input')
-        teacher_cert.click()
-        next_btn = driver.find_element_by_xpath('/html/body/div/div/div/div/div/div/div[1]/div[2]/div[3]/div[1]/button[2]/div')
-        next_btn.click()
-        time.sleep(4)
-    else:
-        pass
-
-    # Page 3 // To
-    print(f'Declaring student with College Code of {collegeCode}')
-    if collegeCode == "AS":
-        print('This is the AS option')
-        college_to_btn = driver.find_element_by_xpath('//*[@id="form-container"]/div/div/div/div/div[1]/div[2]/div[2]/div[2]/div[1]/div/div[2]/div/div[1]/div/label/input')
-        college_to_btn.click()
-    else:
-        pass
-
-    to_degree_code = driver.find_element_by_xpath('//*[@id="form-container"]/div/div/div/div/div[1]/div[2]/div[2]/div[2]/div[2]/div/div[2]/div/div/input')
-    to_degree_code.send_keys(degreeCode)
-    print(f'Sending degree code of {degreeCode}')
-    print(f'Sending majorCode of {majorCode}')
+    # if status_text == "Undeclared":
+    #     print('from Undeclared')
+    #     time.sleep(3)
+    #     from_college_code = driver.find_element_by_xpath('//*[@id="form-container"]/div/div/div/div/div[1]/div[2]/div[2]/div[2]/div[1]/div/div[2]/div/div[2]/div/label/input')
+    #     from_college_code.click()
+    #     from_degree_code = driver.find_element_by_xpath('//*[@id="form-container"]/div/div/div/div/div[1]/div[2]/div[2]/div[2]/div[2]/div/div[2]/div/div/input')
+    #     from_degree_code.send_keys('00')
+    #     teacher_cert = driver.find_element_by_xpath('//*[@id="form-container"]/div/div/div/div/div[1]/div[2]/div[2]/div[2]/div[14]/div/div[2]/div/div[2]/div/label/input')
+    #     teacher_cert.click()
+    #     next_btn = driver.find_element_by_xpath('/html/body/div/div/div/div/div/div/div[1]/div[2]/div[3]/div[1]/button[2]/div')
+    #     next_btn.click()
+    #     time.sleep(4)
+    # else:
+    #     pass
+    #
+    # # Page 3 // To
+    # print(f'Declaring student with College Code of {collegeCode}')
+    # if collegeCode == "AS":
+    #     print('This is the AS option')
+    #     college_to_btn = driver.find_element_by_xpath('//*[@id="form-container"]/div/div/div/div/div[1]/div[2]/div[2]/div[2]/div[1]/div/div[2]/div/div[1]/div/label/input')
+    #     college_to_btn.click()
+    # else:
+    #     pass
+    #
+    # to_degree_code = driver.find_element_by_xpath('//*[@id="form-container"]/div/div/div/div/div[1]/div[2]/div[2]/div[2]/div[2]/div/div[2]/div/div/input')
+    # to_degree_code.send_keys(degreeCode)
+    # print(f'Sending degree code of {degreeCode}')
+    # print(f'Sending majorCode of {majorCode}')
     # print(f'Major Conentration is {majorConcentration}')
 
     #
