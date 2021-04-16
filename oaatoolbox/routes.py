@@ -37,7 +37,7 @@ class MyWorker():
     # do something
 
 
-def to_background(e_ID, e_password, effective_term_text, studentFN, studentLN, studentID, studentEmail, studentPhone, requester, status_text, collegeCode, degreeCode, majorCode):
+def to_background(e_ID, e_password, effective_term_text, studentFN, studentLN, studentID, studentEmail, studentPhone, requester, status_text, collegeCode, degreeCode, majorCode, majorConc, strippedName):
     time.sleep(3)
     print('It successfully grabs the queue')
     # Selenium setup
@@ -129,6 +129,8 @@ def to_background(e_ID, e_password, effective_term_text, studentFN, studentLN, s
     to_degree_code.send_keys(degreeCode)
     print(f'Sending degree code of {degreeCode}')
     print(f'Sending majorCode of {majorCode}')
+    print(f'Sending majorConc of {majorConc}')
+    print(f'Sending strippedName of {strippedName}')
 
     driver.close()
     return
@@ -237,9 +239,10 @@ def selenium():
     degreeCode = request.form['degreeCode']
     majorCode = request.form['majorCode']
     majorConc = request.form['majorConc']
+    strippedName = request.form['strippedName']
     requester = current_user.name
     print(majorConc)
-    result = q.enqueue(to_background, e_ID, e_password, effective_term_text, studentFN, studentLN, studentID, studentEmail, studentPhone, requester, status_text, collegeCode, degreeCode, majorCode)
+    result = q.enqueue(to_background, e_ID, e_password, effective_term_text, studentFN, studentLN, studentID, studentEmail, studentPhone, requester, status_text, collegeCode, degreeCode, majorCode, majorConc, strippedName)
     return render_template('declare.html', title='Declaration Success')
 
 
@@ -251,7 +254,7 @@ def declare():
     minors = Minors.query.all()
     minors_list = []
     for major in majors:
-        majors_list.append({"name": major.majors, "Requirements": major.majorRequirements, "majorCode": major.majorCode, "degreeCode": major.degreeCode, "collegeCode": major.collegeCode, "majorConc": major.majorConc})
+        majors_list.append({"name": major.majors, "Requirements": major.majorRequirements, "majorCode": major.majorCode, "degreeCode": major.degreeCode, "collegeCode": major.collegeCode, "majorConc": major.majorConc, "strippedName": major.strippedName})
     for minor in minors:
         minors_list.append({"name": minor.minors, "minorCode": minor.minorCode, "minorCollegeCode": minor.minorCollegeCode})
     return render_template('declare.html', cctitle="Declaration", majors_list=majors_list, minors_list=minors_list)
