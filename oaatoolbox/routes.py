@@ -235,8 +235,8 @@ def selenium():
     majorCode = request.form['majorCode']
     # majorConcentration = request.form['majorConcentration']
     requester = current_user.name
-    to_background(e_ID, e_password, effective_term_text, studentFN, studentLN, studentID, studentEmail, studentPhone, status_text, collegeCode, degreeCode, majorCode, requester)
-
+    # to_background(e_ID, e_password, effective_term_text, studentFN, studentLN, studentID, studentEmail, studentPhone, status_text, collegeCode, degreeCode, majorCode, requester)
+    result = q.enqueue(to_background, e_ID, e_password, effective_term_text, studentFN, studentLN, studentID, studentEmail, studentPhone, status_text, collegeCode, degreeCode, majorCode, requester)
     return render_template('declare.html', cctitle="Declaration")
 
 
