@@ -10,9 +10,7 @@ from selenium import webdriver
 import time
 import redis
 from rq import Queue
-
-r = redis.Redis()
-q = Queue(connection=r)
+q = Queue(connection=conn)
 
 @app.route('/')
 @login_required
