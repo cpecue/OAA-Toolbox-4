@@ -122,19 +122,18 @@ def selenium():
     chrome_options.add_argument('--disable-gpu')
     chrome_options.add_argument('--no-sandbox')
     driver = webdriver.Chrome(executable_path=os.getenv('CHROMEDRIVER_PATH'), chrome_options=chrome_options)
-    redisfunction(e_ID, e_password, effective_term_text, studentFN, studentLN, studentID, studentEmail, studentPhone, status_text, collegeCode, degreeCode, majorCode, requester, driver)
-
+    automation_data(e_ID, e_password, effective_term_text, studentFN, studentLN, studentID, studentEmail, studentPhone, status_text, collegeCode, degreeCode, majorCode, requester, driver)
 
 def automation_data(e_ID, e_password, effective_term_text, studentFN, studentLN, studentID, studentEmail, studentPhone, status_text, collegeCode, degreeCode, majorCode, requester, driver):
     # Login Screen
     email_input = driver.find_element_by_xpath('//*[@id="i0116"]')  # email input
-    email_input.send_keys("e_ID")
+    email_input.send_keys(e_ID)
     next_btn = driver.find_element_by_xpath('//*[@id="idSIButton9"]')  # next button on log in page
     next_btn.click()
     time.sleep(3)
     # Password Screen
     password_input = driver.find_element_by_xpath('//*[@id="i0118"]')  # password input
-    password_input.send_keys("e_password")
+    password_input.send_keys(e_password)
     sign_in = driver.find_element_by_xpath('//*[@id="idSIButton9"]')  # sign-in button on password page
     sign_in.click()
     time.sleep(3)
@@ -143,64 +142,63 @@ def automation_data(e_ID, e_password, effective_term_text, studentFN, studentLN,
     yes_btn.click()
     print(f'successfully logged in as {"e_ID"}.')
     time.sleep(3)
-    #
-    # #  Page 1
-    # # Primary Program
-    # primary_program = driver.find_element_by_xpath(
-    #     '//*[@id="form-container"]/div/div/div/div/div[1]/div[2]/div[2]/div[2]/div[1]/div/div[2]/div/div[1]/div/label/input')  # Setting primary program to true for first declaration
-    # primary_program.click()
-    # print('Primary program clicked...')
-    #
-    # # Effective Term
-    # current_term = driver.find_element_by_xpath(
-    #     '//*[@id="form-container"]/div/div/div/div/div[1]/div[2]/div[2]/div[2]/div[2]/div/div[2]/div/div[1]/div/label/input')
-    # next_term = driver.find_element_by_xpath(
-    #     '//*[@id="form-container"]/div/div/div/div/div[1]/div[2]/div[2]/div[2]/div[2]/div/div[2]/div/div[2]/div/label/input')
-    # if effective_term_text == "This Semester":
-    #     current_term.click()  # if effective term is current term
-    # else:
-    #     next_term.click()  # if effective term is next term
-    # print(f'Effective term is set to {effective_term_text}.')
-    #
-    # # Student's Name
-    # student_name = driver.find_element_by_xpath(
-    #     '//*[@id="form-container"]/div/div/div/div/div[1]/div[2]/div[2]/div[2]/div[3]/div/div[2]/div/div/input')
-    # student_name.send_keys(studentFN + ' ' + studentLN)
-    # print(f'Sending student\'s full name as {studentFN} {studentLN}. ')
-    #
-    # # Student's ID
-    # student_id = driver.find_element_by_xpath(
-    #     '//*[@id="form-container"]/div/div/div/div/div[1]/div[2]/div[2]/div[2]/div[4]/div/div[2]/div/div/input')
-    # student_id.send_keys(studentID)
-    # print(f'Sending student\'s id as {studentID}.')
-    #
-    # # Student's Email
-    # student_email_input = driver.find_element_by_xpath(
-    #     '//*[@id="form-container"]/div/div/div/div/div[1]/div[2]/div[2]/div[2]/div[5]/div/div[2]/div/div/input')
-    # student_email_input.send_keys(studentEmail)
-    # print(f'Sending student\'s email as {studentEmail}.')
-    #
-    # # Student's Phone
-    # student_phone_input = driver.find_element_by_xpath(
-    #     '//*[@id="form-container"]/div/div/div/div/div[1]/div[2]/div[2]/div[2]/div[6]/div/div[2]/div/div/input')
-    # student_phone_input.send_keys(studentPhone)
-    # print(f'Sending student\'s phone as {studentPhone}.')
-    #
-    # # Requester Name
-    # requester_input = driver.find_element_by_xpath(
-    #     '//*[@id="form-container"]/div/div/div/div/div[1]/div[2]/div[2]/div[2]/div[7]/div/div[2]/div/div/input')
-    # requester_input.send_keys(requester)
-    # print(f'Form prepared by {requester}')
-    # time.sleep(2)
-    #
-    # # Next Button
-    # next_btn = driver.find_element_by_xpath(
-    #     '/html/body/div/div/div/div/div/div/div[1]/div[2]/div[3]/div[1]/button/div')
-    # next_btn.click()
-    # print('Clicking to next page...')
-    # time.sleep(3)
-    #
-    # print('Second page loaded...Ending...')
+    #  Page 1
+    # Primary Program
+    primary_program = driver.find_element_by_xpath(
+        '//*[@id="form-container"]/div/div/div/div/div[1]/div[2]/div[2]/div[2]/div[1]/div/div[2]/div/div[1]/div/label/input')  # Setting primary program to true for first declaration
+    primary_program.click()
+    print('Primary program clicked...')
+
+    # Effective Term
+    current_term = driver.find_element_by_xpath(
+        '//*[@id="form-container"]/div/div/div/div/div[1]/div[2]/div[2]/div[2]/div[2]/div/div[2]/div/div[1]/div/label/input')
+    next_term = driver.find_element_by_xpath(
+        '//*[@id="form-container"]/div/div/div/div/div[1]/div[2]/div[2]/div[2]/div[2]/div/div[2]/div/div[2]/div/label/input')
+    if effective_term_text == "This Semester":
+        current_term.click()  # if effective term is current term
+    else:
+        next_term.click()  # if effective term is next term
+    print(f'Effective term is set to {effective_term_text}.')
+
+    # Student's Name
+    student_name = driver.find_element_by_xpath(
+        '//*[@id="form-container"]/div/div/div/div/div[1]/div[2]/div[2]/div[2]/div[3]/div/div[2]/div/div/input')
+    student_name.send_keys(studentFN + ' ' + studentLN)
+    print(f'Sending student\'s full name as {studentFN} {studentLN}. ')
+
+    # Student's ID
+    student_id = driver.find_element_by_xpath(
+        '//*[@id="form-container"]/div/div/div/div/div[1]/div[2]/div[2]/div[2]/div[4]/div/div[2]/div/div/input')
+    student_id.send_keys(studentID)
+    print(f'Sending student\'s id as {studentID}.')
+
+    # Student's Email
+    student_email_input = driver.find_element_by_xpath(
+        '//*[@id="form-container"]/div/div/div/div/div[1]/div[2]/div[2]/div[2]/div[5]/div/div[2]/div/div/input')
+    student_email_input.send_keys(studentEmail)
+    print(f'Sending student\'s email as {studentEmail}.')
+
+    # Student's Phone
+    student_phone_input = driver.find_element_by_xpath(
+        '//*[@id="form-container"]/div/div/div/div/div[1]/div[2]/div[2]/div[2]/div[6]/div/div[2]/div/div/input')
+    student_phone_input.send_keys(studentPhone)
+    print(f'Sending student\'s phone as {studentPhone}.')
+
+    # Requester Name
+    requester_input = driver.find_element_by_xpath(
+        '//*[@id="form-container"]/div/div/div/div/div[1]/div[2]/div[2]/div[2]/div[7]/div/div[2]/div/div/input')
+    requester_input.send_keys(requester)
+    print(f'Form prepared by {requester}')
+    time.sleep(2)
+
+    # Next Button
+    next_btn = driver.find_element_by_xpath(
+        '/html/body/div/div/div/div/div/div/div[1]/div[2]/div[3]/div[1]/button/div')
+    next_btn.click()
+    print('Clicking to next page...')
+    time.sleep(3)
+
+    print('Second page loaded...Ending...')
     #
     # if status_text == "Undeclared":
     #     print('from Undeclared')
@@ -248,11 +246,10 @@ def automation_data(e_ID, e_password, effective_term_text, studentFN, studentLN,
     driver.implicitly_wait(60)
     time.sleep(3)
     return render_template('declare.html', cctitle="Declaration")
-
-
-def redisfunction(e_ID, e_password, effective_term_text, studentFN, studentLN, studentID, studentEmail, studentPhone, status_text, collegeCode, degreeCode, majorCode, requester, driver):
-    result = q.enqueue(automation_data, e_ID, e_password, effective_term_text, studentFN, studentLN, studentID, studentEmail, studentPhone, status_text, collegeCode, degreeCode, majorCode, requester, driver)
-    print(f'{result}')
+#
+# def redisfunction():
+#     result = q.enqueue(selenium)
+#     print(f'{result}')
 
 @app.route('/declare')
 @login_required
