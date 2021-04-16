@@ -241,7 +241,7 @@ def selenium():
     requester = current_user.name
     result = q.enqueue(to_background, e_ID, e_password, effective_term_text, studentFN, studentLN, studentID, studentEmail, studentPhone, requester, status_text, collegeCode, degreeCode, majorCode)
     print('has returned to function')
-    return render_template('/', cctitle="Home")
+    return render_template('home.html', cctitle="Home")
 
 
 @app.route('/declare')
