@@ -133,7 +133,7 @@ def selenium():
 
     result = q.enqueue(declaration_login, driver)
     print(f'{result}')
-    return render_template('declare.html', cctitle="Declaration")
+    # return render_template('declare.html', cctitle="Declaration")
 
 
 def declaration_login(driver):
@@ -152,7 +152,7 @@ def declaration_login(driver):
     # Reduce Sign-ins Page
     yes_btn = driver.find_element_by_xpath('//*[@id="idSIButton9"]')  # Yes button on reduced sign in page
     yes_btn.click()
-    print(f'successfully logged in as {e_ID}.')
+    print(f'successfully logged in as {"e_ID"}.')
     time.sleep(3)
     #
     # #  Page 1
