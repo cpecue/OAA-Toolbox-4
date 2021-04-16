@@ -123,20 +123,6 @@ def selenium():
     chrome_options.add_argument('--no-sandbox')
     driver = webdriver.Chrome(executable_path=os.getenv('CHROMEDRIVER_PATH'), chrome_options=chrome_options)
 
-    print('Staring declaration process. Logging in...')
-    time.sleep(3)
-    # This is the website form:
-    driver.get(
-        'https://forms.office.com/Pages/ResponsePage.aspx?id=IX3zmVwL6kORA-FvAvWuz-st4tjPcIRPvfsxXephpFpUQlhMMVpHQTRaRjA5MFIxWjJZUkc1SDE4Ny4u')
-    driver.implicitly_wait(60)
-    time.sleep(3)
-
-    result = q.enqueue(declaration_login, driver)
-    print(f'{result}')
-    # return render_template('declare.html', cctitle="Declaration")
-
-
-def declaration_login(driver):
     # Login Screen
     email_input = driver.find_element_by_xpath('//*[@id="i0116"]')  # email input
     email_input.send_keys("e_ID")
@@ -250,8 +236,20 @@ def declaration_login(driver):
     #
     # time.sleep(3)
     driver.close()
-    return
 
+    print('Staring declaration process. Logging in...')
+    time.sleep(3)
+    # This is the website form:
+    driver.get(
+        'https://forms.office.com/Pages/ResponsePage.aspx?id=IX3zmVwL6kORA-FvAvWuz-st4tjPcIRPvfsxXephpFpUQlhMMVpHQTRaRjA5MFIxWjJZUkc1SDE4Ny4u')
+    driver.implicitly_wait(60)
+    time.sleep(3)
+    return render_template('declare.html', cctitle="Declaration")
+
+
+def redisfunction():
+    result = q.enqueue(selenium)
+    print(f'{result}')
 
 @app.route('/declare')
 @login_required
