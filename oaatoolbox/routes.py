@@ -1,3 +1,5 @@
+import logging
+import threading
 from flask import render_template, url_for, flash, redirect, request
 from selenium.webdriver.support.wait import WebDriverWait
 import secrets
@@ -13,7 +15,20 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.common.keys import Keys
 import time
 
+# my background thread
+class MyWorker():
 
+  def __init__(self, message):
+    self.message = message
+
+    thread = threading.Thread(target=self.run, args=())
+    thread.daemon = True
+    thread.start()
+
+  def run(self):
+    logging.info(f'run MyWorker with parameter {self.message}')
+
+    # do something
 
 @app.route('/')
 @login_required
@@ -101,6 +116,7 @@ def account():
 
 @app.route("/_runSelenium", methods=['GET', 'POST'])
 def selenium():
+    MyWorker('param_value')
     # Toolbox Information
     print('Staring declaration process. Logging in...')
     e_ID = request.form['advisorEmail']
@@ -215,7 +231,6 @@ def selenium():
     # to_major_1_code.send_keys('majorCode')
     # print(f'Sending major code of')
 
-    time.sleep(3)
     driver.close()
     return render_template('declare.html', cctitle="Declaration")
 

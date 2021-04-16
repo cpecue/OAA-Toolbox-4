@@ -16,16 +16,16 @@
                         <div class="card-header">Advisor Information</div>
                         <div class="card-body">
                             <div class="row">
-                                <div class="col-lg-2 mb-3">
+                                <div class="col-lg-3 mb-3">
                                         <select class="form-select form-select-lg" aria-label="declaringSemester" id="effective_term">
                                           <option selected value="0">This Semester</option>
                                           <option value="1">Next Semester</option>
                                         </select>
                                 </div>
-                                <div class="col-lg-5">
+                                <div class="col-lg-3">
                                     <input type="text" class="form-control form-control-lg courses" id="advisorEmail" placeholder="Advisor Email">
                                 </div>
-                                <div class="col-lg-5">
+                                <div class="col-lg-6">
                                     <input type="password" class="form-control form-control-lg courses" id="advisorPw" placeholder="Advisor Password">
                                 </div>
                             </div>
@@ -50,10 +50,34 @@
                                 <div class="col-lg-6">
                                     <input type="text" class="form-control form-control-lg courses bfh-phone" id="studentPhone" placeholder="Phone Number" data-format="+1 (ddd) ddd-dddd">
                                 </div>
-                                <div class="col-lg-6">
+                                <div class="col-lg-6 mb-2">
                                         <select class="form-select form-select-lg" aria-label="student status" id="status" onchange="studentFromDegree()">
                                           <option selected value="0">Undeclared</option>
                                           <option value="1">Declared</option>
+                                        </select>
+                                </div>
+                                <div class="col-lg-3 mb-2">
+                                        <select class="form-select form-select-lg" aria-label="student_standing" id="student_standing" onchange="">
+                                          <option selected value="0">On Good Standing</option>
+                                          <option value="1">Not On Good Standing</option>
+                                        </select>
+                                </div>
+                                <div class="col-lg-3 mb-2">
+                                        <select class="form-select form-select-lg" aria-label="student_honors" id="student_honors" onchange="">
+                                          <option selected value="0">Not Honors</option>
+                                          <option value="1">Honors</option>
+                                        </select>
+                                </div>
+                                <div class="col-lg-3 mb-2">
+                                        <select class="form-select form-select-lg" aria-label="student_senior" id="student_senior" onchange="">
+                                          <option selected value="0">Not Senior with Degree</option>
+                                          <option value="1">Senior with Degree</option>
+                                        </select>
+                                </div>
+                                <div class="col-lg-3 mb-2">
+                                        <select class="form-select form-select-lg" aria-label="student_transfer" id="student_transfer" onchange="">
+                                          <option selected value="0">Not Transfer Student</option>
+                                          <option value="1">Transfer Student</option>
                                         </select>
                                 </div>
                             </div>
