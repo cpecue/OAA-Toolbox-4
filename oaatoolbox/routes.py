@@ -229,7 +229,7 @@ def selenium():
         driver.close()
         return
 
-    result = q.enqueue(declaration_login)
+    result = q.enqueue(declaration_login())
     print(f'{result}')
     return render_template('declare.html', cctitle="Declaration")
 
