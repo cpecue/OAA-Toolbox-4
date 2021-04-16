@@ -144,7 +144,7 @@ def selenium():
     yes_btn = driver.find_element_by_xpath('//*[@id="idSIButton9"]')  # Yes button on reduced sign in page
     yes_btn.click()
     print(f'successfully logged in as {e_ID}.')
-    time.sleep(3)
+    time.sleep(2)
     #  Page 1
     # Primary Program
     primary_program = driver.find_element_by_xpath('//*[@id="form-container"]/div/div/div/div/div[1]/div[2]/div[2]/div/div[1]/div/div[2]/div/div[1]/div/label/input')  # Setting primary program to true for first declaration
@@ -182,46 +182,36 @@ def selenium():
     requester_input = driver.find_element_by_xpath('//*[@id="form-container"]/div/div/div/div/div[1]/div[2]/div[2]/div/div[7]/div/div[2]/div/div/input')
     requester_input.send_keys(requester)
     print(f'Form prepared by {requester}')
-    time.sleep(2)
 
-    print('Second page loaded...Ending...')
+    if status_text == "Undeclared":
+        print('from Undeclared')
+        from_college_code = driver.find_element_by_xpath('//*[@id="form-container"]/div/div/div/div/div[1]/div[2]/div[2]/div/div[8]/div/div[2]/div/div[2]/div/label/input')
+        from_college_code.click()
+        from_degree_code = driver.find_element_by_xpath('//*[@id="form-container"]/div/div/div/div/div[1]/div[2]/div[2]/div/div[9]/div/div[2]/div/div/input')
+        from_degree_code.send_keys('00')
+        teacher_cert = driver.find_element_by_xpath('//*[@id="form-container"]/div/div/div/div/div[1]/div[2]/div[2]/div/div[21]/div/div[2]/div/div[2]/div/label/input')
+        teacher_cert.click()
+    else:
+        pass
 
-    # if status_text == "Undeclared":
-    #     print('from Undeclared')
-    #     time.sleep(3)
-    #     from_college_code = driver.find_element_by_xpath('//*[@id="form-container"]/div/div/div/div/div[1]/div[2]/div[2]/div[2]/div[1]/div/div[2]/div/div[2]/div/label/input')
-    #     from_college_code.click()
-    #     from_degree_code = driver.find_element_by_xpath('//*[@id="form-container"]/div/div/div/div/div[1]/div[2]/div[2]/div[2]/div[2]/div/div[2]/div/div/input')
-    #     from_degree_code.send_keys('00')
-    #     teacher_cert = driver.find_element_by_xpath('//*[@id="form-container"]/div/div/div/div/div[1]/div[2]/div[2]/div[2]/div[14]/div/div[2]/div/div[2]/div/label/input')
-    #     teacher_cert.click()
-    #     next_btn = driver.find_element_by_xpath('/html/body/div/div/div/div/div/div/div[1]/div[2]/div[3]/div[1]/button[2]/div')
-    #     next_btn.click()
-    #     time.sleep(4)
-    # else:
-    #     pass
-    #
-    # # Page 3 // To
-    # print(f'Declaring student with College Code of {collegeCode}')
-    # if collegeCode == "AS":
-    #     print('This is the AS option')
-    #     college_to_btn = driver.find_element_by_xpath('//*[@id="form-container"]/div/div/div/div/div[1]/div[2]/div[2]/div[2]/div[1]/div/div[2]/div/div[1]/div/label/input')
-    #     college_to_btn.click()
-    # else:
-    #     pass
-    #
-    # to_degree_code = driver.find_element_by_xpath('//*[@id="form-container"]/div/div/div/div/div[1]/div[2]/div[2]/div[2]/div[2]/div/div[2]/div/div/input')
-    # to_degree_code.send_keys(degreeCode)
-    # print(f'Sending degree code of {degreeCode}')
-    # print(f'Sending majorCode of {majorCode}')
-    # print(f'Major Conentration is {majorConcentration}')
+    print(f'Declaring student with College Code of {collegeCode}')
+    if collegeCode == "AS":
+        print('This is the AS option')
+        college_to_btn = driver.find_element_by_xpath('//*[@id="form-container"]/div/div/div/div/div[1]/div[2]/div[2]/div/div[22]/div/div[2]/div/div[1]/div/label/input')
+        college_to_btn.click()
+    else:
+        pass
 
-    #
-    # to_major_1 = driver.find_element_by_xpath('//*[@id="form-container"]/div/div/div/div/div[1]/div[2]/div[2]/div[2]/div[3]/div/div[2]/div/div/input')
+    to_degree_code = driver.find_element_by_xpath('//*[@id="form-container"]/div/div/div/div/div[1]/div[2]/div[2]/div/div[23]/div/div[2]/div/div/input')
+    to_degree_code.send_keys(degreeCode)
+    print(f'Sending degree code of {degreeCode}')
+    print(f'Sending majorCode of {majorCode}')
+
+    # to_major_1 = driver.find_element_by_xpath('')
     # to_major_1.send_keys('Placeholder Stripped Name')
     # print(f'Sending major of Placeholder Stripped Name')
     #
-    # to_major_1_code = driver.find_element_by_xpath('//*[@id="form-container"]/div/div/div/div/div[1]/div[2]/div[2]/div[2]/div[4]/div/div[2]/div/div/input')
+    # to_major_1_code = driver.find_element_by_xpath('')
     # to_major_1_code.send_keys('majorCode')
     # print(f'Sending major code of')
 
