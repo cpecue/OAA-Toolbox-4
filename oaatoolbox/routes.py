@@ -10,6 +10,7 @@ from flask_login import login_user, current_user, logout_user, login_required
 from selenium import webdriver
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.common.by import By
+from selenium.webdriver.common.keys import Keys
 import time
 
 
@@ -126,10 +127,6 @@ def selenium():
     chrome_options.add_argument('--no-sandbox')
     driver = webdriver.Chrome(executable_path=os.getenv('CHROMEDRIVER_PATH'), chrome_options=chrome_options)
     time.sleep(3)
-    next_process(driver, e_ID, e_password, effective_term_text, studentFN, studentLN, studentID, studentEmail, studentPhone, requester, status_text, collegeCode, degreeCode, majorCode)
-
-
-def next_process(driver, e_ID, e_password, effective_term_text, studentFN, studentLN, studentID, studentEmail, studentPhone, requester, status_text, collegeCode, degreeCode, majorCode):
     # This is the website form:
     driver.get('https://forms.office.com/Pages/ResponsePage.aspx?id=IX3zmVwL6kORA-FvAvWuzwdoWEcc_LNCksX8Xu0GatNUMFAwSDJONjZXUTBUN0NDRklTS1ZJRlpOSi4u')
     driver.implicitly_wait(60)
@@ -137,14 +134,12 @@ def next_process(driver, e_ID, e_password, effective_term_text, studentFN, stude
     # Login Screen
     email_input = driver.find_element_by_xpath('//*[@id="i0116"]')  # email input
     email_input.send_keys(e_ID)
-    next_btn = driver.find_element_by_xpath('//*[@id="idSIButton9"]')  # next button on log in page
-    next_btn.click()
+    email_input.send_keys(Keys.ENTER)
     time.sleep(3)
     # Password Screen
     password_input = driver.find_element_by_xpath('//*[@id="i0118"]')  # password input
     password_input.send_keys(e_password)
-    sign_in = driver.find_element_by_xpath('//*[@id="idSIButton9"]')  # sign-in button on password page
-    sign_in.click()
+    password_input.send_keys(Keys.ENTER)
     time.sleep(3)
     # Reduce Sign-ins Page
     yes_btn = driver.find_element_by_xpath('//*[@id="idSIButton9"]')  # Yes button on reduced sign in page
