@@ -253,8 +253,7 @@ def declare():
         majors_list.append({"name": major.majors, "Requirements": major.majorRequirements, "majorCode": major.majorCode, "degreeCode": major.degreeCode, "collegeCode": major.collegeCode})
     for minor in minors:
         minors_list.append({"name": minor.minors, "minorCode": minor.minorCode, "minorCollegeCode": minor.minorCollegeCode})
-    return redirect("/login")
-    # return render_template('declare.html', cctitle="Declaration", majors_list=majors_list, minors_list=minors_list)
+    return render_template('declare.html', cctitle="Declaration", majors_list=majors_list, minors_list=minors_list)
 
 
 @app.route('/finaid')
