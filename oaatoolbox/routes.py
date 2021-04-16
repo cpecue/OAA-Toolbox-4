@@ -20,7 +20,7 @@ import redis
 r = redis.Redis()
 q = Queue(connection=r)
 
-# my background thread
+# my background threadf
 class MyWorker():
 
   def __init__(self, message):
