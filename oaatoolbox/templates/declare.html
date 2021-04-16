@@ -228,20 +228,20 @@ $(".declareBtn").click(function() {
     var majorCode = countries[index]['majorCode'];
     var collegeCode = countries[index]['collegeCode'];
     var degreeCode = countries[index]['degreeCode'];
+    var majorConcentration = countries[index]['majorConcentration'];
 
-    var myData = {majorCode: majorCode, degreeCode: degreeCode, collegeCode: collegeCode, advisorEmail: advisorEmail, advisorPw: advisorPw, effective_term_text: effective_term_text, studentFN: studentFN, studentLN: studentLN, studentID: studentID, studentEmail: studentEmail, studentPhone: studentPhone, status_text: status_text};
+    var myData = {majorConcentration: majorConcentration, majorCode: majorCode, degreeCode: degreeCode, collegeCode: collegeCode, advisorEmail: advisorEmail, advisorPw: advisorPw, effective_term_text: effective_term_text, studentFN: studentFN, studentLN: studentLN, studentID: studentID, studentEmail: studentEmail, studentPhone: studentPhone, status_text: status_text};
 
     $.ajax({
         url: '/_runSelenium',
         type: 'POST',
-<!--        contentType: "application/json",-->
         data: myData,
         success: function(response) {
             alert('Student was successfully declared! Hoo-ray!');
             location.reload();
         },
         error: function(error) {
-<!--            alert('An error has occurred, please check your approvals tab in Teams to see if it sent or not. Drat!');-->
+
         }
     });
 });
