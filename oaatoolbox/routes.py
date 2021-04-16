@@ -11,7 +11,7 @@ import time
 import redis
 from rq import Queue
 from worker import conn
-from utils import declaration_login
+from oaatoolbox.utils import declaration_login
 
 q = Queue(connection=conn)
 
