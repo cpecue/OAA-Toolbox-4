@@ -251,7 +251,7 @@ def declare():
     minors = Minors.query.all()
     minors_list = []
     for major in majors:
-        majors_list.append({"name": major.majors, "Requirements": major.majorRequirements, "majorCode": major.majorCode, "degreeCode": major.degreeCode, "collegeCode": major.collegeCode})
+        majors_list.append({"name": major.majors, "Requirements": major.majorRequirements, "majorCode": major.majorCode, "degreeCode": major.degreeCode, "collegeCode": major.collegeCode, "majorConc": major.majorConc})
     for minor in minors:
         minors_list.append({"name": minor.minors, "minorCode": minor.minorCode, "minorCollegeCode": minor.minorCollegeCode})
     return render_template('declare.html', cctitle="Declaration", majors_list=majors_list, minors_list=minors_list)
