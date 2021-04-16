@@ -122,7 +122,10 @@ def selenium():
     chrome_options.add_argument('--disable-gpu')
     chrome_options.add_argument('--no-sandbox')
     driver = webdriver.Chrome(executable_path=os.getenv('CHROMEDRIVER_PATH'), chrome_options=chrome_options)
+    redisfunction(e_ID, e_password, effective_term_text, studentFN, studentLN, studentID, studentEmail, studentPhone, status_text, collegeCode, degreeCode, majorCode, requester, driver)
 
+
+def automation_data(e_ID, e_password, effective_term_text, studentFN, studentLN, studentID, studentEmail, studentPhone, status_text, collegeCode, degreeCode, majorCode, requester, driver):
     # Login Screen
     email_input = driver.find_element_by_xpath('//*[@id="i0116"]')  # email input
     email_input.send_keys("e_ID")
@@ -247,8 +250,8 @@ def selenium():
     return render_template('declare.html', cctitle="Declaration")
 
 
-def redisfunction():
-    result = q.enqueue(selenium)
+def redisfunction(e_ID, e_password, effective_term_text, studentFN, studentLN, studentID, studentEmail, studentPhone, status_text, collegeCode, degreeCode, majorCode, requester, driver):
+    result = q.enqueue(automation_data, e_ID, e_password, effective_term_text, studentFN, studentLN, studentID, studentEmail, studentPhone, status_text, collegeCode, degreeCode, majorCode, requester, driver)
     print(f'{result}')
 
 @app.route('/declare')
