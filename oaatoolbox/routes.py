@@ -126,6 +126,10 @@ def selenium():
     chrome_options.add_argument('--no-sandbox')
     driver = webdriver.Chrome(executable_path=os.getenv('CHROMEDRIVER_PATH'), chrome_options=chrome_options)
     time.sleep(3)
+    next_process()
+
+
+def next_process(driver, e_ID, e_password, effective_term_text, studentFN, studentLN, studentID, studentEmail, studentPhone, requester, status_text, collegeCode, degreeCode, majorCode):
     # This is the website form:
     driver.get('https://forms.office.com/Pages/ResponsePage.aspx?id=IX3zmVwL6kORA-FvAvWuz-st4tjPcIRPvfsxXephpFpUQlhMMVpHQTRaRjA5MFIxWjJZUkc1SDE4Ny4u')
     driver.implicitly_wait(60)
