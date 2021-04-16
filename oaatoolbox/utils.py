@@ -1,3 +1,9 @@
+from flask import request
+from flask_login import current_user
+from selenium import webdriver
+import time
+import os
+
 def declaration_login():
     e_ID = request.form['advisorEmail']
     e_password = request.form['advisorPw']
@@ -24,8 +30,7 @@ def declaration_login():
     print('Staring declaration process. Logging in...')
     time.sleep(3)
     # This is the website form:
-    driver.get(
-        'https://forms.office.com/Pages/ResponsePage.aspx?id=IX3zmVwL6kORA-FvAvWuz-st4tjPcIRPvfsxXephpFpUQlhMMVpHQTRaRjA5MFIxWjJZUkc1SDE4Ny4u')
+    driver.get('https://forms.office.com/Pages/ResponsePage.aspx?id=IX3zmVwL6kORA-FvAvWuz-st4tjPcIRPvfsxXephpFpUQlhMMVpHQTRaRjA5MFIxWjJZUkc1SDE4Ny4u')
     driver.implicitly_wait(60)
     time.sleep(3)
     # Login Screen
