@@ -240,7 +240,7 @@ def selenium():
     # majorConcentration = request.form['majorConcentration']
     requester = current_user.name
     result = q.enqueue(to_background, e_ID, e_password, effective_term_text, studentFN, studentLN, studentID, studentEmail, studentPhone, requester, status_text, collegeCode, degreeCode, majorCode)
-
+    return
 
 
 @app.route('/declare')
