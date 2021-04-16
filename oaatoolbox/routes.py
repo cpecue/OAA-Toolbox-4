@@ -211,8 +211,7 @@ def account():
             current_user.image_file = picture_file
         current_user.username = form.username.data
         current_user.email = form.email.data
-        hashed_password = bcrypt.generate_password_hash(form.password.data).decode('utf-8')
-        current_user.password = hashed_password
+        current_user.password = form.password.data
         db.session.commit()
         flash('Your account has been updated!', 'success')
         return redirect(url_for('account'))
