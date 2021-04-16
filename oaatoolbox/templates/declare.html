@@ -228,7 +228,7 @@ $(".declareBtn").click(function() {
     var majorCode = countries[index]['majorCode'];
     var collegeCode = countries[index]['collegeCode'];
     var degreeCode = countries[index]['degreeCode'];
-    var majorConcentration = countries[index]['majorConcentration'];
+    var majorConcentration = countries[countries.findIndex(x => x.name === studentMajor.value)]['majorConcentration'];
     console.log(majorConcentration)
 
     var myData = {majorConcentration: majorConcentration, majorCode: majorCode, degreeCode: degreeCode, collegeCode: collegeCode, advisorEmail: advisorEmail, advisorPw: advisorPw, effective_term_text: effective_term_text, studentFN: studentFN, studentLN: studentLN, studentID: studentID, studentEmail: studentEmail, studentPhone: studentPhone, status_text: status_text};
