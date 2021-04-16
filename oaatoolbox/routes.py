@@ -239,8 +239,7 @@ def selenium():
     # majorConcentration = request.form['majorConcentration']
     requester = current_user.name
     result = q.enqueue(to_background, e_ID, e_password, effective_term_text, studentFN, studentLN, studentID, studentEmail, studentPhone, requester, status_text, collegeCode, degreeCode, majorCode)
-    message = "Declaring student..."
-    return redirect(url_for("home.html", message=message))
+    return redirect("/home")
 
 
 @app.route('/declare')
