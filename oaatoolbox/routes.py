@@ -273,6 +273,10 @@ def test():
 def layout():
     return render_template('layout.html', cctitle="Layout")
 
+@app.route('/success')
+@login_required
+def success():
+    return render_template('success.html', cctitle="Success")
 
 @app.route('/about', methods=['GET', 'POST'])
 @login_required
