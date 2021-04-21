@@ -113,10 +113,11 @@ def to_background(to_teacher_cert, primarySecondary, e_ID, e_password, effective
     print(f'Form prepared by {requester}')
     next_btn = driver.find_element_by_xpath('//*[@id="form-container"]/div/div/div/div/div[1]/div[2]/div[3]/div[1]/button/div')
     next_btn.click()
-    time.sleep(3)
+    time.sleep(4)
 
     if status_text == "Undeclared":
         print('from Undeclared')
+        time.sleep(2)
         from_college_code = driver.find_element_by_xpath('//*[@id="form-container"]/div/div/div/div/div[1]/div[2]/div[2]/div[2]/div[1]/div/div[2]/div/div[2]/div/label/input')
         from_college_code.click()
         from_degree_code = driver.find_element_by_xpath('//*[@id="form-container"]/div/div/div/div/div[1]/div[2]/div[2]/div[2]/div[2]/div/div[2]/div/div/input')
