@@ -116,17 +116,13 @@ def to_background(to_teacher_cert, primarySecondary, e_ID, e_password, effective
     time.sleep(4)
 
     if status_text == "Undeclared":
-        from_college_code = driver.find_element_by_xpath(
-            '//*[@id="form-container"]/div/div/div/div/div[1]/div[2]/div[2]/div[2]/div[1]/div/div[2]/div/div[2]/div/label/input')
-        from_degree_code = driver.find_element_by_xpath(
-            '//*[@id="form-container"]/div/div/div/div/div[1]/div[2]/div[2]/div[2]/div[2]/div/div[2]/div/div/input')
-        teacher_cert = driver.find_element_by_xpath(
-            '//*[@id="form-container"]/div/div/div/div/div[1]/div[2]/div[2]/div[2]/div[14]/div/div[2]/div/div[2]/div/label/input')
+        from_college_code = driver.find_element_by_xpath('//*[@id="form-container"]/div/div/div/div/div[1]/div[2]/div[2]/div[2]/div[1]/div/div[2]/div/div[2]/div/label/input')
+        fromDegreeCode = driver.find_element_by_xpath('/html/body/div/div/div/div/div/div/div[1]/div[2]/div[2]/div[2]/div[2]/div/div[2]/div/div/input')
         print('from Undeclared')
         from_college_code.click()
         print('Clicked AS-Undeclared')
-        from_degree_code.send_keys('00')
-        teacher_cert.click()
+        fromDegreeCode.send_keys('00')
+        # teacher_cert.click()
         print('set all values for undeclared student.')
     else:
         pass
