@@ -49,9 +49,10 @@ class Majors(db.Model):
     collegeCode = db.Column(db.String(10), nullable=False)
     strippedName = db.Column(db.String(100), nullable=False)
     majorConc = db.Column(db.String(100))
+    majorConcName = db.Column(db.String(100))
 
     def __repr__(self):
-        return f"Major('{self.majors}', '{self.majorRequirements}', '{self.majorCode}', '{self.degreeCode}', '{self.collegeCode}', '{self.strippedName}', '{self.majorConc}')"
+        return f"Major('{self.majors}', '{self.majorRequirements}', '{self.majorCode}', '{self.degreeCode}', '{self.collegeCode}', '{self.strippedName}', '{self.majorConc}', '{self.majorConcName}')"
 
 
 class Minors(db.Model):

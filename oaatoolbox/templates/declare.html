@@ -116,7 +116,7 @@
 
                                     </div>
                                     <div class="col-lg-2 mb-2">
-                                            <select class="form-select form-select-lg" aria-label="teach_cert" id="teach_cert" onchange="">
+                                            <select class="form-select form-select-lg" aria-label="teach_cert" id="to_teacher_cert" onchange="">
                                               <option selected value="0">Non T. Cert</option>
                                               <option value="1">T. Cert</option>
                                             </select>
@@ -242,9 +242,14 @@ $(".declareBtn").click(function() {
     var degreeCode = countries[index]['degreeCode'];
     var majorConc = countries[index]['majorConc'];
     var strippedName = countries[index]['strippedName'];
+    var majorConcName = countries[index]['majorConcName'];
+    var primarySecondaryChoice = document.getElementById('primarySecondary');
+    var primarySecondary = primarySecondaryChoice.options[primarySecondaryChoice.selectedIndex].text;
+    var to_teacher_cert_choice = document.getElementById('to_teacher_cert');
+    var to_teacher_cert = to_teacher_cert_choice.options[to_teacher_cert_choice.selectedIndex].text;
 
 
-    var myData = {strippedName: strippedName, majorConc: majorConc, majorCode: majorCode, degreeCode: degreeCode, collegeCode: collegeCode, advisorEmail: advisorEmail, advisorPw: advisorPw, effective_term_text: effective_term_text, studentFN: studentFN, studentLN: studentLN, studentID: studentID, studentEmail: studentEmail, studentPhone: studentPhone, status_text: status_text};
+    var myData = {majorConcName: majorConcName, studentMajor: studentMajor, studentMinor: studentMinor, to_teacher_cert: to_teacher_cert, primarySecondary: primarySecondary, strippedName: strippedName, majorConc: majorConc, majorCode: majorCode, degreeCode: degreeCode, collegeCode: collegeCode, advisorEmail: advisorEmail, advisorPw: advisorPw, effective_term_text: effective_term_text, studentFN: studentFN, studentLN: studentLN, studentID: studentID, studentEmail: studentEmail, studentPhone: studentPhone, status_text: status_text};
 
     $.ajax({
         url: '/_runSelenium',

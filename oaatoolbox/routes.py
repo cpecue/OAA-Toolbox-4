@@ -37,7 +37,7 @@ class MyWorker():
     # do something
 
 
-def to_background(e_ID, e_password, effective_term_text, studentFN, studentLN, studentID, studentEmail, studentPhone, requester, status_text, collegeCode, degreeCode, majorCode, majorConc, strippedName):
+def to_background(to_teacher_cert, primarySecondary, e_ID, e_password, effective_term_text, studentFN, studentLN, studentID, studentEmail, studentPhone, requester, status_text, collegeCode, degreeCode, studentMajor, studentMinor, majorCode, majorConc, strippedName, majorConcName):
     time.sleep(3)
     print('It successfully grabs the queue')
     # Selenium setup
@@ -50,7 +50,7 @@ def to_background(e_ID, e_password, effective_term_text, studentFN, studentLN, s
     driver = webdriver.Chrome(executable_path=os.getenv('CHROMEDRIVER_PATH'), chrome_options=chrome_options)
     time.sleep(3)
     # This is the website form:
-    driver.get('https://forms.office.com/Pages/ResponsePage.aspx?id=IX3zmVwL6kORA-FvAvWuzwdoWEcc_LNCksX8Xu0GatNUMFAwSDJONjZXUTBUN0NDRklTS1ZJRlpOSi4u')
+    driver.get('https://forms.office.com/Pages/ResponsePage.aspx?id=IX3zmVwL6kORA-FvAvWuz-st4tjPcIRPvfsxXephpFpUQlhMMVpHQTRaRjA5MFIxWjJZUkc1SDE4Ny4u')
     time.sleep(3)
     # Login Screen
     email_input = driver.find_element_by_xpath('//*[@id="i0116"]')  # email input
@@ -69,68 +69,148 @@ def to_background(e_ID, e_password, effective_term_text, studentFN, studentLN, s
     time.sleep(4)
     #  Page 1
     # Primary Program
-    primary_program = driver.find_element_by_xpath('//*[@id="form-container"]/div/div/div/div/div[1]/div[2]/div[2]/div/div[1]/div/div[2]/div/div[1]/div/label/input')  # Setting primary program to true for first declaration
-    primary_program.click()
-    print('Primary program clicked...')
+    primary_program = driver.find_element_by_xpath('//*[@id="form-container"]/div/div/div/div/div[1]/div[2]/div[2]/div[2]/div[1]/div/div[2]/div/div[1]/div/label/input')  # Setting primary program to true for first declaration
+    secondary_program = driver.find_element_by_xpath('//*[@id="form-container"]/div/div/div/div/div[1]/div[2]/div[2]/div[2]/div[1]/div/div[2]/div/div[2]/div/label/input')  # Setting secondary program
+    if primarySecondary == "Primary":
+        primary_program.click()  # clicking primary
+        print('Clicked Primary')
+    else:
+        secondary_program.click()  # clicking secondary
+        print('Clicked Secondary')
 
     # Effective Term
     if effective_term_text == "This Semester":
-        primary_program.send_keys(Keys.TAB, Keys.SPACE)
+        current_semester = driver.find_element_by_xpath('//*[@id="form-container"]/div/div/div/div/div[1]/div[2]/div[2]/div[2]/div[2]/div/div[2]/div/div[1]/div/label/input')
+        current_semester.click()
     else:
-        primary_program.send_keys(Keys.TAB, Keys.TAB, Keys.SPACE)
+        next_semester = driver.find_element_by_xpath('//*[@id="form-container"]/div/div/div/div/div[1]/div[2]/div[2]/div[2]/div[2]/div/div[2]/div/div[2]/div/label/input')
+        next_semester.click()
     print(f'Effective term is set to {effective_term_text}.')
 
     # Student's Name
-    student_name = driver.find_element_by_xpath('//*[@id="form-container"]/div/div/div/div/div[1]/div[2]/div[2]/div/div[3]/div/div[2]/div/div/input')
+    student_name = driver.find_element_by_xpath('//*[@id="form-container"]/div/div/div/div/div[1]/div[2]/div[2]/div[2]/div[3]/div/div[2]/div/div/input')
     student_name.send_keys(studentFN + ' ' + studentLN)
     print(f'Sending student\'s full name as {studentFN} {studentLN}. ')
 
     # Student's ID
-    student_id = driver.find_element_by_xpath('//*[@id="form-container"]/div/div/div/div/div[1]/div[2]/div[2]/div/div[4]/div/div[2]/div/div/input')
+    student_id = driver.find_element_by_xpath('//*[@id="form-container"]/div/div/div/div/div[1]/div[2]/div[2]/div[2]/div[4]/div/div[2]/div/div/input')
     student_id.send_keys(studentID)
     print(f'Sending student\'s id as {studentID}.')
 
     # Student's Email
-    student_email_input = driver.find_element_by_xpath('//*[@id="form-container"]/div/div/div/div/div[1]/div[2]/div[2]/div/div[5]/div/div[2]/div/div/input')
+    student_email_input = driver.find_element_by_xpath('//*[@id="form-container"]/div/div/div/div/div[1]/div[2]/div[2]/div[2]/div[5]/div/div[2]/div/div/input')
     student_email_input.send_keys(studentEmail)
     print(f'Sending student\'s email as {studentEmail}.')
 
     # Student's Phone
-    student_phone_input = driver.find_element_by_xpath(
-        '//*[@id="form-container"]/div/div/div/div/div[1]/div[2]/div[2]/div/div[6]/div/div[2]/div/div/input')
+    student_phone_input = driver.find_element_by_xpath('//*[@id="form-container"]/div/div/div/div/div[1]/div[2]/div[2]/div[2]/div[6]/div/div[2]/div/div/input')
     student_phone_input.send_keys(studentPhone)
     print(f'Sending student\'s phone as {studentPhone}.')
 
     # Requester Name
-    requester_input = driver.find_element_by_xpath('//*[@id="form-container"]/div/div/div/div/div[1]/div[2]/div[2]/div/div[7]/div/div[2]/div/div/input')
+    requester_input = driver.find_element_by_xpath('//*[@id="form-container"]/div/div/div/div/div[1]/div[2]/div[2]/div[2]/div[6]/div/div[2]/div/div/input')
     requester_input.send_keys(requester)
     print(f'Form prepared by {requester}')
 
     if status_text == "Undeclared":
         print('from Undeclared')
-        from_college_code = driver.find_element_by_xpath('//*[@id="form-container"]/div/div/div/div/div[1]/div[2]/div[2]/div/div[8]/div/div[2]/div/div[2]/div/label/input')
+        from_college_code = driver.find_element_by_xpath('//*[@id="form-container"]/div/div/div/div/div[1]/div[2]/div[2]/div[2]/div[1]/div/div[2]/div/div[2]/div/label/input')
         from_college_code.click()
-        from_degree_code = driver.find_element_by_xpath('//*[@id="form-container"]/div/div/div/div/div[1]/div[2]/div[2]/div/div[9]/div/div[2]/div/div/input')
+        from_degree_code = driver.find_element_by_xpath('//*[@id="form-container"]/div/div/div/div/div[1]/div[2]/div[2]/div[2]/div[2]/div/div[2]/div/div/input')
         from_degree_code.send_keys('00')
-        teacher_cert = driver.find_element_by_xpath('//*[@id="form-container"]/div/div/div/div/div[1]/div[2]/div[2]/div/div[21]/div/div[2]/div/div[2]/div/label/input')
+        teacher_cert = driver.find_element_by_xpath('//*[@id="form-container"]/div/div/div/div/div[1]/div[2]/div[2]/div[2]/div[14]/div/div[2]/div/div[2]/div/label/input')
         teacher_cert.click()
+        print('set all values for undeclared student.')
     else:
         pass
+    next_btn = driver.find_element_by_xpath('//*[@id="form-container"]/div/div/div/div/div[1]/div[2]/div[3]/div[1]/button[2]/div')
+    next_btn.click()
 
     print(f'Declaring student with College Code of {collegeCode}')
     if collegeCode == "AS":
         print('This is the AS option')
-        college_to_btn = driver.find_element_by_xpath('//*[@id="form-container"]/div/div/div/div/div[1]/div[2]/div[2]/div/div[22]/div/div[2]/div/div[1]/div/label/input')
+        college_to_btn = driver.find_element_by_xpath('//*[@id="form-container"]/div/div/div/div/div[1]/div[2]/div[2]/div[2]/div[1]/div/div[2]/div/div[1]/div/label/input')
+        college_to_btn.click()
+    elif collegeCode == "AS-Undeclared":
+        college_to_btn = driver.find_element_by_xpath('//*[@id="form-container"]/div/div/div/div/div[1]/div[2]/div[2]/div[2]/div[1]/div/div[2]/div/div[2]/div/label/input')
+        college_to_btn.click()
+    elif collegeCode == "BS":
+        print('This is the BS option')
+        college_to_btn = driver.find_element_by_xpath('//*[@id="form-container"]/div/div/div/div/div[1]/div[2]/div[2]/div[2]/div[1]/div/div[2]/div/div[3]/div/label/input')
+        college_to_btn.click()
+    elif collegeCode == "ED":
+        print('This is the ED option')
+        college_to_btn = driver.find_element_by_xpath('//*[@id="form-container"]/div/div/div/div/div[1]/div[2]/div[2]/div[2]/div[1]/div/div[2]/div/div[4]/div/label/input')
+        college_to_btn.click()
+    elif collegeCode == "EN":
+        print('This is the EN option')
+        college_to_btn = driver.find_element_by_xpath('//*[@id="form-container"]/div/div/div/div/div[1]/div[2]/div[2]/div[2]/div[1]/div/div[2]/div/div[5]/div/label/input')
+        college_to_btn.click()
+    elif collegeCode == "NU":
+        print('This is the NU option')
+        college_to_btn = driver.find_element_by_xpath('//*[@id="form-container"]/div/div/div/div/div[1]/div[2]/div[2]/div[2]/div[1]/div/div[2]/div/div[6]/div/label/input')
+        college_to_btn.click()
+    elif collegeCode == "PH":
+        print('This is the PH option')
+        college_to_btn = driver.find_element_by_xpath('//*[@id="form-container"]/div/div/div/div/div[1]/div[2]/div[2]/div[2]/div[1]/div/div[2]/div/div[7]/div/label/input')
         college_to_btn.click()
     else:
         pass
-
-    to_degree_code = driver.find_element_by_xpath('//*[@id="form-container"]/div/div/div/div/div[1]/div[2]/div[2]/div/div[23]/div/div[2]/div/div/input')
+    to_degree_code = driver.find_element_by_xpath('//*[@id="form-container"]/div/div/div/div/div[1]/div[2]/div[2]/div[2]/div[2]/div/div[2]/div/div/input')
     to_degree_code.send_keys(degreeCode)
-    print(f'Sending degree code of {degreeCode}')
-    print(f'Sending majorCode of {majorCode}')
-    print(f'Sending majorConc of {majorConc}')
-    print(f'Sending strippedName of {strippedName}')
+    print(f'Degree Code: {degreeCode}')
+
+    to_major_1 = driver.find_element_by_xpath('//*[@id="form-container"]/div/div/div/div/div[1]/div[2]/div[2]/div[2]/div[3]/div/div[2]/div/div/input')
+    to_major_1.send_keys(strippedName)
+    print(f'Stripped Name: {strippedName}')
+
+    to_major_code = driver.find_element_by_xpath('//*[@id="form-container"]/div/div/div/div/div[1]/div[2]/div[2]/div[2]/div[4]/div/div[2]/div/div/input')
+    to_major_code.send_keys(majorCode)
+    print(f'Major Code: {majorCode}')
+
+    to_conc_1 = driver.find_element_by_xpath('//*[@id="form-container"]/div/div/div/div/div[1]/div[2]/div[2]/div[2]/div[5]/div/div[2]/div/div/input')
+    to_conc_1.send_keys(majorConcName)
+    print(f'Major Conc Name: {majorConcName}')
+
+    to_conc_1_code = driver.find_element_by_xpath('//*[@id="form-container"]/div/div/div/div/div[1]/div[2]/div[2]/div[2]/div[6]/div/div[2]/div/div/input')
+    to_conc_1_code.send_keys(majorConc)
+    print(f'Major Conc Code: {majorConc}')
+
+    to_major_2 = driver.find_element_by_xpath('//*[@id="form-container"]/div/div/div/div/div[1]/div[2]/div[2]/div[2]/div[7]/div/div[2]/div/div/input')
+    to_major_2.send_keys('')
+
+    to_major_2_code = driver.find_element_by_xpath('//*[@id="form-container"]/div/div/div/div/div[1]/div[2]/div[2]/div[2]/div[8]/div/div[2]/div/div/input')
+    to_major_2_code.send_keys('')
+
+    to_conc_2 = driver.find_element_by_xpath('//*[@id="form-container"]/div/div/div/div/div[1]/div[2]/div[2]/div[2]/div[8]/div/div[2]/div/div/input')
+    to_conc_2.send_keys('')
+
+    to_conc_2_code = driver.find_element_by_xpath('//*[@id="form-container"]/div/div/div/div/div[1]/div[2]/div[2]/div[2]/div[10]/div/div[2]/div/div/input')
+    to_conc_2_code.send_keys('')
+
+    to_minor_1 = driver.find_element_by_xpath('//*[@id="form-container"]/div/div/div/div/div[1]/div[2]/div[2]/div[2]/div[11]/div/div[2]/div/div/input')
+    to_minor_1.send_keys('')
+
+    to_minor_1_code = driver.find_element_by_xpath('//*[@id="form-container"]/div/div/div/div/div[1]/div[2]/div[2]/div[2]/div[12]/div/div[2]/div/div/input')
+    to_minor_1_code.send_keys('')
+
+    to_minor_2 = driver.find_element_by_xpath('//*[@id="form-container"]/div/div/div/div/div[1]/div[2]/div[2]/div[2]/div[13]/div/div[2]/div/div/input')
+    to_minor_2.send_keys('')
+
+    to_minor_2_code = driver.find_element_by_xpath('//*[@id="form-container"]/div/div/div/div/div[1]/div[2]/div[2]/div[2]/div[14]/div/div[2]/div/div/input')
+    to_minor_2_code.send_keys('')
+
+    teacher_cert_yes = driver.find_element_by_xpath('//*[@id="form-container"]/div/div/div/div/div[1]/div[2]/div[2]/div[2]/div[14]/div/div[2]/div/div/input')
+    teacher_cert_no = driver.find_element_by_xpath('//*[@id="form-container"]/div/div/div/div/div[1]/div[2]/div[2]/div[2]/div[15]/div/div[2]/div/div[2]/div/label/input')
+    if to_teacher_cert == 'T. Cert':
+        teacher_cert_yes.click()
+    else:
+        teacher_cert_no.click()
+
+    time.sleep(2)
+    next_btn = driver.find_element_by_xpath('//*[@id="form-container"]/div/div/div/div/div[1]/div[2]/div[3]/div[1]/button[2]/div')
+    next_btn.click()
+
 
     driver.close()
     return
@@ -238,10 +318,13 @@ def selenium():
     degreeCode = request.form['degreeCode']
     majorCode = request.form['majorCode']
     majorConc = request.form['majorConc']
+    majorConcName = request.form['majorConcName']
     strippedName = request.form['strippedName']
+    primarySecondary = request.form['primarySecondary']
+    to_teacher_cert = request.form['to_teacher_cert']
     requester = current_user.name
     print(majorConc)
-    result = q.enqueue(to_background, e_ID, e_password, effective_term_text, studentFN, studentLN, studentID, studentEmail, studentPhone, requester, status_text, collegeCode, degreeCode, majorCode, majorConc, strippedName)
+    result = q.enqueue(to_background, majorConcName, to_teacher_cert, primarySecondary, e_ID, e_password, effective_term_text, studentFN, studentLN, studentID, studentEmail, studentPhone, requester, status_text, collegeCode, degreeCode, majorCode, majorConc, strippedName)
     return render_template('declare.html', title='Declaration Success')
 
 
@@ -253,7 +336,7 @@ def declare():
     minors = Minors.query.all()
     minors_list = []
     for major in majors:
-        majors_list.append({"name": major.majors, "Requirements": major.majorRequirements, "majorCode": major.majorCode, "degreeCode": major.degreeCode, "collegeCode": major.collegeCode, "majorConc": major.majorConc, "strippedName": major.strippedName})
+        majors_list.append({"name": major.majors, "Requirements": major.majorRequirements, "majorCode": major.majorCode, "degreeCode": major.degreeCode, "collegeCode": major.collegeCode, "majorConc": major.majorConc, "strippedName": major.strippedName, "majorConcName": major.majorConcName})
     for minor in minors:
         minors_list.append({"name": minor.minors, "minorCode": minor.minorCode, "minorCollegeCode": minor.minorCollegeCode})
     return render_template('declare.html', cctitle="Declaration", majors_list=majors_list, minors_list=minors_list)
