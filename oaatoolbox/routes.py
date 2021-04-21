@@ -37,7 +37,7 @@ class MyWorker():
     # do something
 
 
-def to_background(to_teacher_cert, primarySecondary, e_ID, e_password, effective_term_text, studentFN, studentLN, studentID, studentEmail, studentPhone, requester, status_text, collegeCode, degreeCode, studentMajor, studentMinor, majorCode, majorConc, strippedName, majorConcName):
+def to_background(to_teacher_cert, primarySecondary, e_ID, e_password, effective_term_text, studentFN, studentLN, studentID, studentEmail, studentPhone, requester, status_text, collegeCode, degreeCode, majorCode, majorConc, strippedName, majorConcName):
     time.sleep(3)
     print('It successfully grabs the queue')
     # Selenium setup
@@ -319,11 +319,7 @@ def selenium():
     majorCode = request.form['majorCode']
     majorConc = request.form['majorConc']
     majorConcName = request.form['majorConcName']
-    if majorConcName == '':
-        majorConcName = ' '
     strippedName = request.form['strippedName']
-    if strippedName == '':
-        strippedName = ' '
     primarySecondary = request.form['primarySecondary']
     to_teacher_cert = request.form['to_teacher_cert']
     requester = current_user.name
