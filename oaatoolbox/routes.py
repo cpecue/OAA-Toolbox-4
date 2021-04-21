@@ -48,10 +48,10 @@ def to_background(to_teacher_cert, primarySecondary, e_ID, e_password, effective
     chrome_options.add_argument('--disable-gpu')
     chrome_options.add_argument('--no-sandbox')
     driver = webdriver.Chrome(executable_path=os.getenv('CHROMEDRIVER_PATH'), chrome_options=chrome_options)
-    driver.implicitly_wait(10)
     time.sleep(3)
     # This is the website form:
     driver.get('https://forms.office.com/Pages/ResponsePage.aspx?id=IX3zmVwL6kORA-FvAvWuz-st4tjPcIRPvfsxXephpFpUQlhMMVpHQTRaRjA5MFIxWjJZUkc1SDE4Ny4u')
+    driver.implicitly_wait(10)
     time.sleep(3)
     # Login Screen
     email_input = driver.find_element_by_xpath('//*[@id="i0116"]')  # email input
