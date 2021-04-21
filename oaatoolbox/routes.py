@@ -128,6 +128,7 @@ def to_background(to_teacher_cert, primarySecondary, e_ID, e_password, effective
         print('set all values for undeclared student.')
         from_teacher_cert = driver.find_element_by_xpath('//*[@id="form-container"]/div/div/div/div/div[1]/div[2]/div[2]/div[2]/div[14]/div/div[2]/div/div[2]/div/label/input')
         from_teacher_cert.click()
+        print('setting t-cert to no')
     else:
         pass
     next_btn = driver.find_element_by_xpath("(//div[@class='button-content'])[2]")
