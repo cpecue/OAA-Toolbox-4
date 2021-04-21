@@ -116,6 +116,7 @@ def to_background(to_teacher_cert, primarySecondary, e_ID, e_password, effective
     next_btn.click()
     time.sleep(10)
 
+
     if status_text == "Undeclared":
         from_college_code = driver.find_element_by_xpath('//*[@id="form-container"]/div/div/div/div/div[1]/div[2]/div[2]/div[2]/div[1]/div/div[2]/div/div[2]/div/label/input')
         print('from Undeclared')
@@ -127,7 +128,7 @@ def to_background(to_teacher_cert, primarySecondary, e_ID, e_password, effective
         print('set all values for undeclared student.')
     else:
         pass
-    next_btn = driver.find_element_by_xpath('//*[@id="form-container"]/div/div/div/div/div[1]/div[2]/div[3]/div[1]/button[2]/div')
+    next_btn = driver.find_element_by_xpath("(//div[@class='button-content'])[2]")
     next_btn.click()
     print('Clicked Next')
 
