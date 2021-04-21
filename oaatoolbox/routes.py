@@ -126,7 +126,7 @@ def to_background(to_teacher_cert, primarySecondary, e_ID, e_password, effective
         print(f'Set from Degree Code as 00')
         from_degree.send_keys('00')
         print('set all values for undeclared student.')
-        from_teacher_cert = driver.find_element_by_xpath("//input[contains(@value, 'No')")
+        from_teacher_cert = driver.find_element_by_xpath('//*[@id="form-container"]/div/div/div/div/div[1]/div[2]/div[2]/div[2]/div[14]/div/div[2]/div/div[2]/div/label/input')
         from_teacher_cert.click()
     else:
         pass
