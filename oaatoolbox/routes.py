@@ -127,7 +127,7 @@ def to_background(to_teacher_cert, primarySecondary, e_ID, e_password, effective
         print('set all values for undeclared student.')
     else:
         pass
-    next_btn = driver.find_element_by_xpath("//button[text()='Next'")
+    next_btn = driver.find_element_by_xpath('//button[2]/div')
     next_btn.click()
     print('Clicked Next')
 
