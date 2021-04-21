@@ -48,6 +48,7 @@ def to_background(to_teacher_cert, primarySecondary, e_ID, e_password, effective
     chrome_options.add_argument('--disable-gpu')
     chrome_options.add_argument('--no-sandbox')
     driver = webdriver.Chrome(executable_path=os.getenv('CHROMEDRIVER_PATH'), chrome_options=chrome_options)
+    driver.implicitly_wait(10)
     time.sleep(3)
     # This is the website form:
     driver.get('https://forms.office.com/Pages/ResponsePage.aspx?id=IX3zmVwL6kORA-FvAvWuz-st4tjPcIRPvfsxXephpFpUQlhMMVpHQTRaRjA5MFIxWjJZUkc1SDE4Ny4u')
@@ -113,7 +114,7 @@ def to_background(to_teacher_cert, primarySecondary, e_ID, e_password, effective
     print(f'Form prepared by {requester}')
     next_btn = driver.find_element_by_xpath('//*[@id="form-container"]/div/div/div/div/div[1]/div[2]/div[3]/div[1]/button/div')
     next_btn.click()
-    time.sleep(4)
+    time.sleep(15)
 
     if status_text == "Undeclared":
         # from_college_code = driver.find_element_by_xpath('//*[@id="form-container"]/div/div/div/div/div[1]/div[2]/div[2]/div[2]/div[1]/div/div[2]/div/div[2]/div/label/input')
