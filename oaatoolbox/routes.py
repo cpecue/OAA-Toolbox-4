@@ -117,102 +117,15 @@ def to_background(to_teacher_cert, primarySecondary, e_ID, e_password, effective
 
     if status_text == "Undeclared":
         from_college_code = driver.find_element_by_xpath('//*[@id="form-container"]/div/div/div/div/div[1]/div[2]/div[2]/div[2]/div[1]/div/div[2]/div/div[2]/div/label/input')
-        fromDegreeCode = driver.find_element_by_xpath('/html/body/div/div/div/div/div/div/div[1]/div[2]/div[2]/div[2]/div[2]/div/div[2]/div/div/input')
         print('from Undeclared')
         from_college_code.click()
         print('Clicked AS-Undeclared')
-        fromDegreeCode.send_keys('00')
-        # teacher_cert.click()
         print('set all values for undeclared student.')
     else:
         pass
     next_btn = driver.find_element_by_xpath('//*[@id="form-container"]/div/div/div/div/div[1]/div[2]/div[3]/div[1]/button[2]/div')
     next_btn.click()
 
-    print(f'Declaring student with College Code of {collegeCode}')
-    if collegeCode == "AS":
-        print('This is the AS option')
-        college_to_btn = driver.find_element_by_xpath('//*[@id="form-container"]/div/div/div/div/div[1]/div[2]/div[2]/div[2]/div[1]/div/div[2]/div/div[1]/div/label/input')
-        college_to_btn.click()
-    elif collegeCode == "AS-Undeclared":
-        college_to_btn = driver.find_element_by_xpath('//*[@id="form-container"]/div/div/div/div/div[1]/div[2]/div[2]/div[2]/div[1]/div/div[2]/div/div[2]/div/label/input')
-        college_to_btn.click()
-    elif collegeCode == "BS":
-        print('This is the BS option')
-        college_to_btn = driver.find_element_by_xpath('//*[@id="form-container"]/div/div/div/div/div[1]/div[2]/div[2]/div[2]/div[1]/div/div[2]/div/div[3]/div/label/input')
-        college_to_btn.click()
-    elif collegeCode == "ED":
-        print('This is the ED option')
-        college_to_btn = driver.find_element_by_xpath('//*[@id="form-container"]/div/div/div/div/div[1]/div[2]/div[2]/div[2]/div[1]/div/div[2]/div/div[4]/div/label/input')
-        college_to_btn.click()
-    elif collegeCode == "EN":
-        print('This is the EN option')
-        college_to_btn = driver.find_element_by_xpath('//*[@id="form-container"]/div/div/div/div/div[1]/div[2]/div[2]/div[2]/div[1]/div/div[2]/div/div[5]/div/label/input')
-        college_to_btn.click()
-    elif collegeCode == "NU":
-        print('This is the NU option')
-        college_to_btn = driver.find_element_by_xpath('//*[@id="form-container"]/div/div/div/div/div[1]/div[2]/div[2]/div[2]/div[1]/div/div[2]/div/div[6]/div/label/input')
-        college_to_btn.click()
-    elif collegeCode == "PH":
-        print('This is the PH option')
-        college_to_btn = driver.find_element_by_xpath('//*[@id="form-container"]/div/div/div/div/div[1]/div[2]/div[2]/div[2]/div[1]/div/div[2]/div/div[7]/div/label/input')
-        college_to_btn.click()
-    else:
-        pass
-    to_degree_code = driver.find_element_by_xpath('//*[@id="form-container"]/div/div/div/div/div[1]/div[2]/div[2]/div[2]/div[2]/div/div[2]/div/div/input')
-    to_degree_code.send_keys(degreeCode)
-    print(f'Degree Code: {degreeCode}')
-
-    to_major_1 = driver.find_element_by_xpath('//*[@id="form-container"]/div/div/div/div/div[1]/div[2]/div[2]/div[2]/div[3]/div/div[2]/div/div/input')
-    to_major_1.send_keys(strippedName)
-    print(f'Stripped Name: {strippedName}')
-
-    to_major_code = driver.find_element_by_xpath('//*[@id="form-container"]/div/div/div/div/div[1]/div[2]/div[2]/div[2]/div[4]/div/div[2]/div/div/input')
-    to_major_code.send_keys(majorCode)
-    print(f'Major Code: {majorCode}')
-
-    to_conc_1 = driver.find_element_by_xpath('//*[@id="form-container"]/div/div/div/div/div[1]/div[2]/div[2]/div[2]/div[5]/div/div[2]/div/div/input')
-    to_conc_1.send_keys(majorConcName)
-    print(f'Major Conc Name: {majorConcName}')
-
-    to_conc_1_code = driver.find_element_by_xpath('//*[@id="form-container"]/div/div/div/div/div[1]/div[2]/div[2]/div[2]/div[6]/div/div[2]/div/div/input')
-    to_conc_1_code.send_keys(majorConc)
-    print(f'Major Conc Code: {majorConc}')
-
-    to_major_2 = driver.find_element_by_xpath('//*[@id="form-container"]/div/div/div/div/div[1]/div[2]/div[2]/div[2]/div[7]/div/div[2]/div/div/input')
-    to_major_2.send_keys('')
-
-    to_major_2_code = driver.find_element_by_xpath('//*[@id="form-container"]/div/div/div/div/div[1]/div[2]/div[2]/div[2]/div[8]/div/div[2]/div/div/input')
-    to_major_2_code.send_keys('')
-
-    to_conc_2 = driver.find_element_by_xpath('//*[@id="form-container"]/div/div/div/div/div[1]/div[2]/div[2]/div[2]/div[8]/div/div[2]/div/div/input')
-    to_conc_2.send_keys('')
-
-    to_conc_2_code = driver.find_element_by_xpath('//*[@id="form-container"]/div/div/div/div/div[1]/div[2]/div[2]/div[2]/div[10]/div/div[2]/div/div/input')
-    to_conc_2_code.send_keys('')
-
-    to_minor_1 = driver.find_element_by_xpath('//*[@id="form-container"]/div/div/div/div/div[1]/div[2]/div[2]/div[2]/div[11]/div/div[2]/div/div/input')
-    to_minor_1.send_keys('')
-
-    to_minor_1_code = driver.find_element_by_xpath('//*[@id="form-container"]/div/div/div/div/div[1]/div[2]/div[2]/div[2]/div[12]/div/div[2]/div/div/input')
-    to_minor_1_code.send_keys('')
-
-    to_minor_2 = driver.find_element_by_xpath('//*[@id="form-container"]/div/div/div/div/div[1]/div[2]/div[2]/div[2]/div[13]/div/div[2]/div/div/input')
-    to_minor_2.send_keys('')
-
-    to_minor_2_code = driver.find_element_by_xpath('//*[@id="form-container"]/div/div/div/div/div[1]/div[2]/div[2]/div[2]/div[14]/div/div[2]/div/div/input')
-    to_minor_2_code.send_keys('')
-
-    teacher_cert_yes = driver.find_element_by_xpath('//*[@id="form-container"]/div/div/div/div/div[1]/div[2]/div[2]/div[2]/div[14]/div/div[2]/div/div/input')
-    teacher_cert_no = driver.find_element_by_xpath('//*[@id="form-container"]/div/div/div/div/div[1]/div[2]/div[2]/div[2]/div[15]/div/div[2]/div/div[2]/div/label/input')
-    if to_teacher_cert == 'T. Cert':
-        teacher_cert_yes.click()
-    else:
-        teacher_cert_no.click()
-
-    time.sleep(2)
-    next_btn = driver.find_element_by_xpath('//*[@id="form-container"]/div/div/div/div/div[1]/div[2]/div[3]/div[1]/button[2]/div')
-    next_btn.click()
 
 
     driver.close()
