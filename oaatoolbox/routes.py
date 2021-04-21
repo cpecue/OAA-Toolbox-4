@@ -319,12 +319,16 @@ def selenium():
     majorCode = request.form['majorCode']
     majorConc = request.form['majorConc']
     majorConcName = request.form['majorConcName']
+    if majorConcName == '':
+        majorConcName = ' '
     strippedName = request.form['strippedName']
+    if strippedName == '':
+        strippedName = ' '
     primarySecondary = request.form['primarySecondary']
     to_teacher_cert = request.form['to_teacher_cert']
     requester = current_user.name
-    print(majorConc)
-    result = q.enqueue(to_background, majorConcName, to_teacher_cert, primarySecondary, e_ID, e_password, effective_term_text, studentFN, studentLN, studentID, studentEmail, studentPhone, requester, status_text, collegeCode, degreeCode, majorCode, majorConc, strippedName)
+
+    result = q.enqueue(to_background, to_teacher_cert, primarySecondary, e_ID, e_password, effective_term_text, studentFN, studentLN, studentID, studentEmail, studentPhone, requester, status_text, collegeCode, degreeCode, majorCode, majorConc, strippedName, majorConcName)
     return render_template('declare.html', title='Declaration Success')
 
 
