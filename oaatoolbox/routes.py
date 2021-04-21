@@ -111,6 +111,9 @@ def to_background(to_teacher_cert, primarySecondary, e_ID, e_password, effective
     requester_input = driver.find_element_by_xpath('//*[@id="form-container"]/div/div/div/div/div[1]/div[2]/div[2]/div[2]/div[6]/div/div[2]/div/div/input')
     requester_input.send_keys(requester)
     print(f'Form prepared by {requester}')
+    next_btn = driver.find_element_by_xpath('//*[@id="form-container"]/div/div/div/div/div[1]/div[2]/div[3]/div[1]/button/div')
+    next_btn.click()
+    time.sleep(3)
 
     if status_text == "Undeclared":
         print('from Undeclared')
