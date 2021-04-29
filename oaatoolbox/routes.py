@@ -116,6 +116,7 @@ def to_background(to_teacher_cert, primarySecondary, e_ID, e_password, effective
     if status_text == "Undeclared":
         # enters page for 'FROM' information
         from_college_code = driver.find_element_by_xpath('//*[@id="form-container"]/div/div/div/div/div[1]/div[2]/div[2]/div/div[8]/div/div[2]/div/div[2]/div/label/input')
+        from_college_code.click()
         print('from Undeclared')
         from_degree_code = driver.find_element_by_xpath('//*[@id="form-container"]/div/div/div/div/div[1]/div[2]/div[2]/div/div[9]/div/div[2]/div/div/input')
         from_degree_code.send_keys('00')
@@ -124,19 +125,25 @@ def to_background(to_teacher_cert, primarySecondary, e_ID, e_password, effective
         print('Entered undeclared information')
     else:
         pass
+    print(f'College code is equal to {collegeCode}')
     if collegeCode == "AS":
         to_college_code = driver.find_element_by_xpath('//*[@id="form-container"]/div/div/div/div/div[1]/div[2]/div[2]/div/div[22]/div/div[2]/div/div[1]/div/label/input')
         print('College code of AS selected')
+        to_college_code.click()
     elif collegeCode == "AS-Undeclared":
         to_college_code = driver.find_element_by_xpath('//*[@id="form-container"]/div/div/div/div/div[1]/div[2]/div[2]/div/div[22]/div/div[2]/div/div[2]/div/label/input')
         print('College code of AS-Undeclared selected')
+        to_college_code.click()
     elif collegeCode == "BS":
         to_college_code = driver.find_element_by_xpath('//*[@id="form-container"]/div/div/div/div/div[1]/div[2]/div[2]/div/div[22]/div/div[2]/div/div[3]/div/label/input')
         print('College code of BS selected')
+        to_college_code.click()
     elif collegeCode == "ED":
         to_college_code = driver.find_element_by_xpath('//*[@id="form-container"]/div/div/div/div/div[1]/div[2]/div[2]/div/div[22]/div/div[2]/div/div[4]/div/label/input')
         print('College code of ED selected')
-    print('Successfully filled out the To college Code portion)')
+        to_college_code.click()
+    print('Successfully filled out the To college Code portion')
+
     to_degree_code = driver.find_element_by_xpath('//*[@id="form-container"]/div/div/div/div/div[1]/div[2]/div[2]/div/div[23]/div/div[2]/div/div/input')
     to_degree_code.send_keys(degreeCode)
 
