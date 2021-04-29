@@ -136,28 +136,26 @@ def to_background(to_teacher_cert, primarySecondary, e_ID, e_password, effective
         from_college_code.send_keys(" ", Keys.TAB, Keys.TAB)  # enters minor 2 code
         from_college_code.send_keys(Keys.SPACE, Keys.TAB, Keys.TAB)  # enters teacher cert yes
         from_college_code.send_keys(Keys.SPACE, Keys.TAB, Keys.TAB)  # clicks on the next button
+        print('Entered undeclared information')
     else:
         pass
     # enters next page for 'TO' information
+    time.sleep(5)
+    print('Looking for all the buttons')
     to_college_code = driver.find_element_by_xpath('//*[@id="form-container"]/div/div/div/div/div[1]/div[2]/div[2]/div[2]/div[1]/div/div[2]/div/div[1]/div/label/input')
-    to_college_code_AS = driver.find_element_by_xpath(
-        '//*[@id="form-container"]/div/div/div/div/div[1]/div[2]/div[2]/div[2]/div[1]/div/div[2]/div/div[1]/div/label/input')
-    to_college_code_unde = driver.find_element_by_xpath(
-        '//*[@id="form-container"]/div/div/div/div/div[1]/div[2]/div[2]/div[2]/div[1]/div/div[2]/div/div[2]/div/label/input')
-    to_college_code_BS = driver.find_element_by_xpath(
-        '//*[@id="form-container"]/div/div/div/div/div[1]/div[2]/div[2]/div[2]/div[1]/div/div[2]/div/div[3]/div/label/input')
-    to_college_code_ED = driver.find_element_by_xpath(
-        '//*[@id="form-container"]/div/div/div/div/div[1]/div[2]/div[2]/div[2]/div[1]/div/div[2]/div/div[4]/div/label/input')
-    to_college_code_EN = driver.find_element_by_xpath(
-        '//*[@id="form-container"]/div/div/div/div/div[1]/div[2]/div[2]/div[2]/div[1]/div/div[2]/div/div[5]/div/label/input')
-    to_college_code_NU = driver.find_element_by_xpath(
-        '//*[@id="form-container"]/div/div/div/div/div[1]/div[2]/div[2]/div[2]/div[1]/div/div[2]/div/div[6]/div/label/input')
-    to_college_code_PH = driver.find_element_by_xpath(
-        '//*[@id="form-container"]/div/div/div/div/div[1]/div[2]/div[2]/div[2]/div[1]/div/div[2]/div/div[7]/div/label/input')
+    to_college_code_AS = driver.find_element_by_xpath('//*[@id="form-container"]/div/div/div/div/div[1]/div[2]/div[2]/div[2]/div[1]/div/div[2]/div/div[1]/div/label/input')
+    to_college_code_unde = driver.find_element_by_xpath('//*[@id="form-container"]/div/div/div/div/div[1]/div[2]/div[2]/div[2]/div[1]/div/div[2]/div/div[2]/div/label/input')
+    to_college_code_BS = driver.find_element_by_xpath('//*[@id="form-container"]/div/div/div/div/div[1]/div[2]/div[2]/div[2]/div[1]/div/div[2]/div/div[3]/div/label/input')
+    to_college_code_ED = driver.find_element_by_xpath('//*[@id="form-container"]/div/div/div/div/div[1]/div[2]/div[2]/div[2]/div[1]/div/div[2]/div/div[4]/div/label/input')
+    to_college_code_EN = driver.find_element_by_xpath('//*[@id="form-container"]/div/div/div/div/div[1]/div[2]/div[2]/div[2]/div[1]/div/div[2]/div/div[5]/div/label/input')
+    to_college_code_NU = driver.find_element_by_xpath('//*[@id="form-container"]/div/div/div/div/div[1]/div[2]/div[2]/div[2]/div[1]/div/div[2]/div/div[6]/div/label/input')
+    to_college_code_PH = driver.find_element_by_xpath('//*[@id="form-container"]/div/div/div/div/div[1]/div[2]/div[2]/div[2]/div[1]/div/div[2]/div/div[7]/div/label/input')
+    print('Found buttons')
     # setting the correct TO college bubble.
     if collegeCode == 'AS':
         to_college_code_AS.click()
         to_college_code = to_college_code_AS
+        print('AS was selected')
     elif collegeCode == 'AS-Undecided':
         to_college_code_unde.click()
         to_college_code = to_college_code_unde
