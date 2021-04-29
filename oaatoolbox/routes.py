@@ -137,6 +137,64 @@ def to_background(to_teacher_cert, primarySecondary, e_ID, e_password, effective
         to_college_code = driver.find_element_by_xpath('//*[@id="form-container"]/div/div/div/div/div[1]/div[2]/div[2]/div/div[22]/div/div[2]/div/div[4]/div/label/input')
         print('College code of ED selected')
     print('Successfully filled out the To college Code portion)')
+    to_degree_code = driver.find_element_by_xpath('//*[@id="form-container"]/div/div/div/div/div[1]/div[2]/div[2]/div/div[23]/div/div[2]/div/div/input')
+    to_degree_code.send_keys(degreeCode)
+
+    to_major_1 = driver.find_element_by_xpath('//*[@id="form-container"]/div/div/div/div/div[1]/div[2]/div[2]/div/div[24]/div/div[2]/div/div/input')
+    to_major_1.send_keys(strippedName)
+
+    to_major_1_code = driver.find_element_by_xpath('//*[@id="form-container"]/div/div/div/div/div[1]/div[2]/div[2]/div/div[25]/div/div[2]/div/div/input')
+    to_major_1_code.send_keys(majorCode)
+
+    to_conc_1 = driver.find_element_by_xpath('//*[@id="form-container"]/div/div/div/div/div[1]/div[2]/div[2]/div/div[26]/div/div[2]/div/div/input')
+    to_conc_1.send_keys(majorConcName)
+
+    to_conc_1_code = driver.find_element_by_xpath('//*[@id="form-container"]/div/div/div/div/div[1]/div[2]/div[2]/div/div[27]/div/div[2]/div/div/input')
+    to_conc_1_code.send_keys(majorConc)
+
+    to_major_2 = driver.find_element_by_xpath('//*[@id="form-container"]/div/div/div/div/div[1]/div[2]/div[2]/div/div[28]/div/div[2]/div/div/input')
+    to_major_2.send_keys('')
+
+    to_major_2_code = driver.find_element_by_xpath('//*[@id="form-container"]/div/div/div/div/div[1]/div[2]/div[2]/div/div[29]/div/div[2]/div/div/input')
+    to_major_2_code.send_keys('')
+
+    to_conc_2 = driver.find_element_by_xpath('//*[@id="form-container"]/div/div/div/div/div[1]/div[2]/div[2]/div/div[30]/div/div[2]/div/div/input')
+    to_conc_2.send_keys('')
+
+    to_conc_2_code = driver.find_element_by_xpath('//*[@id="form-container"]/div/div/div/div/div[1]/div[2]/div[2]/div/div[31]/div/div[2]/div/div/input')
+    to_conc_2_code.send_keys('')
+
+    to_minor_1 = driver.find_element_by_xpath('//*[@id="form-container"]/div/div/div/div/div[1]/div[2]/div[2]/div/div[32]/div/div[2]/div/div/input')
+    to_minor_1.send_keys('')
+
+    to_minor_1_code = driver.find_element_by_xpath('//*[@id="form-container"]/div/div/div/div/div[1]/div[2]/div[2]/div/div[33]/div/div[2]/div/div/input')
+    to_minor_1_code.send_keys('')
+
+    to_minor_2 = driver.find_element_by_xpath('//*[@id="form-container"]/div/div/div/div/div[1]/div[2]/div[2]/div/div[34]/div/div[2]/div/div/input')
+    to_minor_2.send_keys('')
+
+    to_minor_2_code = driver.find_element_by_xpath('//*[@id="form-container"]/div/div/div/div/div[1]/div[2]/div[2]/div/div[34]/div/div[2]/div/div/input')
+    to_minor_2_code.send_keys('')
+
+    to_teacher_cert = driver.find_element_by_xpath('//*[@id="form-container"]/div/div/div/div/div[1]/div[2]/div[2]/div/div[36]/div/div[2]/div/div[2]/div/label/input')
+    to_teacher_cert.click()  # selects no
+
+    transfer_student = driver.find_element_by_xpath('//*[@id="form-container"]/div/div/div/div/div[1]/div[2]/div[2]/div/div[37]/div/div[2]/div/div[2]/div/label/input')
+    transfer_student.click()  # selects no
+
+    in_good_standing = driver.find_element_by_xpath('//*[@id="form-container"]/div/div/div/div/div[1]/div[2]/div[2]/div/div[38]/div/div[2]/div/div[1]/div/label/input')
+    in_good_standing.click()  # selects yes
+
+    honors_student = driver.find_element_by_xpath('//*[@id="form-container"]/div/div/div/div/div[1]/div[2]/div[2]/div/div[39]/div/div[2]/div/div[2]/div/label/input')
+    honors_student.click()  # selects no
+
+    senior_with_degree = driver.find_element_by_xpath('//*[@id="form-container"]/div/div/div/div/div[1]/div[2]/div[2]/div/div[40]/div/div[2]/div/div[2]/div/label/input')
+    senior_with_degree.click()
+
+    submit_btn = driver.find_element_by_xpath('//*[@id="form-container"]/div/div/div/div/div[1]/div[2]/div[3]/div[1]/button/div')
+    submit_btn.click()
+
+
 
     driver.close()
     return
