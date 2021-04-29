@@ -118,23 +118,85 @@ def to_background(to_teacher_cert, primarySecondary, e_ID, e_password, effective
 
 
     if status_text == "Undeclared":
+        # enters page for 'FROM' information
         from_college_code = driver.find_element_by_xpath('//*[@id="form-container"]/div/div/div/div/div[1]/div[2]/div[2]/div[2]/div[1]/div/div[2]/div/div[2]/div/label/input')
         print('from Undeclared')
         from_college_code.click()
-        print('Clicked AS-Undeclared')
-        from_degree = driver.find_element_by_xpath('//div[3]//div[1]//div[2]//div[1]//input[1]')
-        print(f'Set from Degree Code as 00')
-        from_degree.send_keys('00')
-        print('set all values for undeclared student.')
-        from_teacher_cert = driver.find_element_by_xpath('//*[@id="form-container"]/div/div/div/div/div[1]/div[2]/div[2]/div[2]/div[14]/div/div[2]/div/div[2]/div/label/input')
-        from_teacher_cert.click()
-        print('setting t-cert to no')
+        from_college_code.send_keys(Keys.TAB, Keys.TAB)  # enters degree code field
+        from_college_code.send_keys("00", Keys.TAB, Keys.TAB)  # enters major 1 field
+        from_college_code.send_keys(" ", Keys.TAB, Keys.TAB)  # enters major 1 code field
+        from_college_code.send_keys(" ", Keys.TAB, Keys.TAB)  # enters concentration 1 name field
+        from_college_code.send_keys(" ", Keys.TAB, Keys.TAB)  # enters conc 1 code field
+        from_college_code.send_keys(" ", Keys.TAB, Keys.TAB)  # enters major 2 field
+        from_college_code.send_keys(" ", Keys.TAB, Keys.TAB)  # enters major 2 code field
+        from_college_code.send_keys(" ", Keys.TAB, Keys.TAB)  # enters conc 2 code field
+        from_college_code.send_keys(" ", Keys.TAB, Keys.TAB)  # enters minor 1 name
+        from_college_code.send_keys(" ", Keys.TAB, Keys.TAB)  # enters minor 1 code
+        from_college_code.send_keys(" ", Keys.TAB, Keys.TAB)  # enters minor 2 name
+        from_college_code.send_keys(" ", Keys.TAB, Keys.TAB)  # enters minor 2 code
+        from_college_code.send_keys(Keys.SPACE, Keys.TAB, Keys.TAB)  # enters teacher cert yes
+        from_college_code.send_keys(Keys.SPACE, Keys.TAB, Keys.TAB)  # clicks on the next button
     else:
         pass
-    next_btn = driver.find_element_by_xpath("(//div[@class='button-content'])[2]")
-    next_btn.click()
-    print('Clicked Next')
-
+    # enters next page for 'TO' information
+    to_college_code = driver.find_element_by_xpath('//*[@id="form-container"]/div/div/div/div/div[1]/div[2]/div[2]/div[2]/div[1]/div/div[2]/div/div[1]/div/label/input')
+    to_college_code_AS = driver.find_element_by_xpath(
+        '//*[@id="form-container"]/div/div/div/div/div[1]/div[2]/div[2]/div[2]/div[1]/div/div[2]/div/div[1]/div/label/input')
+    to_college_code_unde = driver.find_element_by_xpath(
+        '//*[@id="form-container"]/div/div/div/div/div[1]/div[2]/div[2]/div[2]/div[1]/div/div[2]/div/div[2]/div/label/input')
+    to_college_code_BS = driver.find_element_by_xpath(
+        '//*[@id="form-container"]/div/div/div/div/div[1]/div[2]/div[2]/div[2]/div[1]/div/div[2]/div/div[3]/div/label/input')
+    to_college_code_ED = driver.find_element_by_xpath(
+        '//*[@id="form-container"]/div/div/div/div/div[1]/div[2]/div[2]/div[2]/div[1]/div/div[2]/div/div[4]/div/label/input')
+    to_college_code_EN = driver.find_element_by_xpath(
+        '//*[@id="form-container"]/div/div/div/div/div[1]/div[2]/div[2]/div[2]/div[1]/div/div[2]/div/div[5]/div/label/input')
+    to_college_code_NU = driver.find_element_by_xpath(
+        '//*[@id="form-container"]/div/div/div/div/div[1]/div[2]/div[2]/div[2]/div[1]/div/div[2]/div/div[6]/div/label/input')
+    to_college_code_PH = driver.find_element_by_xpath(
+        '//*[@id="form-container"]/div/div/div/div/div[1]/div[2]/div[2]/div[2]/div[1]/div/div[2]/div/div[7]/div/label/input')
+    # setting the correct TO college bubble.
+    if collegeCode == 'AS':
+        to_college_code_AS.click()
+        to_college_code = to_college_code_AS
+    elif collegeCode == 'AS-Undecided':
+        to_college_code_unde.click()
+        to_college_code = to_college_code_unde
+    elif collegeCode == 'BS':
+        to_college_code_BS.click()
+        to_college_code = to_college_code_BS
+    elif collegeCode == 'ED':
+        to_college_code_ED.click()
+        to_college_code = to_college_code_ED
+    elif collegeCode == 'EN':
+        to_college_code_EN.click()
+        to_college_code = to_college_code_EN
+    elif collegeCode == 'NU':
+        to_college_code_NU.click()
+        to_college_code = to_college_code_NU
+    elif collegeCode == 'PH':
+        to_college_code_PH.click()
+        to_college_code = to_college_code_PH
+    else:
+        pass
+    to_college_code.send_keys(Keys.TAB, Keys.TAB)  # enters To Degree Code field
+    to_college_code.send_keys(degreeCode, Keys.TAB, Keys.TAB)  # enters To Major 1 field
+    to_college_code.send_keys(strippedName, Keys.TAB, Keys.TAB)  # enters To Major 1 Code
+    to_college_code.send_keys(majorCode, Keys.TAB, Keys.TAB)  # enters To Conc 1
+    to_college_code.send_keys(majorConcName, Keys.TAB, Keys.TAB)  # enters To Conc 1 Code
+    to_college_code.send_keys(majorConc, Keys.TAB, Keys.TAB)  # enters To Major 2 field
+    to_college_code.send_keys('', Keys.TAB, Keys.TAB)  # enters To Major 2 field
+    to_college_code.send_keys('', Keys.TAB, Keys.TAB)  # enters To Major 2 Code field
+    to_college_code.send_keys('', Keys.TAB, Keys.TAB)  # enters To To Conc 2 Name
+    to_college_code.send_keys('', Keys.TAB, Keys.TAB)  # enters To Conc 2 Code
+    to_college_code.send_keys('', Keys.TAB, Keys.TAB)  # enters To Minor 1 field
+    to_college_code.send_keys('', Keys.TAB, Keys.TAB)  # enters To Minor 1 Code field
+    to_college_code.send_keys('', Keys.TAB, Keys.TAB)  # enters To Minor 2 field
+    to_college_code.send_keys('', Keys.TAB, Keys.TAB)  # enters To Minor 2 Code field
+    to_college_code.send_keys('', Keys.TAB, Keys.TAB)  # enters To Teacher Certification Yes field
+    if to_teacher_cert == 'Yes':
+        to_college_code.send_keys(Keys.SPACE, Keys.TAB, Keys.TAB, Keys.SPACE)
+    else:
+        to_college_code.send_keys(Keys.TAB, Keys.LEFT_SHIFT+Keys.TAB, Keys.SPACE, Keys.TAB, Keys.TAB, Keys.SPACE)
 
 
     driver.close()
