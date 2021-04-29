@@ -117,9 +117,26 @@ def to_background(to_teacher_cert, primarySecondary, e_ID, e_password, effective
         # enters page for 'FROM' information
         from_college_code = driver.find_element_by_xpath('//*[@id="form-container"]/div/div/div/div/div[1]/div[2]/div[2]/div/div[8]/div/div[2]/div/div[2]/div/label/input')
         print('from Undeclared')
+        from_degree_code = driver.find_element_by_xpath('//*[@id="form-container"]/div/div/div/div/div[1]/div[2]/div[2]/div/div[9]/div/div[2]/div/div/input')
+        from_degree_code.send_keys('00')
+        from_teach_cert = driver.find_element_by_xpath('//*[@id="form-container"]/div/div/div/div/div[1]/div[2]/div[2]/div/div[21]/div/div[2]/div/div[2]/div/label/input')
+        from_teach_cert.click()
         print('Entered undeclared information')
     else:
         pass
+    if collegeCode == "AS":
+        to_college_code = driver.find_element_by_xpath('//*[@id="form-container"]/div/div/div/div/div[1]/div[2]/div[2]/div/div[22]/div/div[2]/div/div[1]/div/label/input')
+        print('College code of AS selected')
+    elif collegeCode == "AS-Undeclared":
+        to_college_code = driver.find_element_by_xpath('//*[@id="form-container"]/div/div/div/div/div[1]/div[2]/div[2]/div/div[22]/div/div[2]/div/div[2]/div/label/input')
+        print('College code of AS-Undeclared selected')
+    elif collegeCode == "BS":
+        to_college_code = driver.find_element_by_xpath('//*[@id="form-container"]/div/div/div/div/div[1]/div[2]/div[2]/div/div[22]/div/div[2]/div/div[3]/div/label/input')
+        print('College code of BS selected')
+    elif collegeCode == "ED":
+        to_college_code = driver.find_element_by_xpath('//*[@id="form-container"]/div/div/div/div/div[1]/div[2]/div[2]/div/div[22]/div/div[2]/div/div[4]/div/label/input')
+        print('College code of ED selected')
+    print('Successfully filled out the To college Code portion)')
 
     driver.close()
     return
