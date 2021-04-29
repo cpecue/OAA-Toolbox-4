@@ -70,8 +70,8 @@ def to_background(to_teacher_cert, primarySecondary, e_ID, e_password, effective
     time.sleep(4)
     #  Page 1
     # Primary Program
-    primary_program = driver.find_element_by_xpath('//*[@id="form-container"]/div/div/div/div/div[1]/div[2]/div[2]/div[2]/div[1]/div/div[2]/div/div[1]/div/label/input')  # Setting primary program to true for first declaration
-    secondary_program = driver.find_element_by_xpath('//*[@id="form-container"]/div/div/div/div/div[1]/div[2]/div[2]/div[2]/div[1]/div/div[2]/div/div[2]/div/label/input')  # Setting secondary program
+    primary_program = driver.find_element_by_xpath('//*[@id="form-container"]/div/div/div/div/div[1]/div[2]/div[2]/div/div[1]/div/div[2]/div/div[1]/div/label/input')  # Setting primary program to true for first declaration
+    secondary_program = driver.find_element_by_xpath('//*[@id="form-container"]/div/div/div/div/div[1]/div[2]/div[2]/div/div[1]/div/div[2]/div/div[2]/div/label/input')  # Setting secondary program
     if primarySecondary == "Primary":
         primary_program.click()  # clicking primary
         print('Clicked Primary')
@@ -81,124 +81,45 @@ def to_background(to_teacher_cert, primarySecondary, e_ID, e_password, effective
 
     # Effective Term
     if effective_term_text == "This Semester":
-        current_semester = driver.find_element_by_xpath('//*[@id="form-container"]/div/div/div/div/div[1]/div[2]/div[2]/div[2]/div[2]/div/div[2]/div/div[1]/div/label/input')
+        current_semester = driver.find_element_by_xpath('//*[@id="form-container"]/div/div/div/div/div[1]/div[2]/div[2]/div/div[2]/div/div[2]/div/div[1]/div/label/input')
         current_semester.click()
     else:
-        next_semester = driver.find_element_by_xpath('//*[@id="form-container"]/div/div/div/div/div[1]/div[2]/div[2]/div[2]/div[2]/div/div[2]/div/div[2]/div/label/input')
+        next_semester = driver.find_element_by_xpath('//*[@id="form-container"]/div/div/div/div/div[1]/div[2]/div[2]/div/div[2]/div/div[2]/div/div[2]/div/label/input')
         next_semester.click()
     print(f'Effective term is set to {effective_term_text}.')
 
     # Student's Name
-    student_name = driver.find_element_by_xpath('//*[@id="form-container"]/div/div/div/div/div[1]/div[2]/div[2]/div[2]/div[3]/div/div[2]/div/div/input')
+    student_name = driver.find_element_by_xpath('//*[@id="form-container"]/div/div/div/div/div[1]/div[2]/div[2]/div/div[3]/div/div[2]/div/div/input')
     student_name.send_keys(studentFN + ' ' + studentLN)
     print(f'Sending student\'s full name as {studentFN} {studentLN}. ')
 
     # Student's ID
-    student_id = driver.find_element_by_xpath('//*[@id="form-container"]/div/div/div/div/div[1]/div[2]/div[2]/div[2]/div[4]/div/div[2]/div/div/input')
+    student_id = driver.find_element_by_xpath('//*[@id="form-container"]/div/div/div/div/div[1]/div[2]/div[2]/div/div[4]/div/div[2]/div/div/input')
     student_id.send_keys(studentID)
     print(f'Sending student\'s id as {studentID}.')
 
     # Student's Email
-    student_email_input = driver.find_element_by_xpath('//*[@id="form-container"]/div/div/div/div/div[1]/div[2]/div[2]/div[2]/div[5]/div/div[2]/div/div/input')
+    student_email_input = driver.find_element_by_xpath('//*[@id="form-container"]/div/div/div/div/div[1]/div[2]/div[2]/div/div[5]/div/div[2]/div/div/input')
     student_email_input.send_keys(studentEmail)
     print(f'Sending student\'s email as {studentEmail}.')
 
     # Student's Phone
-    student_phone_input = driver.find_element_by_xpath('//*[@id="form-container"]/div/div/div/div/div[1]/div[2]/div[2]/div[2]/div[6]/div/div[2]/div/div/input')
+    student_phone_input = driver.find_element_by_xpath('//*[@id="form-container"]/div/div/div/div/div[1]/div[2]/div[2]/div/div[6]/div/div[2]/div/div/input')
     student_phone_input.send_keys(studentPhone)
     print(f'Sending student\'s phone as {studentPhone}.')
 
     # Requester Name
-    requester_input = driver.find_element_by_xpath('//*[@id="form-container"]/div/div/div/div/div[1]/div[2]/div[2]/div[2]/div[6]/div/div[2]/div/div/input')
+    requester_input = driver.find_element_by_xpath('//*[@id="form-container"]/div/div/div/div/div[1]/div[2]/div[2]/div/div[7]/div/div[2]/div/div/input')
     requester_input.send_keys(requester)
     print(f'Form prepared by {requester}')
-    next_btn = driver.find_element_by_xpath('//*[@id="form-container"]/div/div/div/div/div[1]/div[2]/div[3]/div[1]/button/div')
-    next_btn.click()
-    time.sleep(10)
-
 
     if status_text == "Undeclared":
         # enters page for 'FROM' information
-        from_college_code = driver.find_element_by_xpath('//*[@id="form-container"]/div/div/div/div/div[1]/div[2]/div[2]/div[2]/div[1]/div/div[2]/div/div[2]/div/label/input')
+        from_college_code = driver.find_element_by_xpath('//*[@id="form-container"]/div/div/div/div/div[1]/div[2]/div[2]/div/div[8]/div/div[2]/div/div[2]/div/label/input')
         print('from Undeclared')
-        from_college_code.click()
-        from_college_code.send_keys(Keys.TAB, Keys.TAB)  # enters degree code field
-        from_college_code.send_keys("00", Keys.TAB, Keys.TAB)  # enters major 1 field
-        from_college_code.send_keys(" ", Keys.TAB, Keys.TAB)  # enters major 1 code field
-        from_college_code.send_keys(" ", Keys.TAB, Keys.TAB)  # enters concentration 1 name field
-        from_college_code.send_keys(" ", Keys.TAB, Keys.TAB)  # enters conc 1 code field
-        from_college_code.send_keys(" ", Keys.TAB, Keys.TAB)  # enters major 2 field
-        from_college_code.send_keys(" ", Keys.TAB, Keys.TAB)  # enters major 2 code field
-        from_college_code.send_keys(" ", Keys.TAB, Keys.TAB)  # enters conc 2 code field
-        from_college_code.send_keys(" ", Keys.TAB, Keys.TAB)  # enters minor 1 name
-        from_college_code.send_keys(" ", Keys.TAB, Keys.TAB)  # enters minor 1 code
-        from_college_code.send_keys(" ", Keys.TAB, Keys.TAB)  # enters minor 2 name
-        from_college_code.send_keys(" ", Keys.TAB, Keys.TAB)  # enters minor 2 code
-        from_college_code.send_keys(Keys.SPACE, Keys.TAB, Keys.TAB)  # enters teacher cert yes
-        from_college_code.send_keys(Keys.SPACE, Keys.TAB, Keys.TAB)  # clicks on the next button
         print('Entered undeclared information')
     else:
         pass
-    # enters next page for 'TO' information
-    time.sleep(5)
-    print('Looking for all the buttons')
-    to_college_code = driver.find_element_by_xpath('//*[@id="form-container"]/div/div/div/div/div[1]/div[2]/div[2]/div[2]/div[1]/div/div[2]/div/div[1]/div/label/input')
-    to_college_code_AS = driver.find_element_by_css_selector('#form-container > div > div > div > div > div.office-form.office-form-theme-shadow > div.office-form-body > div.office-form-question-body > div:nth-child(2) > div:nth-child(1) > div > div.office-form-question-element > div > div:nth-child(1) > div > label > input[type=radio]')
-    print(f'{to_college_code_AS}. Found AS Selector.')
-    to_college_code_AS.click()
-    to_college_code_BS = driver.find_element_by_css_selector('#form-container > div > div > div > div > div.office-form.office-form-theme-shadow > div.office-form-body > div.office-form-question-body > div:nth-child(2) > div:nth-child(1) > div > div.office-form-question-element > div > div:nth-child(3) > div > label > input[type=radio]')
-    print('Found BS Selector')
-    # to_college_code_BS = driver.find_element_by_xpath('//*[@id="form-container"]/div/div/div/div/div[1]/div[2]/div[2]/div[2]/div[1]/div/div[2]/div/div[3]/div/label/input')
-    # to_college_code_ED = driver.find_element_by_xpath('//*[@id="form-container"]/div/div/div/div/div[1]/div[2]/div[2]/div[2]/div[1]/div/div[2]/div/div[4]/div/label/input')
-    # to_college_code_EN = driver.find_element_by_xpath('//*[@id="form-container"]/div/div/div/div/div[1]/div[2]/div[2]/div[2]/div[1]/div/div[2]/div/div[5]/div/label/input')
-    # to_college_code_NU = driver.find_element_by_xpath('//*[@id="form-container"]/div/div/div/div/div[1]/div[2]/div[2]/div[2]/div[1]/div/div[2]/div/div[6]/div/label/input')
-    # to_college_code_PH = driver.find_element_by_xpath('//*[@id="form-container"]/div/div/div/div/div[1]/div[2]/div[2]/div[2]/div[1]/div/div[2]/div/div[7]/div/label/input')
-    # print('Found buttons')
-    # # setting the correct TO college bubble.
-    # if collegeCode == 'AS':
-    #     to_college_code_AS.click()
-    #     to_college_code = to_college_code_AS
-    #     print('AS was selected')
-    # elif collegeCode == 'AS-Undecided':
-    #     to_college_code_unde.click()
-    #     to_college_code = to_college_code_unde
-    # elif collegeCode == 'BS':
-    #     to_college_code_BS.click()
-    #     to_college_code = to_college_code_BS
-    # elif collegeCode == 'ED':
-    #     to_college_code_ED.click()
-    #     to_college_code = to_college_code_ED
-    # elif collegeCode == 'EN':
-    #     to_college_code_EN.click()
-    #     to_college_code = to_college_code_EN
-    # elif collegeCode == 'NU':
-    #     to_college_code_NU.click()
-    #     to_college_code = to_college_code_NU
-    # elif collegeCode == 'PH':
-    #     to_college_code_PH.click()
-    #     to_college_code = to_college_code_PH
-    # else:
-    #     pass
-    # to_college_code.send_keys(Keys.TAB, Keys.TAB)  # enters To Degree Code field
-    # to_college_code.send_keys(degreeCode, Keys.TAB, Keys.TAB)  # enters To Major 1 field
-    # to_college_code.send_keys(strippedName, Keys.TAB, Keys.TAB)  # enters To Major 1 Code
-    # to_college_code.send_keys(majorCode, Keys.TAB, Keys.TAB)  # enters To Conc 1
-    # to_college_code.send_keys(majorConcName, Keys.TAB, Keys.TAB)  # enters To Conc 1 Code
-    # to_college_code.send_keys(majorConc, Keys.TAB, Keys.TAB)  # enters To Major 2 field
-    # to_college_code.send_keys('', Keys.TAB, Keys.TAB)  # enters To Major 2 field
-    # to_college_code.send_keys('', Keys.TAB, Keys.TAB)  # enters To Major 2 Code field
-    # to_college_code.send_keys('', Keys.TAB, Keys.TAB)  # enters To To Conc 2 Name
-    # to_college_code.send_keys('', Keys.TAB, Keys.TAB)  # enters To Conc 2 Code
-    # to_college_code.send_keys('', Keys.TAB, Keys.TAB)  # enters To Minor 1 field
-    # to_college_code.send_keys('', Keys.TAB, Keys.TAB)  # enters To Minor 1 Code field
-    # to_college_code.send_keys('', Keys.TAB, Keys.TAB)  # enters To Minor 2 field
-    # to_college_code.send_keys('', Keys.TAB, Keys.TAB)  # enters To Minor 2 Code field
-    # to_college_code.send_keys('', Keys.TAB, Keys.TAB)  # enters To Teacher Certification Yes field
-    # if to_teacher_cert == 'Yes':
-    #     to_college_code.send_keys(Keys.SPACE, Keys.TAB, Keys.TAB, Keys.SPACE)
-    # else:
-    #     to_college_code.send_keys(Keys.TAB, Keys.LEFT_SHIFT+Keys.TAB, Keys.SPACE, Keys.TAB, Keys.TAB, Keys.SPACE)
-
 
     driver.close()
     return
