@@ -143,58 +143,58 @@ def to_background(to_teacher_cert, primarySecondary, e_ID, e_password, effective
     time.sleep(5)
     print('Looking for all the buttons')
     to_college_code = driver.find_element_by_xpath('//*[@id="form-container"]/div/div/div/div/div[1]/div[2]/div[2]/div[2]/div[1]/div/div[2]/div/div[1]/div/label/input')
-    to_college_code_AS = driver.find_element_by_xpath('//*[@id="form-container"]/div/div/div/div/div[1]/div[2]/div[2]/div[2]/div[1]/div/div[2]/div/div[1]/div/label/input')
-    to_college_code_unde = driver.find_element_by_xpath('//*[@id="form-container"]/div/div/div/div/div[1]/div[2]/div[2]/div[2]/div[1]/div/div[2]/div/div[2]/div/label/input')
-    to_college_code_BS = driver.find_element_by_xpath('//*[@id="form-container"]/div/div/div/div/div[1]/div[2]/div[2]/div[2]/div[1]/div/div[2]/div/div[3]/div/label/input')
-    to_college_code_ED = driver.find_element_by_xpath('//*[@id="form-container"]/div/div/div/div/div[1]/div[2]/div[2]/div[2]/div[1]/div/div[2]/div/div[4]/div/label/input')
-    to_college_code_EN = driver.find_element_by_xpath('//*[@id="form-container"]/div/div/div/div/div[1]/div[2]/div[2]/div[2]/div[1]/div/div[2]/div/div[5]/div/label/input')
-    to_college_code_NU = driver.find_element_by_xpath('//*[@id="form-container"]/div/div/div/div/div[1]/div[2]/div[2]/div[2]/div[1]/div/div[2]/div/div[6]/div/label/input')
-    to_college_code_PH = driver.find_element_by_xpath('//*[@id="form-container"]/div/div/div/div/div[1]/div[2]/div[2]/div[2]/div[1]/div/div[2]/div/div[7]/div/label/input')
-    print('Found buttons')
-    # setting the correct TO college bubble.
-    if collegeCode == 'AS':
-        to_college_code_AS.click()
-        to_college_code = to_college_code_AS
-        print('AS was selected')
-    elif collegeCode == 'AS-Undecided':
-        to_college_code_unde.click()
-        to_college_code = to_college_code_unde
-    elif collegeCode == 'BS':
-        to_college_code_BS.click()
-        to_college_code = to_college_code_BS
-    elif collegeCode == 'ED':
-        to_college_code_ED.click()
-        to_college_code = to_college_code_ED
-    elif collegeCode == 'EN':
-        to_college_code_EN.click()
-        to_college_code = to_college_code_EN
-    elif collegeCode == 'NU':
-        to_college_code_NU.click()
-        to_college_code = to_college_code_NU
-    elif collegeCode == 'PH':
-        to_college_code_PH.click()
-        to_college_code = to_college_code_PH
-    else:
-        pass
-    to_college_code.send_keys(Keys.TAB, Keys.TAB)  # enters To Degree Code field
-    to_college_code.send_keys(degreeCode, Keys.TAB, Keys.TAB)  # enters To Major 1 field
-    to_college_code.send_keys(strippedName, Keys.TAB, Keys.TAB)  # enters To Major 1 Code
-    to_college_code.send_keys(majorCode, Keys.TAB, Keys.TAB)  # enters To Conc 1
-    to_college_code.send_keys(majorConcName, Keys.TAB, Keys.TAB)  # enters To Conc 1 Code
-    to_college_code.send_keys(majorConc, Keys.TAB, Keys.TAB)  # enters To Major 2 field
-    to_college_code.send_keys('', Keys.TAB, Keys.TAB)  # enters To Major 2 field
-    to_college_code.send_keys('', Keys.TAB, Keys.TAB)  # enters To Major 2 Code field
-    to_college_code.send_keys('', Keys.TAB, Keys.TAB)  # enters To To Conc 2 Name
-    to_college_code.send_keys('', Keys.TAB, Keys.TAB)  # enters To Conc 2 Code
-    to_college_code.send_keys('', Keys.TAB, Keys.TAB)  # enters To Minor 1 field
-    to_college_code.send_keys('', Keys.TAB, Keys.TAB)  # enters To Minor 1 Code field
-    to_college_code.send_keys('', Keys.TAB, Keys.TAB)  # enters To Minor 2 field
-    to_college_code.send_keys('', Keys.TAB, Keys.TAB)  # enters To Minor 2 Code field
-    to_college_code.send_keys('', Keys.TAB, Keys.TAB)  # enters To Teacher Certification Yes field
-    if to_teacher_cert == 'Yes':
-        to_college_code.send_keys(Keys.SPACE, Keys.TAB, Keys.TAB, Keys.SPACE)
-    else:
-        to_college_code.send_keys(Keys.TAB, Keys.LEFT_SHIFT+Keys.TAB, Keys.SPACE, Keys.TAB, Keys.TAB, Keys.SPACE)
+    to_college_code_AS = driver.find_elements_by_tag_name('r7f82103af8f74f20bea3fc216321607d')
+    print(f'{to_college_code_AS}')
+    # to_college_code_BS = driver.find_element_by_xpath('//*[@id="form-container"]/div/div/div/div/div[1]/div[2]/div[2]/div[2]/div[1]/div/div[2]/div/div[3]/div/label/input')
+    # to_college_code_ED = driver.find_element_by_xpath('//*[@id="form-container"]/div/div/div/div/div[1]/div[2]/div[2]/div[2]/div[1]/div/div[2]/div/div[4]/div/label/input')
+    # to_college_code_EN = driver.find_element_by_xpath('//*[@id="form-container"]/div/div/div/div/div[1]/div[2]/div[2]/div[2]/div[1]/div/div[2]/div/div[5]/div/label/input')
+    # to_college_code_NU = driver.find_element_by_xpath('//*[@id="form-container"]/div/div/div/div/div[1]/div[2]/div[2]/div[2]/div[1]/div/div[2]/div/div[6]/div/label/input')
+    # to_college_code_PH = driver.find_element_by_xpath('//*[@id="form-container"]/div/div/div/div/div[1]/div[2]/div[2]/div[2]/div[1]/div/div[2]/div/div[7]/div/label/input')
+    # print('Found buttons')
+    # # setting the correct TO college bubble.
+    # if collegeCode == 'AS':
+    #     to_college_code_AS.click()
+    #     to_college_code = to_college_code_AS
+    #     print('AS was selected')
+    # elif collegeCode == 'AS-Undecided':
+    #     to_college_code_unde.click()
+    #     to_college_code = to_college_code_unde
+    # elif collegeCode == 'BS':
+    #     to_college_code_BS.click()
+    #     to_college_code = to_college_code_BS
+    # elif collegeCode == 'ED':
+    #     to_college_code_ED.click()
+    #     to_college_code = to_college_code_ED
+    # elif collegeCode == 'EN':
+    #     to_college_code_EN.click()
+    #     to_college_code = to_college_code_EN
+    # elif collegeCode == 'NU':
+    #     to_college_code_NU.click()
+    #     to_college_code = to_college_code_NU
+    # elif collegeCode == 'PH':
+    #     to_college_code_PH.click()
+    #     to_college_code = to_college_code_PH
+    # else:
+    #     pass
+    # to_college_code.send_keys(Keys.TAB, Keys.TAB)  # enters To Degree Code field
+    # to_college_code.send_keys(degreeCode, Keys.TAB, Keys.TAB)  # enters To Major 1 field
+    # to_college_code.send_keys(strippedName, Keys.TAB, Keys.TAB)  # enters To Major 1 Code
+    # to_college_code.send_keys(majorCode, Keys.TAB, Keys.TAB)  # enters To Conc 1
+    # to_college_code.send_keys(majorConcName, Keys.TAB, Keys.TAB)  # enters To Conc 1 Code
+    # to_college_code.send_keys(majorConc, Keys.TAB, Keys.TAB)  # enters To Major 2 field
+    # to_college_code.send_keys('', Keys.TAB, Keys.TAB)  # enters To Major 2 field
+    # to_college_code.send_keys('', Keys.TAB, Keys.TAB)  # enters To Major 2 Code field
+    # to_college_code.send_keys('', Keys.TAB, Keys.TAB)  # enters To To Conc 2 Name
+    # to_college_code.send_keys('', Keys.TAB, Keys.TAB)  # enters To Conc 2 Code
+    # to_college_code.send_keys('', Keys.TAB, Keys.TAB)  # enters To Minor 1 field
+    # to_college_code.send_keys('', Keys.TAB, Keys.TAB)  # enters To Minor 1 Code field
+    # to_college_code.send_keys('', Keys.TAB, Keys.TAB)  # enters To Minor 2 field
+    # to_college_code.send_keys('', Keys.TAB, Keys.TAB)  # enters To Minor 2 Code field
+    # to_college_code.send_keys('', Keys.TAB, Keys.TAB)  # enters To Teacher Certification Yes field
+    # if to_teacher_cert == 'Yes':
+    #     to_college_code.send_keys(Keys.SPACE, Keys.TAB, Keys.TAB, Keys.SPACE)
+    # else:
+    #     to_college_code.send_keys(Keys.TAB, Keys.LEFT_SHIFT+Keys.TAB, Keys.SPACE, Keys.TAB, Keys.TAB, Keys.SPACE)
 
 
     driver.close()
