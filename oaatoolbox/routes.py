@@ -216,6 +216,10 @@ def to_background(to_teacher_cert, primarySecondary, e_ID, e_password, effective
 def home():
     return render_template('home.html', cctitle="Dashboard")
 
+@app.route('/placement-scores')
+@login_required
+def placement():
+    return render_template('placement-scores.html', cctitle="Placement Scores")
 
 @app.route('/register', methods=['GET', 'POST'])
 @login_required
