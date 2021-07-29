@@ -221,10 +221,6 @@ def home():
 def placement():
     return render_template('placement-scores.html', cctitle="Placement Scores")
 
-@app.route('/hold-removal')
-@login_required
-def holds():
-    return render_template('hold-removal.html', cctitle="Advising Hold Removal")
 
 @app.route('/register', methods=['GET', 'POST'])
 @login_required
